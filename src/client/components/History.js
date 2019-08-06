@@ -1,38 +1,41 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { setCurrenItem } from '../actions/items';
+import { setCurrentItem } from '../actions/items';
 
-class History extends React.Component{
-    render(){
-        const historyItems = this.props.historyItems;
-        return(
-            <div id="history">
-                <ul style={{"display": "flex"}}>
-                {historyItems.map( i => {
-                    return(
-                        <li key={i.vendor_code}>
-                            <img 
-                                src={require(`../assets/img/${i.vendor_code}-1.png`)} 
-                                onClick={() => {this.props.setCurrenItem(i)}}    
-                            />
-                            <p>{i.title}</p>
-                        </li>
-                    );
-                })}
-                </ul>
-            </div>
-        );
-    }
-}
+const History = ({ historyItems, setCurrentItem }) => (
+  <div id="history">
+    <ul style={{ display: 'flex' }}>
+      {historyItems.map(i => (
+        <li key={i.vendor_code}>
+          <img
+            src={require(`../assets/img/${i.vendor_code}-1.png`)}
+            onClick={() => { setCurrentItem(i); }}
+            alt="img"
+          />
+          <p>{i.title}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
-const mapStateToProps = state => {
-    return {
-        historyItems: state.items.historyItems,
-    }
-}
+const mapStateToProps = state => ({
+  historyItems: state.items.historyItems,
+});
 
 const mapDispatchToProps = {
-    setCurrenItem,
-}
+  setCurrentItem,
+};
+
+History.defaultProps = {
+  historyItems: PropTypes.array,
+  setCurrenItem: PropTypes.func,
+};
+
+History.propTypes = {
+  historyItems: PropTypes.arrayOf,
+  setCurrenItem: PropTypes.func,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(History);

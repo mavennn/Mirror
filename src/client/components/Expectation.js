@@ -1,32 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import socketIOClient from 'socket.io-client';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import BarCode from './BarCodeInput';
-import { setToDefault } from '../actions/items'
+import { setToDefault } from '../actions/items';
 
-class Expectation extends React.Component{
-    componentDidMount() {
-        // const socket = socketIOClient('http://localhost:8080/');
-    }
+const Expectation = props => (
+  <div id="welcome_page">
+    <Link
+      to="/main"
+      onClick={() => {
+        props.setToDefault();
+      }}
+    >
+НАЧАТЬ ЗАНОВО
+    </Link>
+    <Link to="/main">ПРОДОЛЖИТЬ</Link>
+    <BarCode />
+  </div>
+);
 
-    render(){ 
-        return(
-        <div id="welcome_page">
-            <Link to="/main" onClick={() => {this.props.setToDefault()}}>НАЧАТЬ ЗАНОВО</Link>
-            <Link to="/main">ПРОДОЛЖИТЬ</Link>
+Expectation.defaultProps = {
+  setToDefault: PropTypes.func,
+};
 
-            {/* http://qaru.site/questions/125172/automatic-redirect-after-login-with-react-router */}
-            <BarCode />
-        </div>
-        );
-    }
-}
+Expectation.propTypes = {
+  setToDefault: PropTypes.func,
+};
 
 const mapDispatchToProps = {
-    setToDefault
-}
+  setToDefault
+};
 
 export default connect(null, mapDispatchToProps)(Expectation);

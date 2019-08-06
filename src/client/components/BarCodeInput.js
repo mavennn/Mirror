@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import $ from 'jquery';
 import axios from 'axios';
 
-import { setCurrenItem, addToHistory, addToCapsule } from '../actions/items';
+import { setCurrentItem, addToHistory, addToCapsule } from '../actions/items';
 
-class BarCode extends React.Component{
+class BarCode extends React.Component {
     constructor(props){
         super(props);
 
@@ -13,7 +13,7 @@ class BarCode extends React.Component{
             vendor_code: '',
         }
     }
-  
+
     componentDidMount(){
         $('#vendor_code').focus();
     }
@@ -25,12 +25,12 @@ class BarCode extends React.Component{
             .then(response => {
                 console.log(response.data.id)
                 var item = response.data
-                
+
                 axios.get(`http://localhost:8080/sizes/${item.id}`)
                 .then(res => {
                     const sizes = res.data;
                     item["sizes"] = sizes;
-                    this.props.setCurrenItem(item);
+                    this.props.setCurrentItem(item);
                     if(this.props.historyItems.findIndex(x => x.vendor_code === item.vendor_code) === -1){
                         this.props.addToHistory(item)
                     }
@@ -45,11 +45,11 @@ class BarCode extends React.Component{
         }
         return(
             <div>
-                <input 
-                    type="text" 
-                    id="vendor_code" 
-                    onChange={ (event) => { 
-                        this.setState({vendor_code: String(event.target.value).substring(0,13),}) 
+                <input
+                    type="text"
+                    id="vendor_code"
+                    onChange={ (event) => {
+                        this.setState({vendor_code: String(event.target.value).substring(0,13),})
                     }}/>
             </div>
         );
@@ -63,7 +63,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    setCurrenItem,
+    setCurrentItem,
     addToHistory,
     addToCapsule
 }

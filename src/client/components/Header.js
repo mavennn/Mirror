@@ -1,24 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-import { setToDefault } from '../actions/items'
+import { setToDefault } from '../actions/items';
 
-class Header extends React.Component{
-    render(){
-        return(
-            <header>
-                <Link to='/main/basket'>Корзина</Link>
-                <Link to='/main/catalog'>Каталог</Link>
-                <Link to='/main/'>Главная</Link>
-                <Link to="/" onClick={() => {this.props.setToDefault()}}>Завершить обслуживание</Link>
-            </header>
-        );
-    }
-}
+const Header = props => (
+  <header>
+    <Link to="/main/basket">Корзина</Link>
+    <Link to="/main/catalog">Каталог</Link>
+    <Link to="/main/">Главная</Link>
+    <Link
+      to="/"
+      onClick={() => {
+        props.setToDefault();
+      }}
+    >
+      Завершить обслуживание
+    </Link>
+  </header>
+);
 
 const mapDispatchToProps = {
-    setToDefault
-}
+  setToDefault
+};
+
+Header.defaultProps = {
+  setToDefault: PropTypes.func,
+};
+
+Header.propTypes = {
+  setToDefault: PropTypes.func,
+};
 
 export default connect(null, mapDispatchToProps)(Header);

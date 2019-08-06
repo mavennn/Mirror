@@ -1,56 +1,45 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import io from 'socket.io-client';
 
 import BarCode from './BarCodeInput';
 import Header from './Header';
 import History from './History';
 import Card from './Card';
 
-class Main extends React.Component{
+const Main = ({ thingsInCapsule }) => (
+  <div id="main">
+    <Header />
+    <section>
+      <Card />
+      <div id="recommendation">
+        <ul>
+          {
+            thingsInCapsule.map(item => (
+              <li key={item.id} style={{ color: '#fff' }}>
+                <img src={require(`../assets/img/${item.vendor_code}-1.png`)} alt="adf" />
+                <p>{item.title}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+    <History />
+    <BarCode />
+  </div>
+);
 
-    callConsultant() {
-        // const socket = io('http://localhost:8080');
+const mapStateToProps = state => ({
+  thingsInCapsule: state.items.itemsInCapsule,
+});
 
-        // socket.emit('call_consultant', localStorage.getItem('room'))
-    }
+Main.defaultProps = {
+  thingsInCapsule: PropTypes.func,
+};
 
-    render(){
-        return(
-            <div id="main">
-                <Header />
-                <button onClick={this.callConsultant}>Вызвать консультанта</button>
-                <section>
-                    <Card />
-                    {/* <Recommendation /> */}
-                    <div id="recommendation">
-                        <ul>
-                        {
-                            this.props.thingsInCapsule.map(item => {
-                                {console.log(item.title)}
-                                return(
-                                <li key={item.id} style={{color: "#fff"}}>
-                                    <img src={require(`../assets/img/${item.vendor_code}-1.png`)} />
-                                    <p>{item.title}</p>
-                                </li>
-                                )
-                            })
-                        }
-                        </ul>
-                    </div>
-                </section>
-                <History />
-                <BarCode />
-            </div>
-        );
-    }
-}
-
-const mapStateToProps = state => {
-    return {
-        thingsInCapsule: state.items.itemsInCapsule,
-    }
-}
+Main.propTypes = {
+  thingsInCapsule: PropTypes.func,
+};
 
 export default connect(mapStateToProps)(Main);
