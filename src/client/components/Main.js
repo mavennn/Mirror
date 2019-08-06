@@ -30,7 +30,10 @@ class Main extends React.Component{
                             this.props.thingsInCapsule.map(item => {
                                 {console.log(item.title)}
                                 return(
-                                <li key={item.id} style={{color: "#fff"}}>{item.title}</li>
+                                <li key={item.id} style={{color: "#fff"}}>
+                                    <img src={require(`../assets/img/${item.vendor_code}-1.png`)} />
+                                    <p>{item.title}</p>
+                                </li>
                                 )
                             })
                         }

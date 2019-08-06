@@ -96,8 +96,22 @@ section button {
 }
 
 #recommendation{
-  grid-column: 10 / span 6 ;
-  grid-row: 2 / span 6;
+  grid-column: 10 / span 8 ;
+  grid-row: 1 / span 6;
+}
+
+.price {
+  grid-column: 6 / 8;
+  grid-row: 4 / 5;
+}
+
+#recommendation ul li{
+  list-style: none;
+}
+
+#recommendation ul li img{
+  width: 60px;
+  height: 80px;
 }
 
 #history{

@@ -25,7 +25,8 @@ class Card extends React.Component {
                                 <option key={i}>{i}</option>
                             )
                         })}
-                    </select>
+                    </select><br />
+                    <h2 className="price">Цена:{item.price}</h2>
                     <button onClick={() => {
                         this.props.basketItems.indexOf(item) === -1 
                         ? this.props.addToBasket(item)
