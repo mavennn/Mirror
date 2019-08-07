@@ -5,7 +5,7 @@ import { setCurrentItem } from '../actions/items';
 
 const History = ({ historyItems, setCurrentItem }) => (
   <div id="history">
-    <ul style={{ display: 'flex' }}>
+    <ul>
       {historyItems.map(i => (
         <li key={i.vendor_code}>
           <img

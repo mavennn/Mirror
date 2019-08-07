@@ -12,7 +12,6 @@ const Card = ({
   currentItem, basketItems, addToBasket, setCurrentItem, historyItems, addToHistory
 }) => {
   const item = currentItem;
-  console.log(item);
   if (Object.keys(item).length === 0) {
     return null;
   }
