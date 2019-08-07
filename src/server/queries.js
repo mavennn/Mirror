@@ -8,35 +8,17 @@ const pool = new Pool({
   port: 5432,
 });
 
-const getThingByVendorCode = (request, response) => {
+async function getThingByVendorCode(request, response) {
   const vendorCode = request.params.vendor_code.toString();
-  pool.query('SELECT * FROM things WHERE vendor_code = $1', [vendorCode], (err, thing) => {
-    if (err) throw err;
-    console.log(thing.rows);
-    response.status(200).json(thing.rows[0]);
-  });
-};
-
-const getSizesById = (request, response) => {
-  const id = parseInt(request.params.id, 10);
-  pool.query('SELECT * FROM thing_sizes WHERE id_thing = $1', [id], (err, sizes) => {
-    if (err) throw err;
-    const thingSizes = [];
-    sizes.rows.forEach(i => thingSizes.push(i.title));
-    response.status(200).json(thingSizes);
-  });
-};
-
-const getRecommendationByCapsuleId = (request, response) => {
-  const idCapsule = parseInt(request.params.id_capsule, 10);
-  pool.query('SELECT * FROM things WHERE id_capsule = $1', [idCapsule], (err, things) => {
-    if (err) throw err;
-    response.status(200).json(things.rows);
-  });
-};
+  let thing = await pool.query('SELECT * FROM things WHERE vendor_code = $1', [vendorCode]);
+  [thing] = thing.rows;
+  const thingsInCapsule = await pool.query('SELECT * FROM things WHERE id_capsule = $1', [thing.id_capsule]);
+  thing.capsule = thingsInCapsule.rows;
+  const sizes = await pool.query('SELECT * FROM thing_sizes WHERE id_thing = $1', [thing.id])
+  thing.sizes = sizes.rows;
+  response.status(200).json(thing);
+}
 
 module.exports = {
   getThingByVendorCode,
-  getSizesById,
-  getRecommendationByCapsuleId,
 };

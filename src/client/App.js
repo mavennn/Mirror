@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import './App.css';
+import './tachyons.min.css';
 
 export default class App extends Component {
 
@@ -9,8 +10,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-      </div>
+      <div />
     );
   }
 }

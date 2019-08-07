@@ -1,29 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import axios from 'axios';
+
+import { setCurrentItem } from '../actions/items';
 
 import BarCode from './BarCodeInput';
 import Header from './Header';
 import History from './History';
 import Card from './Card';
 
-const Main = ({ thingsInCapsule }) => (
+async function setItem(vendorCode) {
+  const thing = await axios.get(`http://localhost:8080/thing/${vendorCode}`);
+  return thing.data;
+}
+
+const Main = ({ thingsInCapsule, setCurrentItem }) => (
   <div id="main">
     <Header />
-    <section>
+    <section className="flex">
       <Card />
-      <div id="recommendation">
-        <ul>
-          {
-            thingsInCapsule.map(item => (
-              <li key={item.id} style={{ color: '#fff' }}>
-                <img src={require(`../assets/img/${item.vendor_code}-1.png`)} alt="adf" />
-                <p>{item.title}</p>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+
     </section>
     <History />
     <BarCode />
@@ -34,12 +31,18 @@ const mapStateToProps = state => ({
   thingsInCapsule: state.items.itemsInCapsule,
 });
 
+const mapDispatchToProps = {
+  setCurrentItem,
+}
+
 Main.defaultProps = {
-  thingsInCapsule: PropTypes.func,
+  thingsInCapsule: PropTypes.arrayOf,
+  setCurrentItem: PropTypes.func,
 };
 
 Main.propTypes = {
-  thingsInCapsule: PropTypes.func,
+  thingsInCapsule: PropTypes.arrayOf,
+  setCurrentItem: PropTypes.func,
 };
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

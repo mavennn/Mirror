@@ -3,69 +3,49 @@ import { connect } from 'react-redux';
 import $ from 'jquery';
 import axios from 'axios';
 
-import { setCurrentItem, addToHistory, addToCapsule } from '../actions/items';
+import { setCurrentItem, addToHistory } from '../actions/items';
 
 class BarCode extends React.Component {
-    constructor(props){
-        super(props);
+  componentDidMount() {
+    const input = $('#vendor_code');
+    input.focus();
+    input.change(() => {
+      const vendorCode = input.val();
+      if (vendorCode.length >= 7) {
+        axios.get(`http://localhost:8080/thing/${vendorCode}`)
+          .then((response) => {
+            this.props.setCurrentItem(response.data);
+            if (this.props.historyItems.findIndex(x => x.vendor_code === response.data.vendor_code) === -1) {
+              this.props.addToHistory(response.data);
+            }
+          });
+            input.val('');
+      }
+    });
+  }
 
-        this.state = {
-            vendor_code: '',
-        }
-    }
-
-    componentDidMount(){
-        $('#vendor_code').focus();
-    }
-
-    render(){
-        if(this.state.vendor_code.length != 0){
-            // делаем запрос
-            axios.get(`http://localhost:8080/thing/${(this.state.vendor_code)}`)
-            .then(response => {
-                console.log(response.data.id)
-                var item = response.data
-
-                axios.get(`http://localhost:8080/sizes/${item.id}`)
-                .then(res => {
-                    const sizes = res.data;
-                    item["sizes"] = sizes;
-                    this.props.setCurrentItem(item);
-                    if(this.props.historyItems.findIndex(x => x.vendor_code === item.vendor_code) === -1){
-                        this.props.addToHistory(item)
-                    }
-                })
-
-                axios.get(`http://localhost:8080/capsule/${item.id_capsule}`)
-                .then(res => {
-                    this.props.addToCapsule(res.data);
-                });
-                $('#vendor_code').val('');
-            })
-        }
-        return(
-            <div>
-                <input
-                    type="text"
-                    id="vendor_code"
-                    onChange={ (event) => {
-                        this.setState({vendor_code: String(event.target.value).substring(0,13),})
-                    }}/>
-            </div>
-        );
-    }
+  render() {
+    const div = (
+      <>
+        <div>
+          <input
+            type="text"
+            id="vendor_code"
+          />
+        </div>
+      </>
+    );
+    return div;
+  }
 }
 
-const mapStateToProps = state => {
-    return {
-        historyItems: state.items.historyItems,
-    }
-}
+const mapStateToProps = state => ({
+  historyItems: state.items.historyItems,
+});
 
 const mapDispatchToProps = {
-    setCurrentItem,
-    addToHistory,
-    addToCapsule
-}
+  setCurrentItem,
+  addToHistory,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(BarCode);
