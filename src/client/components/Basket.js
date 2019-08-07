@@ -15,11 +15,13 @@ const Basket = ({ basketItems, setCurrentItem }) => {
           {
             basketItems.map(item => (
               <li key={item.bar_code}>
+                {console.log(item)}
                 <img
                   src={require(`../assets/img/${item.vendor_code}-1.png`)}
                   alt="img"
                 />
-                <p>{item.title}</p>
+                <p>{item.title}</p><br /><p>{item.size}</p>
+
               </li>
             ))
           }
