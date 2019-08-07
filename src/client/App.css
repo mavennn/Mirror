@@ -80,12 +80,18 @@ header a:focus{
 }
 
 #history ul{
+  display: flex;
   overflow-x: auto;
   white-space:nowrap;
+  vertical-align: middle;
+  height: 500px;
 }
 
 #history ul li {
-  display: inline-block;
+  /*display: inline-block;*/
+  height: 150px;
+  min-width: 100px;
+  margin-left: 20px;
   list-style: none;
   text-align: center;
 }
@@ -93,6 +99,13 @@ header a:focus{
 #history ul li img {
   height: 150px;
   width: 100px;
+  hyphens: auto;
+}
+
+#history ul li p {
+  width: 100px;
+  overflow: auto;
+  white-space: pre-line;
 }
 
 /* Basket */
