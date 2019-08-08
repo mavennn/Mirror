@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import Header from './Header';
 import BarCode from './BarCodeInput';
 import { addToHistory, setCurrentItem } from '../actions/items';
-import axios from 'axios';
+
 
 const Basket = ({ basketItems, historyItems, addCurrentItem }) => {
   if (basketItems.length !== 0) {
@@ -22,6 +23,7 @@ const Basket = ({ basketItems, historyItems, addCurrentItem }) => {
                   onClick={() => addCurrentItem(item.vendor_code, historyItems)}
                 />
                 <p>{item.title}</p>
+                <p>{item.price}</p>
                 <p>{item.sizes}</p>
               </li>
             ))

@@ -7,6 +7,7 @@ import { setToDefault } from '../actions/items';
 
 const Header = props => (
   <header>
+    <Link to="/main/mirror" id="go-mirror-btn"></Link>
     <Link to="/main/basket">Корзина</Link>
     <Link to="/main/catalog">Каталог</Link>
     <Link to="/main/">Главная</Link>

@@ -110,19 +110,49 @@ header a:focus{
 
 /* Basket */
 
-#basket ul {
+#basket{
+  width: 90%;
+  margin-left: 40px;
+}
+
+#basket ul{
   display: flex;
+  overflow-x: auto;
+  white-space:nowrap;
+  vertical-align: middle;
+  height: 500px;
 }
 
 #basket ul li {
+  /*display: inline-block;*/
+  height: 150px;
+  min-width: 100px;
+  margin-left: 20px;
   list-style: none;
-  margin-left: 30px;
   text-align: center;
 }
 
 #basket ul li img {
   height: 150px;
   width: 100px;
+  hyphens: auto;
+}
+
+#basket ul li p {
+  width: 100px;
+  overflow: auto;
+  white-space: pre-line;
+}
+
+
+#go-mirror-btn{
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #46d1e0;
+  position: absolute;
+  left: 30px;
+  margin-top: 10px;
 }
 
 /* Barcode */
