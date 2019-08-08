@@ -4,14 +4,12 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import $ from 'jquery';
 
 import { addToBasket, setCurrentItem, addToHistory } from '../actions/items';
-import basketItems from '../redusers/items';
 
 
-const Card = ({
-  currentItem, addBasket, addCurrentItem, basketItems
-}) => {
+const Card = ({ currentItem, addBasket, addCurrentItem, basketItems, historyItems }) => {
   if (Object.keys(currentItem).length === 0) {
     return null;
   }
@@ -40,29 +38,29 @@ const Card = ({
             <br />
             <button
               type="submit"
-              onClick={addBasket(currentItem, basketItems)}
+              onClick={() => addBasket(currentItem, basketItems, $('#sizes option:selected').text())}
             >
               Добавить в корзину
             </button>
           </div>
         </div>
       </div>
-      {/*  <div id="recommendation" className="w-50 pa5"> */}
-      {/*    <ul className="flex flex-wrap"> */}
-      {/*      { */}
-      {/*        currentItem.capsule.map(i => ( */}
-      {/*          <li key={i.id} style={{ color: '#fff' }} className="pa2"> */}
-      {/*            <img */}
-      {/*              src={require(`../assets/img/${i.vendor_code}-1.png`)} */}
-      {/*              alt="adf" */}
-      {/*              className="ml3" */}
-      {/*              onClick={addCurrentItem(i.vendor_code)} */}
-      {/*            /> */}
-      {/*          </li> */}
-      {/*        )) */}
-      {/* } */}
-      {/*    </ul> */}
-      {/*  </div> */}
+      <div id="recommendation" className="w-50 pa5">
+        <ul className="flex flex-wrap">
+          {
+              currentItem.capsule.map(i => (
+                <li key={i.vendor_code} className="pa2">
+                  <img
+                    src={require(`../assets/img/${i.vendor_code}-1.png`)}
+                    alt="adf"
+                    className="ml3"
+                    onClick={() => addCurrentItem(i.vendor_code, historyItems)}
+                  />
+                </li>
+              ))
+          }
+        </ul>
+      </div>
     </>
   );
 };
@@ -73,32 +71,52 @@ const mapStateToProps = state => ({
   historyItems: state.items.historyItems,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  addCurrentItem: (vendorCode) => {
+const mapDispatchToProps = dispatch => ({
+  addCurrentItem: (vendorCode, history) => {
     axios.get(`http://localhost:8080/thing/${vendorCode}`)
       .then((response) => {
         dispatch(setCurrentItem(response.data));
+        if (history.findIndex(x => x.vendor_code === response.data.vendor_code) === -1) {
+          dispatch(addToHistory(response.data));
+        }
       });
   },
-  addBasket: (item, itemsInBasket) => {
-    if (itemsInBasket.indexOf(item) === -1) {
-      dispatch(addToBasket(item));
+  addBasket: (item, basket, size) => {
+    const index = basket.findIndex(x => x.vendor_code === item.vendor_code);
+    if (index === -1) {
+      dispatch(addToBasket({ ...item, sizes: [size] }));
+    } else if (basket[index].sizes.indexOf(size) === -1) {
+      dispatch(addToBasket({ ...item, sizes: [size] }));
     }
   }
 });
 
+
 Card.defaultProps = {
   currentItem: PropTypes.shape({
-    title: PropTypes.string,
-    price: PropTypes.number,
-    id_capsule: PropTypes.string,
-    color: PropTypes.string,
-    image_url: PropTypes.string,
-    images_count: PropTypes.number,
-    vendor_code: PropTypes.string,
-    id: PropTypes.string,
-    sizes: PropTypes.arrayOf,
+    title: 'ПОЛО МУЖСКОЕ',
+    price: 699,
+    id_capsule: 3,
+    color: 'empty',
+    image_url: '',
+    images_count: 3,
+    vendor_code: 'EPOM035HXS',
+    id: 3,
+    capsule: [],
   }),
+  basketItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: 'ФУТБОЛКА ЖЕНСКАЯ',
+      price: 1299,
+      id_capsule: '2',
+      color: 'green',
+      image_url: '',
+      images_count: 3,
+      vendor_code: 'ETSW1499XS',
+      id: '8',
+    })
+  ),
+  addBasket: PropTypes.func,
 };
 
 Card.propTypes = {
@@ -111,8 +129,21 @@ Card.propTypes = {
     images_count: PropTypes.number,
     vendor_code: PropTypes.string,
     id: PropTypes.string,
-    sizes: PropTypes.arrayOf,
+    capsule: PropTypes.array,
   }),
+  basketItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      price: PropTypes.number,
+      id_capsule: PropTypes.string,
+      color: PropTypes.string,
+      image_url: PropTypes.string,
+      images_count: PropTypes.number,
+      vendor_code: PropTypes.string,
+      id: PropTypes.string,
+    })
+  ),
+  addBasket: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);

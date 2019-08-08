@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 
 import Header from './Header';
 import BarCode from './BarCodeInput';
-import { setCurrentItem } from '../actions/items';
+import { addToHistory, setCurrentItem } from '../actions/items';
+import axios from 'axios';
 
-const Basket = ({ basketItems, setCurrentItem }) => {
+const Basket = ({ basketItems, historyItems, addCurrentItem }) => {
   if (basketItems.length !== 0) {
     return (
       <div id="basket">
@@ -14,14 +15,14 @@ const Basket = ({ basketItems, setCurrentItem }) => {
         <ul>
           {
             basketItems.map(item => (
-              <li key={item.bar_code}>
-                {console.log(item)}
+              <li key={item.vendor_code + item.sizes}>
                 <img
                   src={require(`../assets/img/${item.vendor_code}-1.png`)}
                   alt="img"
+                  onClick={() => addCurrentItem(item.vendor_code, historyItems)}
                 />
-                <p>{item.title}</p><br /><p>{item.size}</p>
-
+                <p>{item.title}</p>
+                <p>{item.sizes}</p>
               </li>
             ))
           }
@@ -40,18 +41,27 @@ const Basket = ({ basketItems, setCurrentItem }) => {
 
 const mapStateToProps = state => ({
   basketItems: state.items.basketItems,
+  historyItems: state.items.historyItems
 });
 
-const mapDispatchToProps = {
-  setCurrentItem
-};
+const mapDispatchToProps = dispatch => ({
+  addCurrentItem: (vendorCode, history) => {
+    axios.get(`http://localhost:8080/thing/${vendorCode}`)
+      .then((response) => {
+        dispatch(setCurrentItem(response.data));
+        if (history.findIndex(x => x.vendor_code === response.data.vendor_code) === -1) {
+          dispatch(addToHistory(response.data));
+        }
+      });
+  }
+});
 
 Basket.defaultProps = {
-  basketItems: PropTypes.arrayOf,
+  basketItems: PropTypes.array,
 };
 
 Basket.propTypes = {
-  basketItems: PropTypes.arrayOf,
+  basketItems: PropTypes.array,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Basket);
