@@ -1,0 +1,108 @@
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+@font-face {
+  font-family: SF;
+  src: url('./assets/fonts/SF-Pro-text-Ultralight.woff');
+}
+
+body {
+  position: relative;
+  color: white;
+  height: 100vh;
+  background-color: #000;
+  font-family: SF, serif;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: bold;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+p {
+  font-size: 24px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: white;
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Expectation */
+
+.welcome_page a {
+  font-size: 70px;
+}
+
+/* Expectation */
+
+/* Header */
+.header a {
+  font-size: 30px;
+}
+
+/* Header */
+
+.card img {
+  height: 480px;
+  width: 380px;
+}
+
+.capsule ul li img,
+.history ul li img,
+.basket ul li img {
+  height: 150px;
+  width: 100px;
+  hyphens: auto;
+}
+
+.history ul li {
+  height: 150px;
+  min-width: 100px;
+  margin-left: 20px;
+  list-style: none;
+  text-align: center;
+}
+
+select {
+  background-color: #000;
+  border: none;
+  outline: none;
+}
+
+select:last-of-type {
+  border-bottom: none;
+}
+
+select option {
+  padding: 5px;
+  font-size: 30px;
+  color: #fff;
+  border-bottom: 1px solid grey;
+}
+
+.history ul li p {
+  font-size: 15px;
+  width: 100px;
+  overflow: auto;
+  white-space: pre-line;
+}
+
+
+.basket ul {
+  overflow-y: auto;
+  width: 80%;
+}
