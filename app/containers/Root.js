@@ -25,7 +25,7 @@ class Root extends Component<Props> {
   }
 
   componentDidMount(): * {
-    const socket = io('http://localhost:3123/mirrors');
+    const socket = io('http://172.20.23.77:3123/mirrors');
     this.props.store.dispatch({type: SET_SOCKET, payload: socket});
 
 
