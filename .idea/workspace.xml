@@ -2,32 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64ad46d2-e3c2-40a0-9610-6c01da6befe0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/components/Capsule.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/History.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/Card.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/containers/Root.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/Root.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/2cd2be177470d5096992572176bbe76e.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/2cd8d991e82712f1a5c5de8ee869ca74.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/2fad4ee0a47f41bc76e21c2baf613182.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/3165b14bbf3b64fca65829ecde6b800d.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/457cb96b6191ed105c4fe8463957f70d.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/5ee32f5c8598e1a63ddf1aad4ffe54f4.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/657a469469a2fc38a2901c68a3d56512.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/7ab2cb050690f93994c46258d49af5b6.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/a03df7ab0ffc96cabbfe3dc71c60baaa.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/a547e21eceadf53602caf057be9ad9fd.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/bd52a727b5449dc3f8195b72c9c58341.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/f249e44df3044e7b0d665b550569ddf0.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/f2e186cfab4787d4ef6f1bb192aa9a1b.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/f7aa77d68c033e8983ec49510a7a7ae2.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/f861a57c52ef711cf807a3eec92c0e17.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/fdc155d57b7351ef85b3028ea3cfc048.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/reducers/items.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/items.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +76,7 @@
       <workItem from="1565273018864" duration="942000" />
       <workItem from="1565612839509" duration="2508000" />
       <workItem from="1565988318079" duration="2222000" />
-      <workItem from="1566163415477" duration="6478000" />
+      <workItem from="1566163415477" duration="7377000" />
     </task>
     <task id="LOCAL-00001" summary="from class to pure func">
       <created>1565116427486</created>
@@ -142,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565267698408</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="components History and Capsule">
+      <created>1566171536320</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1566171536320</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +153,7 @@
     <MESSAGE value="fix addCurrentItem action" />
     <MESSAGE value="fix sizes in basket" />
     <MESSAGE value="add mirror screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="add mirror screen" />
+    <MESSAGE value="components History and Capsule" />
+    <option name="LAST_COMMIT_MESSAGE" value="components History and Capsule" />
   </component>
 </project>
