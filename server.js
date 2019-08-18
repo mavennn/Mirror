@@ -24,21 +24,22 @@ const constultants = io.of('consultants');
 const mirrors = io.of('mirrors');
 
 constultants.on('connection', (socket) => {
-    console.log(`Consultant connection ${socket.handshake.address}`);
+  console.log(`Consultant connection ${socket.handshake.address}`);
 
-    socket.on('getConsultant', (data) => console.log(data));
-})
+  socket.on('getConsultant', data => console.log(data));
 
+  socket.on('disconnect', () => console.log(`Consultant ${socket.handshake.address} disconnected`));
+});
 
 mirrors.on('connection', (socket) => {
-    console.log(`Room connection ${socket.handshake.address}`)
+  console.log(`Room connection ${socket.handshake.address}`);
 
-    socket.on('getConsultant', (room) => {
-        console.log(`нужен консультант в комнату ${room}`);
-        constultants.emit('getConsultant', room);
-    })
+  socket.on('getConsultant', (room) => {
+    console.log(`нужен консультант в комнату ${room}`);
+    constultants.emit('getConsultant', room);
+  });
 
-    socket.on('disconnect', () => console.log('клиент отключился'));
-})
+  socket.on('disconnect', () => console.log(`Room ${socket.handshake.address} disconnected`));
+});
 
 server.listen(PORT, () => console.log(`Listening on ${ip.address()}:${PORT}`));
