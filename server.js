@@ -8,6 +8,7 @@ const ip = require('ip');
 const db = require('./queries.js');
 require('dotenv').config();
 const io = require('socket.io')(server);
+const sockets = require('./app/constants/sockets');
 
 const PORT = process.env.SERVER_PORT;
 
@@ -18,10 +19,10 @@ app.use(express.static('dist'));
 
 app.get('/thing/:vendor_code', db.getThingByVendorCode);
 
-const consultants = io.of('consultants');
+const consultants = io.of(sockets.CONSULTANTS);
 
 
-const mirrors = io.of('mirrors');
+const rooms = io.of(sockets.ROOMS);
 
 consultants.on('connection', (socket) => {
   console.log(`Consultant connection ${socket.handshake.address}`);
@@ -29,18 +30,18 @@ consultants.on('connection', (socket) => {
   socket.on('disconnect', () => console.log(`Consultant ${socket.handshake.address} disconnected`));
 });
 
-mirrors.on('connection', (socket) => {
+rooms.on('connection', (socket) => {
   console.log(`Room connection ${socket.handshake.address}`);
 
-  socket.on('callConsultant', (room) => { // слушаем событие
-    console.log(`нужен консультант в комнату ${room}`);
-    consultants.emit('callConsultant', room); // отправляем на все устройства консультанта
+  socket.on(sockets.CALL_CONSULTANT, (room) => { // слушаем событие
+    // console.log(`нужен консультант в комнату ${room}`);
+    consultants.emit(sockets.CALL_CONSULTANT, room); // отправляем на все устройства консультанта
   });
 
-  socket.on('bringThing', (data) => {
-    console.log(`Принести вещь в комнату ${data[0]}`);
-    consultants.emit('bringThing', (data));
-  })
+  socket.on(sockets.BRING_THING, (data) => {
+    // console.log(`Принести вещь в комнату ${data[0]}`);
+    consultants.emit(sockets.BRING_THING, (data));
+  });
 
   socket.on('disconnect', () => console.log(`Room ${socket.handshake.address} disconnected`));
 });

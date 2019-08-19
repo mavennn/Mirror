@@ -24,7 +24,7 @@ type Props = {
 
 class Root extends Component<Props> {
   componentDidMount(): * {
-    const socket = io(`http://${ADDRESS}:${PORT}/mirrors`);
+    const socket = io(`http://${ADDRESS}:${PORT}/rooms`);
     this.props.store.dispatch({ type: SET_SOCKET, payload: socket });
 
 

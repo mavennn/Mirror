@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64ad46d2-e3c2-40a0-9610-6c01da6befe0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/constants/sockets.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Catalog.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Catalog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/containers/Root.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/Root.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,7 +76,7 @@
       <workItem from="1565273018864" duration="942000" />
       <workItem from="1565612839509" duration="2508000" />
       <workItem from="1565988318079" duration="2222000" />
-      <workItem from="1566163415477" duration="18729000" />
+      <workItem from="1566163415477" duration="20153000" />
     </task>
     <task id="LOCAL-00001" summary="from class to pure func">
       <created>1565116427486</created>
@@ -137,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566172452070</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add bring thing event">
+      <created>1566220750135</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1566220750135</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +169,7 @@
     <MESSAGE value="add mirror screen" />
     <MESSAGE value="components History and Capsule" />
     <MESSAGE value="components Card" />
-    <option name="LAST_COMMIT_MESSAGE" value="components Card" />
+    <MESSAGE value="add bring thing event" />
+    <option name="LAST_COMMIT_MESSAGE" value="add bring thing event" />
   </component>
 </project>
