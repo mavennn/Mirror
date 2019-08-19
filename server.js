@@ -18,15 +18,13 @@ app.use(express.static('dist'));
 
 app.get('/thing/:vendor_code', db.getThingByVendorCode);
 
-const constultants = io.of('consultants');
+const consultants = io.of('consultants');
 
 
 const mirrors = io.of('mirrors');
 
-constultants.on('connection', (socket) => {
+consultants.on('connection', (socket) => {
   console.log(`Consultant connection ${socket.handshake.address}`);
-
-  socket.on('getConsultant', data => console.log(data));
 
   socket.on('disconnect', () => console.log(`Consultant ${socket.handshake.address} disconnected`));
 });
@@ -34,10 +32,15 @@ constultants.on('connection', (socket) => {
 mirrors.on('connection', (socket) => {
   console.log(`Room connection ${socket.handshake.address}`);
 
-  socket.on('getConsultant', (room) => {
+  socket.on('callConsultant', (room) => { // слушаем событие
     console.log(`нужен консультант в комнату ${room}`);
-    constultants.emit('getConsultant', room);
+    consultants.emit('callConsultant', room); // отправляем на все устройства консультанта
   });
+
+  socket.on('bringThing', (data) => {
+    console.log(`Принести вещь в комнату ${data[0]}`);
+    consultants.emit('bringThing', (data));
+  })
 
   socket.on('disconnect', () => console.log(`Room ${socket.handshake.address} disconnected`));
 });

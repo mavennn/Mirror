@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToBasket } from '../actions/items';
 import $ from 'jquery';
+import { Modal, Button } from 'semantic-ui-react';
+import { addToBasket } from '../actions/items';
 
-const Card = ({ thing, basket, addBasket }) => (
+require('dotenv');
+
+const Card = ({
+  thing, basket, socket, addBasket
+}) => (
   <>
     <div className="card w-30 ma3">
       <img
@@ -11,11 +16,7 @@ const Card = ({ thing, basket, addBasket }) => (
       />
     </div>
     <div className="info w-20">
-      <h2>
-        {thing.price}
-        {' '}
-        руб.
-      </h2>
+      <h2> {thing.price} руб. </h2>
       <p>
         <select multiple id="sizes">
           {
@@ -33,7 +34,15 @@ const Card = ({ thing, basket, addBasket }) => (
       >
         Добавить в корзину
       </button>
-      <button className="ma3">Принести сейчас</button>
+      <button
+        className="ma3"
+        onClick={() => {
+          const data = [process.env.ROOM, thing]
+          socket.emit('bringThing', data);
+        }}
+      >
+        Принести сейчас
+      </button>
     </div>
   </>
 );
@@ -41,6 +50,7 @@ const Card = ({ thing, basket, addBasket }) => (
 const mapStateToProps = state => ({
   thing: state.items.currentItem,
   basket: state.items.basketItems,
+  socket: state.sockets.socket
 });
 
 const mapDispatchToProps = dispatch => ({

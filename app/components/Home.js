@@ -8,7 +8,9 @@ import Card from './Card';
 
 require('dotenv').config();
 
-const Home = ({ thing }) => {
+const Home = ({ thing, socket}) => {
+  let callConsultantButton = false;
+
   if (Object.keys(thing).length !== 0) {
     return (
       <div>
@@ -16,17 +18,19 @@ const Home = ({ thing }) => {
         <div className="flex justify-between">
           <h1 className="ma3">{thing.title}</h1>
           <button onClick={() => {
-            props.socket.emit('getConsultant', process.env.ROOM);
+            socket.emit('callConsultant', process.env.ROOM, () => {
+              callConsultantButton = true;
+            });
           }}
           >
             Вызвать консультанта
           </button>
         </div>
         <div className="content flex">
-          <Card/>
-          <Capsule/>
+          <Card />
+          <Capsule />
         </div>
-        <History/>
+        <History />
 
       </div>
     );
@@ -36,6 +40,7 @@ const Home = ({ thing }) => {
 
 const mapStateToProps = state => ({
   thing: state.items.currentItem,
+  socket: state.sockets.socket
 });
 
 export default connect(mapStateToProps, null)(Home);
