@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { addToHistory, setCurrentItem } from '../actions/items';
 
@@ -36,11 +37,17 @@ const mapDispatchToProps = dispatch => ({
     axios.get(`http://${ADDRESS}:${PORT}/thing/${vendor}`)
       .then((response) => {
         dispatch(setCurrentItem(response.data));
-        if (history.findIndex(x => x.vendor_code === response.data.vendor_code) === -1) {
+        if (!history.includes(response.data)) {
           dispatch(addToHistory(response.data));
         }
       });
   }
 });
+
+Capsule.propTypes = {
+  thing: PropTypes.object,
+  history: PropTypes.array,
+  setItem: PropTypes.func,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Capsule);

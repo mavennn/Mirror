@@ -10,7 +10,7 @@ require('dotenv');
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     const r = Math.random() * 16 | 0; const
-      v = c == 'x' ? r : (r & 0x3 | 0x8);
+      v = c === 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
   });
 }
@@ -87,11 +87,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addBasket: (item, basket, size) => {
     const index = basket.findIndex(x => x.vendor_code === item.vendor_code && x.sizes[0] === size);
-    // console.log(index);
     if (index === -1) {
       dispatch(addToBasket({ ...item, sizes: [size] }));
     } else if (basket[index].sizes[0] !== size) {
-      // console.log('товар уже есть, но это другой размер')
       dispatch(addToBasket({ ...item, sizes: [size] }));
     } else {
       alert('товар уже есть в корзине');
