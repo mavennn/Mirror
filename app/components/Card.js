@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import $ from 'jquery';
+import sockets from '../constants/sockets';
 import { addToBasket } from '../actions/items';
-
-import getConsultant from '../actions/getConsultant';
 
 require('dotenv');
 
@@ -21,9 +21,9 @@ function getConsultant(socket, type, ...params) { // (type) (type, title, vendor
   const id = uuidv4();
   let query = {};
   switch (type) {
-    case 'CALL_CONSULTANT':
+    case sockets.CALL_CONSULTANT:
       null;
-    case 'BRING_THING':
+    case sockets.BRING_THING:
       const [title, vendorCode, size, price] = params;
       query = { id, type, roomNumber, title, vendorCode, size, price };
       console.log(query)
@@ -70,7 +70,7 @@ const Card = ({
       </button>
       <button
         className="ma3"
-        onClick={() => getConsultant(socket, 'BRING_THING', thing.title, thing.vendor_code, $('#sizes').val()[0], thing.price)}
+        onClick={() => getConsultant(socket, sockets.BRING_THING, thing.title, thing.vendor_code, $('#sizes').val()[0], thing.price)}
       >
         Принести сейчас
       </button>
@@ -98,5 +98,19 @@ const mapDispatchToProps = dispatch => ({
     }
   }
 });
+
+Card.defaultProps = {
+  thing: PropTypes.object,
+  basket: PropTypes.array,
+  socket: PropTypes.object,
+  addBasket: PropTypes.func
+}
+
+Card.propTypes = {
+  thing: PropTypes.object,
+  basket: PropTypes.array,
+  socket: PropTypes.object,
+  addBasket: PropTypes.func
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);

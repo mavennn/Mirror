@@ -16,7 +16,6 @@ const PORT = process.env.SERVER_PORT;
 
 const { ipcRenderer } = window.require('electron');
 
-
 type Props = {
   store: Store,
   history: {}
@@ -24,21 +23,22 @@ type Props = {
 
 class Root extends Component<Props> {
   componentDidMount(): * {
-    const socket = io(`http://${ADDRESS}:${PORT}/rooms`);
-    this.props.store.dispatch({ type: SET_SOCKET, payload: socket });
-
+    const { store } = this.props;
+    const { history } = this.props;
+    const socket = io(`http://${ADDRESS}:${PORT}/rooms`, () => {
+      store.dispatch({ type: SET_SOCKET, payload: socket });
+    });
 
     ipcRenderer.on('vendorCode', (event, message) => {
       if (message) {
-        axios.get(`http://localhost:3123/thing/${message}`)
+        axios.get(`http://${ADDRESS}:${PORT}/thing/${message}`)
           .then((response) => {
-            this.props.store.dispatch(setCurrentItem(response.data));
-            // eslint-disable-next-line max-len
-            if (this.props.store.getState().items.historyItems.findIndex(x => x.vendor_code === response.data.vendor_code) === -1) {
-              this.props.store.dispatch(addToHistory(response.data));
+            store.dispatch(setCurrentItem(response.data));
+            if (!store.getState().items.historyItems.includes(response.data)) {
+              store.dispatch(addToHistory(response.data));
             }
-            if (this.props.store.getState().router.location.pathname !== routes.HOME) {
-              this.props.history.push(routes.HOME);
+            if (store.getState().router.location.pathname !== routes.HOME) {
+              history.push(routes.HOME);
             }
           });
       }

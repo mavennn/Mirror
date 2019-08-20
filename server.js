@@ -35,18 +35,22 @@ rooms.on('connection', (room) => {
   console.log(`Room ${room.handshake.address}`);
 
   room.on('getConsultant', (query) => {
-    console.log(query.id)
-  })
-
-  room.on(sockets.CALL_CONSULTANT, (roomNumber) => { // слушаем событие
-    // console.log(`нужен консультант в комнату ${room}`);
-    consultants.emit(sockets.CALL_CONSULTANT, roomNumber); // отправляем на все устройства консультанта
+    if (!queries.includes(query)) {
+      queries.push(query);
+      consultants.emit('getConsultant', queries);
+    }
   });
 
-  room.on(sockets.BRING_THING, (data) => {
-    console.log(`Принести вещь в комнату ${data[0]}`);
-    consultants.emit(sockets.BRING_THING, (data));
-  });
+  //
+  // room.on(sockets.CALL_CONSULTANT, (roomNumber) => { // слушаем событие
+  //   // console.log(`нужен консультант в комнату ${room}`);
+  //   consultants.emit(sockets.CALL_CONSULTANT, roomNumber); // отправляем на все устройства консультанта
+  // });
+  //
+  // room.on(sockets.BRING_THING, (data) => {
+  //   console.log(`Принести вещь в комнату ${data[0]}`);
+  //   consultants.emit(sockets.BRING_THING, (data));
+  // });
 
   room.on('disconnect', () => console.log(`Room ${room.handshake.address} disconnected`));
 });
