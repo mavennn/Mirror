@@ -1,10 +1,40 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import $ from 'jquery';
-import { Modal, Button } from 'semantic-ui-react';
 import { addToBasket } from '../actions/items';
 
+import getConsultant from '../actions/getConsultant';
+
 require('dotenv');
+
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = Math.random() * 16 | 0; const
+      v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+// eslint-disable-next-line max-len
+function getConsultant(socket, type, ...params) { // (type) (type, title, vendorCode, size, price) (type, things[])
+  const roomNumber = process.env.ROOM;
+  const id = uuidv4();
+  let query = {};
+  switch (type) {
+    case 'CALL_CONSULTANT':
+      null;
+    case 'BRING_THING':
+      const [title, vendorCode, size, price] = params;
+      query = { id, type, roomNumber, title, vendorCode, size, price };
+      console.log(query)
+    case 'TO_CHECKOUT':
+      const things = params;
+      query = { id, type, roomNumber, things };
+    default:
+      null;
+  }
+  socket.emit('getConsultant', query);
+}
 
 const Card = ({
   thing, basket, socket, addBasket
@@ -16,7 +46,11 @@ const Card = ({
       />
     </div>
     <div className="info w-20">
-      <h2> {thing.price} руб. </h2>
+      <h2>
+        {thing.price}
+        {' '}
+руб.
+      </h2>
       <p>
         <select multiple id="sizes">
           {
@@ -36,10 +70,7 @@ const Card = ({
       </button>
       <button
         className="ma3"
-        onClick={() => {
-          const data = [process.env.ROOM, thing]
-          socket.emit('bringThing', data);
-        }}
+        onClick={() => getConsultant(socket, 'BRING_THING', thing.title, thing.vendor_code, $('#sizes').val()[0], thing.price)}
       >
         Принести сейчас
       </button>

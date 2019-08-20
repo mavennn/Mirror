@@ -2,9 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64ad46d2-e3c2-40a0-9610-6c01da6befe0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/constants/sockets.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/actions/getConsultant.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/constants/sockets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/containers/Root.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/Root.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/constants/sockets.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dist/renderer.prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/renderer.prod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dist/renderer.prod.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/renderer.prod.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.prod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.prod.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.prod.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dll/renderer.dev.dll.js" beforeDir="false" afterPath="$PROJECT_DIR$/dll/renderer.dev.dll.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dll/renderer.json" beforeDir="false" afterPath="$PROJECT_DIR$/dll/renderer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.production.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.production.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -76,7 +89,8 @@
       <workItem from="1565273018864" duration="942000" />
       <workItem from="1565612839509" duration="2508000" />
       <workItem from="1565988318079" duration="2222000" />
-      <workItem from="1566163415477" duration="20153000" />
+      <workItem from="1566163415477" duration="21074000" />
+      <workItem from="1566296756103" duration="6255000" />
     </task>
     <task id="LOCAL-00001" summary="from class to pure func">
       <created>1565116427486</created>
@@ -141,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566220750135</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add constants">
+      <created>1566222292736</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1566222292736</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +191,7 @@
     <MESSAGE value="components History and Capsule" />
     <MESSAGE value="components Card" />
     <MESSAGE value="add bring thing event" />
-    <option name="LAST_COMMIT_MESSAGE" value="add bring thing event" />
+    <MESSAGE value="add constants" />
+    <option name="LAST_COMMIT_MESSAGE" value="add constants" />
   </component>
 </project>

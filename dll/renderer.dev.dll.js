@@ -291,6 +291,18 @@ eval("module.exports = jquery;\n\n//# sourceURL=webpack://renderer/external_%22j
 
 /***/ }),
 
+/***/ "nodemon":
+/*!**************************!*\
+  !*** external "nodemon" ***!
+  \**************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = nodemon;\n\n//# sourceURL=webpack://renderer/external_%22nodemon%22?");
+
+/***/ }),
+
 /***/ "pg":
 /*!*********************!*\
   !*** external "pg" ***!
@@ -411,6 +423,18 @@ eval("module.exports = redux-thunk;\n\n//# sourceURL=webpack://renderer/external
 
 /***/ }),
 
+/***/ "semantic-ui-react":
+/*!************************************!*\
+  !*** external "semantic-ui-react" ***!
+  \************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = semantic-ui-react;\n\n//# sourceURL=webpack://renderer/external_%22semantic-ui-react%22?");
+
+/***/ }),
+
 /***/ "serialport":
 /*!*****************************!*\
   !*** external "serialport" ***!
@@ -444,6 +468,18 @@ eval("module.exports = socket-io;\n\n//# sourceURL=webpack://renderer/external_%
 /***/ (function(module, exports) {
 
 eval("module.exports = socket.io;\n\n//# sourceURL=webpack://renderer/external_%22socket.io%22?");
+
+/***/ }),
+
+/***/ "socket.io-client":
+/*!***********************************!*\
+  !*** external "socket.io-client" ***!
+  \***********************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = socket.io-client;\n\n//# sourceURL=webpack://renderer/external_%22socket.io-client%22?");
 
 /***/ }),
 
