@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import $ from 'jquery';
-import sockets from '../constants/sockets';
-import { addToBasket } from '../actions/items';
+import sockets from '../../constants/sockets';
+import { addToBasket } from '../../actions/items';
 
 require('dotenv');
 
@@ -18,21 +18,29 @@ function uuidv4() {
 // eslint-disable-next-line max-len
 function getConsultant(socket, type, ...params) { // (type) (type, title, vendorCode, size, price) (type, things[])
   const roomNumber = process.env.ROOM;
-  const id = uuidv4();
+  const date = new Date();
+  const time = `${date.getHours()}:${date.getMinutes()}`;
   let query = {};
   switch (type) {
     case sockets.CALL_CONSULTANT:
-      null;
+      time, query = { type, roomNumber, text: sockets.CALL_TEXT };
+      break;
     case sockets.BRING_THING:
       const [title, vendorCode, size, price] = params;
-      query = { id, type, roomNumber, title, vendorCode, size, price };
-      console.log(query)
-    case 'TO_CHECKOUT':
+      query = {
+        time, type, roomNumber, text: sockets.BRING_TEXT, title, vendorCode, size, price
+      };
+      break;
+    case sockets.TO_CHECKOUT:
       const things = params;
-      query = { id, type, roomNumber, things };
+      query = {
+        time, type, text: sockets.TO_CHECKOUT_TEXT, roomNumber, things
+      };
+      break;
     default:
       null;
   }
+  console.log(query);
   socket.emit('getConsultant', query);
 }
 
@@ -42,7 +50,7 @@ const Card = ({
   <>
     <div className="card w-30 ma3">
       <img
-        src={require(`../assets/img/${thing.vendor_code}-1.png`)}
+        src={require(`../../assets/img/${thing.vendor_code}-1.png`)}
       />
     </div>
     <div className="info w-20">
@@ -52,13 +60,13 @@ const Card = ({
 руб.
       </h2>
       <p>
-        <select multiple id="sizes">
+         <select multiple id="sizes">
           {
             thing.sizes.map(sz => (
               <option key={sz.id}>{sz.title}</option>
             ))
           }
-        </select>
+         </select>
       </p>
       <button onClick={() => {
         $('#sizes').val()[0] === undefined
@@ -70,7 +78,13 @@ const Card = ({
       </button>
       <button
         className="ma3"
-        onClick={() => getConsultant(socket, sockets.BRING_THING, thing.title, thing.vendor_code, $('#sizes').val()[0], thing.price)}
+        onClick={() => {
+          if ($('#sizes').val()[0]) {
+            getConsultant(socket, sockets.BRING_THING, thing.title, thing.vendor_code, $('#sizes').val()[0], thing.price);
+          } else {
+            alert('Выбери размер');
+          }
+        }}
       >
         Принести сейчас
       </button>
@@ -102,13 +116,13 @@ Card.defaultProps = {
   basket: PropTypes.array,
   socket: PropTypes.object,
   addBasket: PropTypes.func
-}
+};
 
 Card.propTypes = {
   thing: PropTypes.object,
   basket: PropTypes.array,
   socket: PropTypes.object,
   addBasket: PropTypes.func
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);

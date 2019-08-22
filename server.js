@@ -8,7 +8,7 @@ const ip = require('ip');
 const db = require('./queries.js');
 const io = require('socket.io')(server);
 require('dotenv').config();
-const sockets = require('./app/constants/sockets')
+const sockets = require('./app/constants/sockets');
 
 const PORT = process.env.SERVER_PORT;
 
@@ -19,7 +19,23 @@ app.use(express.static('dist'));
 
 app.get('/thing/:vendor_code', db.getThingByVendorCode);
 
-let queries = [];
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = Math.random() * 16 | 0; const
+      v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+function add(array, value) {
+  console.log(array.indexOf(value))
+  if (array.indexOf(value) === -1) {
+    array.push(value);
+    console.log('добавлено');
+  }
+}
+
+const queries = [];
 
 const consultants = io.of(sockets.CONSULTANTS);
 
@@ -35,10 +51,8 @@ rooms.on('connection', (room) => {
   console.log(`Room ${room.handshake.address}`);
 
   room.on('getConsultant', (query) => {
-    if (!queries.includes(query)) {
-      queries.push(query);
-      consultants.emit('getConsultant', queries);
-    }
+    add(queries, query);
+    console.log(queries);
   });
 
   //

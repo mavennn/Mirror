@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   ADD_CURR_ITEM,
   ADD_TO_HISTORY,
@@ -5,6 +6,11 @@ import {
   CLEAR_BASKET,
   SET_TO_DEFAULT
 } from '../actions/items';
+
+require('dotenv');
+
+const ADDRESS = process.env.SERVER_ADDRESS;
+const PORT = process.env.SERVER_PORT;
 
 const initialState = {
   currentItem: {},
@@ -31,3 +37,26 @@ export default function basketItems(state = initialState, action) {
       return state;
   }
 }
+
+export const setCurrentItem = item => ({
+  type: 'ADD_CURR_ITEM',
+  payload: item
+});
+
+export const addToHistory = item => ({
+  type: 'ADD_TO_HISTORY',
+  payload: item
+});
+
+export const setCurrentItemThunkCreator = vendorCode => (dispatch, getState) => {
+  const state = getState();
+  const history = state.items.historyItems;
+  console.log(vendorCode);
+  axios.get(`http://${ADDRESS}:${PORT}/thing/${vendorCode}`)
+    .then((response) => {
+      dispatch(setCurrentItem(response.data));
+      if (history.findIndex(x => x.vendor_code === response.data.vendor_code) === -1) {
+        dispatch(addToHistory(response.data));
+      }
+    });
+};

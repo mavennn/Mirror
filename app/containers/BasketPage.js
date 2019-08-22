@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import Basket from '../components/Basket';
+import Basket from '../components/Basket/Basket';
 
 type Props = {};
 

@@ -2,11 +2,11 @@ import React from 'react';
 import { Switch, Route } from 'react-router';
 import routes from './constants/routes';
 import App from './containers/App';
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import Expectation from './components/Expectation';
-import Basket from './components/Basket';
-import Catalog from "./components/Catalog";
-import Mirror from "./components/Mirror";
+import Basket from './components/Basket/Basket';
+import Catalog from './components/Catalog';
+import Mirror from './components/Mirror';
 
 export default () => (
   <App>

@@ -16,6 +16,8 @@ const PORT = process.env.SERVER_PORT;
 
 const { ipcRenderer } = window.require('electron');
 
+export let socket = {};
+
 type Props = {
   store: Store,
   history: {}
@@ -25,9 +27,8 @@ class Root extends Component<Props> {
   componentDidMount(): * {
     const { store } = this.props;
     const { history } = this.props;
-    const socket = io(`http://${ADDRESS}:${PORT}/rooms`, () => {
-      store.dispatch({ type: SET_SOCKET, payload: socket });
-    });
+    socket = io(`http://${ADDRESS}:${PORT}/rooms`);
+    store.dispatch({ type: SET_SOCKET, payload: socket });
 
     ipcRenderer.on('vendorCode', (event, message) => {
       if (message) {
