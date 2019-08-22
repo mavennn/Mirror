@@ -53,6 +53,11 @@ export const addToBasket = item => ({
   payload: item
 });
 
+export const clearBasket = () => ({
+  type: 'CLEAR_BASKET',
+  payload: []
+});
+
 
 export const setCurrentItemThunkCreator = vendorCode => (dispatch, getState) => {
   const state = getState();

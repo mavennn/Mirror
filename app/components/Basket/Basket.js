@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Header from '../Header';
 import sockets from '../../constants/sockets';
+import { clearBasket } from '../../reducers/items';
 
 // eslint-disable-next-line max-len
 function getConsultant(socket, type, ...params) { // (type) (type, title, vendorCode, size, price) (type, things[])
@@ -34,7 +35,7 @@ function getConsultant(socket, type, ...params) { // (type) (type, title, vendor
   socket.emit('getConsultant', query);
 }
 
-const Basket = ({ basketItems, socket }) => (
+const Basket = ({ basketItems, socket, clearBasket }) => (
   <div className="basket">
     <Header />
     <ul>
@@ -52,11 +53,10 @@ const Basket = ({ basketItems, socket }) => (
         ))
                     }
     </ul>
-    <button
-      onClick={getConsultant(socket, sockets.TO_CHECKOUT, basketItems)}
-    >
+    <button onClick={getConsultant(socket, sockets.TO_CHECKOUT, basketItems)}>
       Принести товары
     </button>
+    <button onClick={() => clearBasket()}>Очистить корзину</button>
   </div>
 );
 
@@ -70,4 +70,4 @@ Basket.propTypes = {
   socket: PropTypes.object
 };
 
-export default connect(mapStateToProps, null)(Basket);
+export default connect(mapStateToProps, { clearBasket })(Basket);

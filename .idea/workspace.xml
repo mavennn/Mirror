@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="64ad46d2-e3c2-40a0-9610-6c01da6befe0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Home/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/containers/Root.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/Root.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Basket/Basket.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Basket/Basket.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dist/renderer.prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/renderer.prod.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/dist/renderer.prod.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/renderer.prod.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/reducers/items.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/items.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.production.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.production.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +86,7 @@
       <workItem from="1565988318079" duration="2222000" />
       <workItem from="1566163415477" duration="21074000" />
       <workItem from="1566296756103" duration="30363000" />
-      <workItem from="1566451007540" duration="4837000" />
+      <workItem from="1566451007540" duration="5198000" />
     </task>
     <task id="LOCAL-00001" summary="from class to pure func">
       <created>1565116427486</created>
@@ -189,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566453884807</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add to basket thunk">
+      <created>1566457026259</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1566457026259</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +227,7 @@
     <MESSAGE value="clean some code" />
     <MESSAGE value="proptypes capsule" />
     <MESSAGE value="add thunk for history and capsule" />
-    <option name="LAST_COMMIT_MESSAGE" value="add thunk for history and capsule" />
+    <MESSAGE value="add to basket thunk" />
+    <option name="LAST_COMMIT_MESSAGE" value="add to basket thunk" />
   </component>
 </project>
