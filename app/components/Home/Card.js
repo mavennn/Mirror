@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import $ from 'jquery';
 import sockets from '../../constants/sockets';
-import { addToBasket } from '../../actions/items';
+import { addToBasketThunkCreator } from '../../reducers/items';
 
 require('dotenv');
 
@@ -45,7 +45,7 @@ function getConsultant(socket, type, ...params) { // (type) (type, title, vendor
 }
 
 const Card = ({
-  thing, basket, socket, addBasket
+  thing, socket, addToBasketThunkCreator
 }) => (
   <>
     <div className="card w-30 ma3">
@@ -68,12 +68,7 @@ const Card = ({
           }
          </select>
       </p>
-      <button onClick={() => {
-        $('#sizes').val()[0] === undefined
-          ? alert('choose size please')
-          : addBasket(thing, basket, $('#sizes').val()[0]);
-      }}
-      >
+      <button onClick={() => { addToBasketThunkCreator(thing, $('#sizes').val()[0]); }}>
         Добавить в корзину
       </button>
       <button
@@ -94,35 +89,17 @@ const Card = ({
 
 const mapStateToProps = state => ({
   thing: state.items.currentItem,
-  basket: state.items.basketItems,
   socket: state.sockets.socket
-});
-
-const mapDispatchToProps = dispatch => ({
-  addBasket: (item, basket, size) => {
-    const index = basket.findIndex(x => x.vendor_code === item.vendor_code && x.sizes[0] === size);
-    if (index === -1) {
-      dispatch(addToBasket({ ...item, sizes: [size] }));
-    } else if (basket[index].sizes[0] !== size) {
-      dispatch(addToBasket({ ...item, sizes: [size] }));
-    } else {
-      alert('товар уже есть в корзине');
-    }
-  }
 });
 
 Card.defaultProps = {
   thing: PropTypes.object,
-  basket: PropTypes.array,
   socket: PropTypes.object,
-  addBasket: PropTypes.func
 };
 
 Card.propTypes = {
   thing: PropTypes.object,
-  basket: PropTypes.array,
   socket: PropTypes.object,
-  addBasket: PropTypes.func
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default connect(mapStateToProps, { addToBasketThunkCreator })(Card);

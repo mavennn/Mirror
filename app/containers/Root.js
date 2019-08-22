@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import axios from 'axios';
 import io from 'socket.io-client';
-import type { Store } from '../reducers/types';
 import Routes from '../Routes';
 import routes from '../constants/routes';
 import { setCurrentItem, addToHistory } from '../actions/items';
@@ -45,6 +44,7 @@ class Root extends Component<Props> {
       }
     });
   }
+
 
   render() {
     const { store, history } = this.props;

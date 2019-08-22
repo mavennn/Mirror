@@ -46,7 +46,7 @@ const Home = ({ thing, socket }) => {
         <div className="flex justify-between">
           <h1 className="ma3">{thing.title}</h1>
           <button onClick={() => {
-           getConsultant(socket, sockets.CALL_CONSULTANT)
+           getConsultant(socket, sockets.CALL_CONSULTANT);
           }}
           >
             Вызвать консультанта

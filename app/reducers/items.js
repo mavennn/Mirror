@@ -4,7 +4,7 @@ import {
   ADD_TO_HISTORY,
   ADD_TO_BASKET,
   CLEAR_BASKET,
-  SET_TO_DEFAULT
+  SET_TO_DEFAULT,
 } from '../actions/items';
 
 require('dotenv');
@@ -48,6 +48,12 @@ export const addToHistory = item => ({
   payload: item
 });
 
+export const addToBasket = item => ({
+  type: 'ADD_TO_BASKET',
+  payload: item
+});
+
+
 export const setCurrentItemThunkCreator = vendorCode => (dispatch, getState) => {
   const state = getState();
   const history = state.items.historyItems;
@@ -60,3 +66,21 @@ export const setCurrentItemThunkCreator = vendorCode => (dispatch, getState) => 
       }
     });
 };
+
+export const addToBasketThunkCreator = (item, size) => (dispatch, getState) => {
+  if (size){
+    const state = getState();
+    const basket = state.items.basketItems;
+    const index = basket.findIndex(x => x.vendor_code === item.vendor_code && x.sizes[0] === size);
+    if (index === -1) {
+      dispatch(addToBasket({ ...item, sizes: [size] }));
+    } else if (basket[index].sizes[0] !== size) {
+      dispatch(addToBasket({ ...item, sizes: [size] }));
+    } else {
+      alert('товар уже есть в корзине');
+    }
+  } else {
+    alert('выберите размер');
+  }
+
+}

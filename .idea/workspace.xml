@@ -2,32 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64ad46d2-e3c2-40a0-9610-6c01da6befe0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/actions/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/Basket/Basket.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/actions/items.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/actions/items.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/actions/sockets.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/actions/sockets.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Basket.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Capsule.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home/Capsule.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/History.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home/History.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/constants/sockets.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/constants/sockets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/containers/BasketPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/BasketPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/containers/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Home/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home/Home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/containers/Root.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/Root.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dist/renderer.prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/renderer.prod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dist/renderer.prod.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/renderer.prod.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/reducers/items.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/items.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/reducers/sockets.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/sockets.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/reducers/types.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/store/configureStore.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/store/configureStore.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/prop-types/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/prop-types/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.production.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.production.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +89,7 @@
       <workItem from="1565988318079" duration="2222000" />
       <workItem from="1566163415477" duration="21074000" />
       <workItem from="1566296756103" duration="30363000" />
-      <workItem from="1566451007540" duration="2226000" />
+      <workItem from="1566451007540" duration="4837000" />
     </task>
     <task id="LOCAL-00001" summary="from class to pure func">
       <created>1565116427486</created>
@@ -200,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566330177118</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="add thunk for history and capsule">
+      <created>1566453884806</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1566453884807</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +222,7 @@
     <MESSAGE value="add getConsultant func" />
     <MESSAGE value="clean some code" />
     <MESSAGE value="proptypes capsule" />
-    <option name="LAST_COMMIT_MESSAGE" value="proptypes capsule" />
+    <MESSAGE value="add thunk for history and capsule" />
+    <option name="LAST_COMMIT_MESSAGE" value="add thunk for history and capsule" />
   </component>
 </project>
