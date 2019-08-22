@@ -6,6 +6,7 @@ import {
   CLEAR_BASKET,
   SET_TO_DEFAULT,
 } from '../actions/items';
+import sockets from '../constants/sockets';
 
 require('dotenv');
 
@@ -16,6 +17,7 @@ const initialState = {
   currentItem: {},
   historyItems: [],
   basketItems: [],
+  isConsultantComing: false,
 };
 
 
@@ -73,19 +75,50 @@ export const setCurrentItemThunkCreator = vendorCode => (dispatch, getState) => 
 };
 
 export const addToBasketThunkCreator = (item, size) => (dispatch, getState) => {
-  if (size){
+  if (size) {
     const state = getState();
     const basket = state.items.basketItems;
     const index = basket.findIndex(x => x.vendor_code === item.vendor_code && x.sizes[0] === size);
     if (index === -1) {
       dispatch(addToBasket({ ...item, sizes: [size] }));
     } else if (basket[index].sizes[0] !== size) {
-      dispatch(addToBasket({ ...item, sizes: [size] }));
+      basket[index].sizes.push(size);
     } else {
       alert('товар уже есть в корзине');
     }
   } else {
     alert('выберите размер');
   }
+};
 
-}
+export const getConsultantThunkCreator = (type, ...params) => (dispatch, getState) => {
+  const roomNumber = process.env.ROOM;
+  let query = {};
+  const date = new Date();
+  const time = `${date.getHours()}:${date.getMinutes()}`;
+  const state = getState();
+  const { socket } = state.sockets;
+  switch (type) {
+    case sockets.CALL_CONSULTANT:
+      query = {
+        time, type, roomNumber, text: sockets.CALL_TEXT
+      };
+      break;
+    case sockets.BRING_THING:
+      const [title, vendorCode, size, price] = params;
+      query = {
+        time, type, roomNumber, text: sockets.BRING_TEXT, title, vendorCode, size, price
+      };
+      break;
+    case sockets.TO_CHECKOUT:
+      const [things] = params;
+      query = {
+        time, type, text: sockets.TO_CHECKOUT_TEXT, roomNumber, things
+      };
+      break;
+    default:
+      console.log('undefined type');
+  }
+  console.log(query);
+  socket.emit('getConsultant', query);
+};

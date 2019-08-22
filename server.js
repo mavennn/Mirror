@@ -27,14 +27,6 @@ function uuidv4() {
   });
 }
 
-function add(array, value) {
-  console.log(array.indexOf(value))
-  if (array.indexOf(value) === -1) {
-    array.push(value);
-    console.log('добавлено');
-  }
-}
-
 const queries = [];
 
 const consultants = io.of(sockets.CONSULTANTS);
@@ -51,8 +43,7 @@ rooms.on('connection', (room) => {
   console.log(`Room ${room.handshake.address}`);
 
   room.on('getConsultant', (query) => {
-    add(queries, query);
-    console.log(queries);
+    console.log(query);
   });
 
   //
