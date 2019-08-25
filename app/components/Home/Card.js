@@ -1,9 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
 
 const Card = ({ thing, addToBasketThunkCreator, getConsultantThunkCreator }) => {
   return (
-      <h1>{ thing.model }</h1>
+      <Carousel>
+        {
+          thing.pictures.map(pic => (
+              <div>
+                <img src={pic} />
+              </div>
+          ))
+        }
+      </Carousel>
   )
 }
 

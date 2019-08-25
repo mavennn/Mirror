@@ -23,7 +23,9 @@ const HomePage = ({ currentThing, historyThings, recs }) => {
   return (
     <div className="home">
       <Header />
-      <h1>Чтобы начать работу, отсканируйте штрихкод</h1>
+      <div className="waiting">
+        <p>Чтобы начать работу, отсканируйте штрихкод</p>
+      </div>
     </div>
   );
 };

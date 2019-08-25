@@ -21,7 +21,10 @@ const BasketPage = ({ basket }) => {
   return (
     <div id="basket">
       <Header />
-      <h1>Добавьте товары в корзину...</h1>
+      <div className="waiting">
+        <p>Добавьте товары в корзину...</p>
+      </div>
+
     </div>
 
   );

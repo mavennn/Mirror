@@ -41,16 +41,33 @@ a:hover {
   cursor: pointer;
 }
 
+.waiting {
+  margin-top: 300px;
+  text-align: center;
+}
 /* Expectation */
 
+.hello {
+  text-align: center;
+  padding-top: 30vh;
+}
+
 .welcome_page a {
-  font-size: 70px;
+  font-size: 50px;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.mirror-btn {
+  margin: 20px;
 }
 
 /* Expectation */
 
 /* Header */
 header {
+  margin: 10px;
   display: flex;
   justify-content: space-around;
 }
