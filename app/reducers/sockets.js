@@ -8,7 +8,7 @@ const initialState = {
   queries: []
 };
 
-export default function basketItems(state = initialState, action) {
+export default function sockets(state = initialState, action) {
   switch (action.type) {
     case SET_SOCKET:
       return { ...state, socket: action.payload };

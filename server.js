@@ -17,15 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.static('dist'));
 
-app.get('/thing/:vendor_code', db.getThingByVendorCode);
-
-function uuidv4() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-    const r = Math.random() * 16 | 0; const
-      v = c === 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
+app.get('/thing/:barcode', db.getThingByBarcode);
+app.get('/recs/:groupId', db.getRecs);
 
 const queries = [];
 
@@ -36,18 +29,22 @@ const rooms = io.of(sockets.ROOMS);
 consultants.on('connection', (consultant) => {
   console.log(`Consultant ${consultant.handshake.address}`);
 
+  consultants.emit('getQueries', queries);
+
   consultant.on('disconnect', () => console.log(`Consultant ${consultant.handshake.address} disconnected`));
 });
 
 rooms.on('connection', (room) => {
   console.log(`Room ${room.handshake.address}`);
 
+
   room.on('getConsultant', (query) => {
     console.log(query);
+    consultants.emit('newQuery', query);
   });
 
   //
-  // room.on(sockets.CALL_CONSULTANT, (roomNumber) => { // слушаем событие
+  // room.on(sockets.CALL_CONSULTANT, (roomNuer) => { // слушаем событие
   //   // console.log(`нужен консультант в комнату ${room}`);
   //   consultants.emit(sockets.CALL_CONSULTANT, roomNumber); // отправляем на все устройства консультанта
   // });

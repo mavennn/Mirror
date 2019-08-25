@@ -1,10 +1,9 @@
 import React from 'react';
 import Header from './Header';
 
-
 const Catalog = () => (
   <div id="catalog">
-    <Header />
+      <Header />
     <h1> Catalog </h1>
   </div>
 );

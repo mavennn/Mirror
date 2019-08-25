@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import axios from 'axios';
 import io from 'socket.io-client';
 import Routes from '../Routes';
 import routes from '../constants/routes';
-import { setCurrentItem, addToHistory } from '../actions/items';
+import {
+  setCurrentThing, addToHistory, addRec
+} from '../actions/things';
 import { SET_SOCKET } from '../actions/sockets';
 
 require('dotenv');
@@ -33,9 +35,16 @@ class Root extends Component<Props> {
       if (message) {
         axios.get(`http://${ADDRESS}:${PORT}/thing/${message}`)
           .then((response) => {
-            store.dispatch(setCurrentItem(response.data));
-            if (!store.getState().items.historyItems.includes(response.data)) {
+            console.log(response.data);
+            store.dispatch(setCurrentThing(response.data));
+            const { recs } = store.getState().things.currentThing;
+            recs.map((rec) => {
+              axios.get(`http://${ADDRESS}:${PORT}/recs/${rec}`)
+                .then(res => store.dispatch(addRec(res.data)));
+            });
+            if (!store.getState().things.historyThings.includes(response.data)) {
               store.dispatch(addToHistory(response.data));
+              console.log(store.getState().things.currentThing);
             }
             if (store.getState().router.location.pathname !== routes.HOME) {
               history.push(routes.HOME);

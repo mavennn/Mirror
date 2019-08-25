@@ -1,23 +1,37 @@
-// @flow
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import Header from '../components/Header';
+import Card from '../components/Home/Card';
+import List from '../components/List';
 
-import Home from '../components/Home/Home';
-
-type Props = {};
-
-class HomePage extends Component<Props> {
-  props: Props;
-  render() {
-    return <Home currentThing={this.props.currentThing}/>;
+// eslint-disable-next-line react/prop-types
+const HomePage = ({ currentThing, historyThings, recs }) => {
+  if (Object.keys(currentThing).length !== 0) {
+    return (
+      <div>
+        <Header />
+        <div className="content">
+          <Card thing={currentThing} />
+          <footer className="flex">
+            <List title="Рекомендации" list={recs} />
+            <List title="Просмотренное" list={historyThings} />
+          </footer>
+        </div>
+      </div>
+    );
   }
-}
+  return (
+    <div className="home">
+      <Header />
+      <h1>Чтобы начать работу, отсканируйте штрихкод</h1>
+    </div>
+  );
+};
 
-const mapStateToProps = state => {
-  return({
-    currentThing: state.items.currentItem,
-  })
-}
+const mapStateToProps = state => ({
+  currentThing: state.things.currentThing,
+  historyThings: state.things.historyThings,
+  recs: state.things.recs,
+});
 
 export default connect(mapStateToProps, null)(HomePage);
-

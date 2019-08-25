@@ -1,13 +1,34 @@
-// @flow
-import React, { Component } from 'react';
-import Basket from '../components/Basket/Basket';
+import React from 'react';
+import { connect } from 'react-redux';
+import Header from '../components/Header';
 
-type Props = {};
+const BasketPage = ({ basket }) => {
+  if (basket.length !== 0) {
+    return (
+      <div id="basket">
+        <Header />
+        <ul>
+          {
+            basket.map(item => (
+              <li key={item.id}>{item.model}</li>
+            ))
+        }
+        </ul>
+      </div>
 
-export default class HomePage extends Component<Props> {
-    props: Props;
+    );
+  }
+  return (
+    <div id="basket">
+      <Header />
+      <h1>Добавьте товары в корзину...</h1>
+    </div>
 
-    render() {
-        return <Basket />;
-    }
-}
+  );
+};
+
+const mapStateToPorps = state => ({
+  basket: state.things.basketThings
+});
+
+export default connect(mapStateToPorps, null)(BasketPage);

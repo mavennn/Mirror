@@ -50,31 +50,28 @@ a:hover {
 /* Expectation */
 
 /* Header */
-.header a {
-  font-size: 30px;
+header {
+  display: flex;
+  justify-content: space-around;
 }
 
+.header-block {
+  filter: brightness(0) invert(1);
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.header-block h3 {
+  padding-left: 20px;
+}
 /* Header */
 
 .card img {
   height: 480px;
   width: 380px;
-}
-
-.capsule ul li img,
-.history ul li img,
-.basket ul li img {
-  height: 150px;
-  width: 100px;
-  hyphens: auto;
-}
-
-.history ul li {
-  height: 150px;
-  min-width: 100px;
-  margin-left: 20px;
-  list-style: none;
-  text-align: center;
 }
 
 select {
@@ -94,13 +91,38 @@ select option {
   border-bottom: 1px solid grey;
 }
 
-.history ul li p {
+#list {
+  width: 50%;
+}
+
+#list ul {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: auto;
+  height: 100%;
+}
+
+#list ul li {
+  height: 150px;
+  min-width: 100px;
+  margin-left: 20px;
+  list-style: none;
+  text-align: center;
+}
+
+#list ul li img {
+  height: 150px;
+  width: 100px;
+  border-radius: 10px;
+  hyphens: auto;
+}
+
+#list ul li p {
   font-size: 15px;
   width: 100px;
   overflow: auto;
   white-space: pre-line;
 }
-
 
 .basket ul {
   overflow-y: auto;

@@ -2,11 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64ad46d2-e3c2-40a0-9610-6c01da6befe0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/assets/icons/alarm.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/icons/eye.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/icons/hanger.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/icons/shopping-cart.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/List.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/Routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/actions/api.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/actions/items.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/actions/things.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.global.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.global.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Basket/Basket.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Basket/Basket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Catalog.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Catalog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Expectation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Home/Capsule.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home/Recs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Home/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/reducers/items.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/items.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Home/History.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home/History.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Home/Home.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Mirror.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Mirror.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/constants/sockets.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/constants/sockets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/containers/BasketPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/BasketPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/containers/ExpectationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/ExpectationPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/containers/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/containers/Root.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/Root.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.dev.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/reducers/items.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/things.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/reducers/sockets.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/sockets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/queries.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,7 +64,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/assets/icons" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -49,6 +75,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/assets/icons" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/components/Home" />
       <recent name="$PROJECT_DIR$/app/components" />
@@ -87,7 +116,11 @@
       <workItem from="1565988318079" duration="2222000" />
       <workItem from="1566163415477" duration="21074000" />
       <workItem from="1566296756103" duration="30363000" />
-      <workItem from="1566451007540" duration="9933000" />
+      <workItem from="1566451007540" duration="10740000" />
+      <workItem from="1566467488578" duration="2197000" />
+      <workItem from="1566484953013" duration="1199000" />
+      <workItem from="1566572055722" duration="297000" />
+      <workItem from="1566643944378" duration="29974000" />
     </task>
     <task id="LOCAL-00001" summary="from class to pure func">
       <created>1565116427486</created>
@@ -201,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566457429391</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add totalSum">
+      <created>1566466208996</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1566466208997</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +277,7 @@
     <MESSAGE value="add thunk for history and capsule" />
     <MESSAGE value="add to basket thunk" />
     <MESSAGE value="clear Basket" />
-    <option name="LAST_COMMIT_MESSAGE" value="clear Basket" />
+    <MESSAGE value="add totalSum" />
+    <option name="LAST_COMMIT_MESSAGE" value="add totalSum" />
   </component>
 </project>

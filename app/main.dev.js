@@ -3,9 +3,10 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import routes from './constants/routes';
+
 require('dotenv').config();
 
-let SerialPort = require('serialport');
+const SerialPort = require('serialport');
 
 const serialPortName = process.env.SERIAL_PORT;
 
@@ -25,8 +26,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 if (
-  process.env.NODE_ENV === 'development' ||
-  process.env.DEBUG_PROD === 'true'
+  process.env.NODE_ENV === 'development'
+  || process.env.DEBUG_PROD === 'true'
 ) {
   require('electron-debug')();
 }
@@ -57,13 +58,13 @@ app.on('ready', async () => {
   const serialPort = new SerialPort(serialPortName, {
     baudRate: 9600, // бит в секунду
     dataBits: 8, // биты данных
-    parity: "none", // четность
+    parity: 'none', // четность
     stopBits: 1, // стоповые
   });
 
   if (
-    process.env.NODE_ENV === 'development' ||
-    process.env.DEBUG_PROD === 'true'
+    process.env.NODE_ENV === 'development'
+    || process.env.DEBUG_PROD === 'true'
   ) {
     await installExtensions();
   }
@@ -97,18 +98,18 @@ app.on('ready', async () => {
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
 
-  serialPort.on("open", () => {
-      console.log(`Scanner: Open serial port ${serialPortName}`);
-      serialPort.on("data", (data) => {
-        const msg = data.toString("utf8").substr(0, Math.max(0, data.length - 1))
-        if (msg && msg.length > 0) {
-          console.log(`Scanner: vendor_code is ${msg}`);
-          mainWindow.webContents.send('vendorCode', msg);
-        } else {
-          console.log("Scanner: vendor_code is empty");
-        }
-      });
+  serialPort.on('open', () => {
+    console.log(`Scanner: Open serial port ${serialPortName}`);
+    serialPort.on('data', (data) => {
+      const msg = data.toString('utf8').substr(0, Math.max(0, data.length - 1));
+      if (msg && msg.length > 0) {
+        console.log(`Scanner: vendor_code is ${msg}`);
+        mainWindow.webContents.send('vendorCode', msg);
+      } else {
+        console.log('Scanner: vendor_code is empty');
+      }
     });
+  });
 
   new AppUpdater();
 });

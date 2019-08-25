@@ -1,13 +1,25 @@
-// @flow
-import React, { Component } from 'react';
-import Expectation from '../components/Expectation';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import routes from '../constants/routes';
 
-type Props = {};
+import { setToDefault } from '../actions/things';
 
-export default class ExpectationPage extends Component<Props> {
-    props: Props;
+const Expectation = props => (
+  <div className="expectation">
+    <div>
+      <h1>Привет!</h1>
+      <p>Я - умное зеркало, я помогу тебе с выбором одежды</p>
+    </div>
+    <div className="welcome_page flex justify-center mt7">
+      <Link className="ma5" to={routes.HOME} onClick={() => props.setToDefault()}> НАЧАТЬ ЗАНОВО </Link>
+      <button id="go-mirror-btn" onClick={() => props.history.goBack()}>Продолжить</button>
+    </div>
+  </div>
+);
 
-    render() {
-        return <Expectation />;
-    }
-}
+const mapDispatchToProps = {
+  setToDefault,
+};
+
+export default connect(null, mapDispatchToProps)(Expectation);

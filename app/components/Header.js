@@ -1,26 +1,34 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import routes from '../constants/routes';
 import '../tachyons.min.css';
 
-import { setToDefault } from '../actions/items';
+// icons
+import * as alarm from '../assets/icons/alarm.svg';
+import * as hanger from '../assets/icons/hanger.svg';
+import * as shoppingCart from '../assets/icons/shopping-cart.svg';
+import * as eye from '../assets/icons/eye.svg';
 
-class Header extends Component<{}> {
-    render() {
-        return (
-            <div className="header flex justify-around fw3">
-                <Link className="ma3" to={routes.CATALOG}>Каталог</Link>
-                <Link className="ma3" to={routes.EXPECTATION} onClick={() => this.props.setToDefault()}>Завершить обслуживание</Link>
-                <Link className="ma3" to={routes.HOME}>Главная</Link>
-                <Link className="ma3" to={routes.BASKET}>Корзина</Link>
-            </div>
-        )
-    }
-}
+const Header = () => (
+  <header>
+    <Link to={routes.EXPECTATION} className="header-block flex">
+      <img src={alarm} alt="Вызывать консультанта" />
+      <h3 className="pa2">Вызвать консультанта </h3>
+    </Link>
+    <Link to={routes.CATALOG} className="header-block flex">
+      <img src={hanger} alt="Каталог" />
+      <h3 className="pa2">Каталог</h3>
+    </Link>
+    <Link to={routes.BASKET} className="header-block flex">
+      <img src={shoppingCart} alt="Мои покупки" />
+      <h3 className="pa2">Мои товары</h3>
+    </Link>
+    <Link to={routes.MIRROR} className="header-block flex">
+      <img src={eye} alt="Показать зеркало" />
+      <h3 className="pa2">Показать зеркало</h3>
+    </Link>
+  </header>
+);
 
-const mapDispatchToProps = {
-    setToDefault,
-}
-
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(null, null)(Header);
