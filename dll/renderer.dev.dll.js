@@ -315,6 +315,18 @@ eval("module.exports = pg;\n\n//# sourceURL=webpack://renderer/external_%22pg%22
 
 /***/ }),
 
+/***/ "prop-types":
+/*!*****************************!*\
+  !*** external "prop-types" ***!
+  \*****************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = prop-types;\n\n//# sourceURL=webpack://renderer/external_%22prop-types%22?");
+
+/***/ }),
+
 /***/ "react":
 /*!************************!*\
   !*** external "react" ***!
@@ -396,6 +408,18 @@ eval("module.exports = react-router;\n\n//# sourceURL=webpack://renderer/externa
 /***/ (function(module, exports) {
 
 eval("module.exports = react-router-dom;\n\n//# sourceURL=webpack://renderer/external_%22react-router-dom%22?");
+
+/***/ }),
+
+/***/ "react-select":
+/*!*******************************!*\
+  !*** external "react-select" ***!
+  \*******************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = react-select;\n\n//# sourceURL=webpack://renderer/external_%22react-select%22?");
 
 /***/ }),
 
