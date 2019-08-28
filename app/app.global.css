@@ -5,12 +5,17 @@
   src: url('./assets/fonts/SF-Pro-text-Ultralight.woff');
 }
 
+@font-face {
+  font-family: Circe;
+  src: url('assets/fonts/Circe-Rounded.ttf');
+}
+
 body {
   position: relative;
   color: white;
   height: 100vh;
   background-color: #000;
-  font-family: SF, serif;
+  font-family: Circe, serif;
 }
 
 h2 {
@@ -60,7 +65,8 @@ a:hover {
 }
 
 .mirror-btn {
-  margin: 20px;
+  position: absolute;
+  left: -100px;
 }
 
 /* Expectation */
@@ -69,7 +75,6 @@ a:hover {
 header {
   margin: 10px;
   display: flex;
-  justify-content: space-around;
 }
 
 .header-block {
@@ -79,11 +84,19 @@ header {
   padding: 10px;
   border: 1px solid white;
   border-radius: 10px;
+  margin: 0 120px;
 }
 
 .header-block h3 {
   padding-left: 20px;
+  font-size: 28px;
 }
+
+header a {
+  display: flex;
+  align-items: center;
+}
+
 /* Header */
 
 .card img {

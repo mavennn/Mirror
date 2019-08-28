@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Card from '../components/Home/Card';
 import List from '../components/List';
+import Emoji from "../components/Emoji";
 
 // eslint-disable-next-line react/prop-types
 const HomePage = ({ currentThing, historyThings, recs }) => {
@@ -24,7 +25,7 @@ const HomePage = ({ currentThing, historyThings, recs }) => {
     <div className="home">
       <Header />
       <div className="waiting">
-        <p>Чтобы начать работу, отсканируйте штрихкод</p>
+        <p>Чтобы начать работу, отсканируйте штрихкод<Emoji symbol="👗"/><Emoji symbol="👉"/></p>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
+import Emoji from "../components/Emoji";
 
 const BasketPage = ({ basket }) => {
   if (basket.length !== 0) {
@@ -22,9 +23,9 @@ const BasketPage = ({ basket }) => {
     <div id="basket">
       <Header />
       <div className="waiting">
-        <p>Добавьте товары в корзину...</p>
+        <p>Здесь пока ничего нет <Emoji symbol="🙈" /></p>
+        <p>Отсканируй товар или перейди в каталог</p>
       </div>
-
     </div>
 
   );

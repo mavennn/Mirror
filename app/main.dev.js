@@ -1,9 +1,10 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, globalShortcut } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import routes from './constants/routes';
 
+const { clipboard } = require('electron')
 require('dotenv').config();
 
 const SerialPort = require('serialport');
@@ -54,6 +55,15 @@ app.on('window-all-closed', () => {
   }
 });
 
+// ввод barcode через ctrl V
+app.on('ready', () => {
+  globalShortcut.register('CommandOrControl+V', () => {
+    const barcode = clipboard.readText();
+    console.log(barcode);
+    mainWindow.webContents.send('vendorCode', barcode);
+  });
+});
+
 app.on('ready', async () => {
   const serialPort = new SerialPort(serialPortName, {
     baudRate: 9600, // бит в секунду
@@ -75,7 +85,7 @@ app.on('ready', async () => {
     height: 728
   });
 
-  // mainWindow.setFullScreen(true)
+  mainWindow.setFullScreen(true);
 
   mainWindow.loadURL(`file://${__dirname}/app.html#${routes.EXPECTATION}`);
 
@@ -98,18 +108,18 @@ app.on('ready', async () => {
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
 
-  serialPort.on('open', () => {
-    console.log(`Scanner: Open serial port ${serialPortName}`);
-    serialPort.on('data', (data) => {
-      const msg = data.toString('utf8').substr(0, Math.max(0, data.length - 1));
-      if (msg && msg.length > 0) {
-        console.log(`Scanner: vendor_code is ${msg}`);
-        mainWindow.webContents.send('vendorCode', msg);
-      } else {
-        console.log('Scanner: vendor_code is empty');
-      }
-    });
-  });
+  // serialPort.on('open', () => {
+  //   console.log(`Scanner: Open serial port ${serialPortName}`);
+  //   serialPort.on('data', (data) => {
+  //     const msg = data.toString('utf8').substr(0, Math.max(0, data.length - 1));
+  //     if (msg && msg.length > 0) {
+  //       console.log(`Scanner: vendor_code is ${msg}`);
+  //       mainWindow.webContents.send('vendorCode', msg);
+  //     } else {
+  //       console.log('Scanner: vendor_code is empty');
+  //     }
+  //   });
+  // });
 
   new AppUpdater();
 });

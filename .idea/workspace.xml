@@ -2,17 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64ad46d2-e3c2-40a0-9610-6c01da6befe0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/icons/back.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/fonts/Circe-Rounded.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/Emoji.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.global.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Home/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Home/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Mirror.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Mirror.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/containers/BasketPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/BasketPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/containers/ExpectationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/ExpectationPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/containers/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dist/renderer.prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/renderer.prod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dist/renderer.prod.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/renderer.prod.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dist/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dist/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.dev.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.prod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.prod.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.prod.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/webpack.config.renderer.dev.babel.js" beforeDir="false" afterPath="$PROJECT_DIR$/configs/webpack.config.renderer.dev.babel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/react-easy-swipe/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-easy-swipe/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/react-responsive-carousel/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/react-responsive-carousel/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.production.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.production.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/electron/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/electron/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint-utils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint-utils/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint-utils/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint-utils/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint-utils/index.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint-utils/index.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint-utils/index.mjs.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint-utils/index.mjs.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint-utils/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint-utils/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +57,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/assets/icons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/assets/fonts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -55,13 +69,14 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/assets/icons" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/components/Home" />
       <recent name="$PROJECT_DIR$/app/components" />
       <recent name="$PROJECT_DIR$/app/components/Basket" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/assets/fonts" />
+      <recent name="$PROJECT_DIR$/app/assets/icons" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -101,6 +116,7 @@
       <workItem from="1566484953013" duration="1199000" />
       <workItem from="1566572055722" duration="297000" />
       <workItem from="1566643944378" duration="32743000" />
+      <workItem from="1566926470497" duration="6152000" />
     </task>
     <task id="LOCAL-00001" summary="from class to pure func">
       <created>1565116427486</created>
