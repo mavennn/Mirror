@@ -55,21 +55,19 @@ app.on('window-all-closed', () => {
   }
 });
 
-// ввод barcode через ctrl V
-app.on('ready', () => {
+app.on('ready', async () => {
+  // const serialPort = new SerialPort(serialPortName, {
+  //   baudRate: 9600, // бит в секунду
+  //   dataBits: 8, // биты данных
+  //   parity: 'none', // четность
+  //   stopBits: 1, // стоповые
+  // });
+
+  // ввод barcode через ctrl V
   globalShortcut.register('CommandOrControl+V', () => {
     const barcode = clipboard.readText();
     console.log(barcode);
-    mainWindow.webContents.send('vendorCode', barcode);
-  });
-});
-
-app.on('ready', async () => {
-  const serialPort = new SerialPort(serialPortName, {
-    baudRate: 9600, // бит в секунду
-    dataBits: 8, // биты данных
-    parity: 'none', // четность
-    stopBits: 1, // стоповые
+    // mainWindow.webContents.send('vendorCode', barcode);
   });
 
   if (
@@ -78,12 +76,13 @@ app.on('ready', async () => {
   ) {
     await installExtensions();
   }
+  
+    mainWindow = new BrowserWindow({
+      show: false,
+      width: 1024,
+      height: 728
+    });
 
-  mainWindow = new BrowserWindow({
-    show: false,
-    width: 1024,
-    height: 728
-  });
 
   mainWindow.setFullScreen(true);
 
