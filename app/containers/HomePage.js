@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Carousel from '../components/Home/Carousel';
 import Info from '../components/Home/Info';
+import Choose from '../components/Home/Choose';
 import List from '../components/List';
 import Emoji from '../components/Emoji';
 

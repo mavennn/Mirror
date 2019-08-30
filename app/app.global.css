@@ -127,21 +127,26 @@ header a {
   text-align: center;
 }
 
-select {
+/* Choose */
+
+.choose-list {
+  display: flex;
+}
+
+.choose-list li {
+  font-size: 2rem;
+  margin: 0 1vw;
+}
+
+.choose-list li button {
+  outline: 0;
+  border: 0;
   background-color: #000;
-  border: none;
-  outline: none;
-}
-
-select:last-of-type {
-  border-bottom: none;
-}
-
-select option {
-  padding: 5px;
-  font-size: 30px;
   color: #fff;
-  border-bottom: 1px solid grey;
+}
+
+.choose-list li button:focus {
+  border-bottom: 3px solid greenyellow;
 }
 
 #list {
