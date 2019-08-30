@@ -9,9 +9,9 @@ const PORT = process.env.SERVER_PORT;
 
 const initialState = {
   currentThing: {},
-  recs: [],
   historyThings: [],
   basketThings: [],
+  capsule: [],
   isConsultantComing: false,
 };
 
@@ -20,8 +20,6 @@ export default function things(state = initialState, action) {
   switch (action.type) {
     case actions.ADD_CURR_THING:
       return { ...state, currentThing: action.payload };
-    case actions.ADD_REC:
-      return { ...state, recs: state.recs.concat(action.payload) };
     case actions.ADD_TO_HISTORY:
       return { ...state, historyThings: state.historyThings.concat(action.payload) };
     case actions.ADD_TO_BASKET:
@@ -37,23 +35,14 @@ export default function things(state = initialState, action) {
   }
 }
 
-export const getRecsThunkCreator = () => (dispatch, getState) => {
-  const state = getState();
-  const { recs } = state.things.currentThing;
-  recs.map((rec) => {
-    axios.get(`http://${ADDRESS}:${PORT}/recs/${rec}`)
-      .then(response => dispatch(actions.addRec(response.data)));
-  });
-};
-
 export const setCurrentThingThunkCreator = barcode => (dispatch, getState) => {
+  console.log(barcode);
   const state = getState();
   const history = state.things.historyThings;
   console.log(barcode);
   axios.get(`http://${ADDRESS}:${PORT}/thing/${barcode}`)
     .then((response) => {
       dispatch(actions.setCurrentThing(response.data));
-      getRecsThunkCreator();
       if (history.findIndex(x => x.vendor_code === response.data.vendor_code) === -1) {
         dispatch(actions.addToHistory(response.data));
       }

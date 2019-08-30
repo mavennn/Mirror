@@ -1,23 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import Card from '../components/Home/Card';
+import Carousel from '../components/Home/Carousel';
+import Info from '../components/Home/Info';
 import List from '../components/List';
-import Emoji from "../components/Emoji";
+import Emoji from '../components/Emoji';
 
 // eslint-disable-next-line react/prop-types
-const HomePage = ({ currentThing, historyThings, recs }) => {
+const HomePage = ({ currentThing, historyThings, capsule }) => {
   if (Object.keys(currentThing).length !== 0) {
     return (
       <div>
         <Header />
-        <div className="content">
-          <Card thing={currentThing} />
-          <footer className="flex">
-            <List title="Рекомендации" list={recs} />
-            <List title="Просмотренное" list={historyThings} />
-          </footer>
+        <div className="content flex">
+          <Carousel thing={currentThing} />
+          <Info thing={currentThing} />
         </div>
+        <footer className="flex">
+          {
+                  capsule
+                    ? <List title="Рекомендации" list={capsule} />
+                    : null
+              }
+          <List title="Просмотренное" list={historyThings} />
+        </footer>
       </div>
     );
   }
@@ -25,7 +31,11 @@ const HomePage = ({ currentThing, historyThings, recs }) => {
     <div className="home">
       <Header />
       <div className="waiting">
-        <p>Чтобы начать работу, отсканируйте штрихкод<Emoji symbol="👗"/><Emoji symbol="👉"/></p>
+        <p>
+Чтобы начать работу, отсканируйте штрихкод
+          <Emoji symbol="👗" />
+          <Emoji symbol="👉" />
+        </p>
       </div>
     </div>
   );
@@ -34,7 +44,7 @@ const HomePage = ({ currentThing, historyThings, recs }) => {
 const mapStateToProps = state => ({
   currentThing: state.things.currentThing,
   historyThings: state.things.historyThings,
-  recs: state.things.recs,
+  capsule: state.things.capsule,
 });
 
 export default connect(mapStateToProps, null)(HomePage);

@@ -1,13 +1,8 @@
-// @flow
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import Catalog from '../components/Catalog';
 
-type Props = {};
+const CatalogPage = () => <Catalog />
 
-export default class CatalogPage extends Component<Props> {
-    props: Props;
 
-    render() {
-        return <Catalog />;
-    }
-}
+export default connect()(CatalogPage);

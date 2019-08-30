@@ -46,6 +46,10 @@ a:hover {
   cursor: pointer;
 }
 
+img {
+  border-radius: 10px;
+}
+
 .waiting {
   margin-top: 300px;
   text-align: center;
@@ -68,8 +72,6 @@ a:hover {
   position: absolute;
   left: -100px;
 }
-
-/* Expectation */
 
 /* Header */
 header {
@@ -97,11 +99,32 @@ header a {
   align-items: center;
 }
 
-/* Header */
+/* HomePage */
+.content {
+  justify-content: space-around;
+}
 
-.card img {
-  height: 480px;
-  width: 380px;
+/* Carousel */
+.picture-1 {
+  width: 20vw;
+  height: auto;
+}
+
+.picture-2, .picture-3, .picture-4 {
+  margin-left: 1vw;
+  margin-top: 1vh;
+  width: 5vw;
+  height: auto;
+}
+
+.carousel img {
+  border-radius: 20px;
+}
+
+/* Info */
+
+.info {
+  text-align: center;
 }
 
 select {

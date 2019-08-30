@@ -6,9 +6,9 @@ const List = ({ title, list }) => (
     <ul>
       {
         list.map(item => (
-          <li key={item.id}>
-            <img src={item.pictures} />
-            <p>{item.model}</p>
+          <li key={item.barcode}>
+            <img src={require('../assets/img/template.jpg')} />
+            <p>{item.title}</p>
           </li>
         ))
       }

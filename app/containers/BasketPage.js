@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import Emoji from "../components/Emoji";
+import Emoji from '../components/Emoji';
 
 const BasketPage = ({ basket }) => {
   if (basket.length !== 0) {

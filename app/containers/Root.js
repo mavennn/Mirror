@@ -37,23 +37,18 @@ class Root extends Component<Props> {
           .then((response) => {
             console.log(response.data);
             store.dispatch(setCurrentThing(response.data));
-            const { recs } = store.getState().things.currentThing;
-            recs.map((rec) => {
-              axios.get(`http://${ADDRESS}:${PORT}/recs/${rec}`)
-                .then(res => store.dispatch(addRec(res.data)));
-            });
             if (!store.getState().things.historyThings.includes(response.data)) {
               store.dispatch(addToHistory(response.data));
               console.log(store.getState().things.currentThing);
             }
-            if (store.getState().router.location.pathname !== routes.HOME) {
-              history.push(routes.HOME);
-            }
           });
+
+        if (store.getState().router.location.pathname !== routes.HOME) {
+          history.push(routes.HOME);
+        }
       }
     });
   }
-
 
   render() {
     const { store, history } = this.props;
