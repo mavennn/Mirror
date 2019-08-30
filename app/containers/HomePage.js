@@ -15,6 +15,7 @@ const HomePage = ({ currentThing, historyThings, capsule }) => {
         <div className="content flex">
           <Carousel thing={currentThing} />
           <Info thing={currentThing} />
+          <Choose thing={currentThing} />
         </div>
         <footer className="flex">
           {

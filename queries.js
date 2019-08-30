@@ -15,9 +15,24 @@ const pool = new Pool({
 async function getThingByBarcode(request, response) {
   const barcode = request.params.barcode.toString();
   let thing = await pool.query(`SELECT * FROM ${table} WHERE barcode = ${barcode}`);
-  let sizes = await pool.query(`SELECT * FROM ${table} WHERE vendor`)
   [thing] = thing.rows;
-  console.log(thing);
+  const vendor = thing.vendorid.split('.')[0];
+  // поиск размеров
+  const sz = await pool.query(`SELECT ${table}.size FROM ${table} WHERE vendorId = '${thing.vendorid}'`);
+  const sizes = [];
+  sz.rows.map(s => sizes.push(s.size));
+  thing.sizes = sizes;
+
+  // поиск цветов
+  const availableColors = [];
+  const colors = await pool.query(`SELECT vendorid, color, barcode FROM things WHERE vendorid ~ '^(${vendor}).+';`);
+  colors.rows.map(c => {
+    if (availableColors.findIndex(x => x.color === c.color && x.vendorid === c.vendorid) === -1) {
+      availableColors.push(c);
+    }
+  })
+  thing.availableColors = availableColors;
+
   response.status(200).json(thing);
 }
 

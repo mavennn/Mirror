@@ -2,134 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64ad46d2-e3c2-40a0-9610-6c01da6befe0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/img/template.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/ajax-loader.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/config.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/fonts/slick.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/fonts/slick.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/fonts/slick.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/fonts/slick.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/slick-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/slick-theme.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/slick-theme.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/slick.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/slick.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/slick.less" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/slick.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/slick/slick.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/Home/Carousel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/components/Home/Info.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/Home/Choose.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/actions/things.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/actions/things.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.global.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/100161B1S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/100161B1S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/100161B1S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/100161H7S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/100161H7S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/100161H7S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/10016299S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/10016299S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/10016299S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/100175S0S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/100175S0S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/100175S0S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEJAM0893S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEJAM0893S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEJAM0893S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEJAM08V4S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEJAM08V4S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEJAM08V4S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEJAW03S0S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEJAW03S0S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEJAW03S0S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEJUW0381S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEJUW0381S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEJUW0381S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEPAM022AS-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEPAM022AS-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DEPAM022AS-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DESIM014US-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DESIM014US-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DESIM014US-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DETSM02M5S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DETSM02M5S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DETSM02M5S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DETSM115AM-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DETSM115AM-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DETSM115AM-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DETSM1300S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DETSM1300S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DETSM1300S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DETSW10S0S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DETSW10S0S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DETSW10S0S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DMJAM022AS-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DMJAM022AS-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DMJAM022AS-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DMJAM0592M-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DMJAM0592M-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DMJAM0592M-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DMJAW01Z3S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DMJAW01Z3S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/DMJAW01Z3S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EJUM1199XS-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EJUM1199XS-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EJUM1199XS-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPAM1199XS-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPAM1199XS-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPAM1199XS-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPAM1299XS-1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPAM1299XS-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPAM1299XS-2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPAM1299XS-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPAM1299XS-3.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPAM1299XS-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPAW252AXS-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPAW252AXS-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPAW252AXS-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPOM035HXS-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPOM035HXS-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/EPOM035HXS-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ERN0159935-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ERN0159935-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ERN0159935-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESHM045AXS-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESHM045AXS-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESHM045AXS-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESIW02B1XS-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESIW02B1XS-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESIW02B1XS-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESIW06A1XS-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESIW06A1XS-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESIW06A1XS-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESS0409939-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESS0409939-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESS0409939-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESS046T339-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESS046T339-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ESS046T339-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ETSW1499XS-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ETSW1499XS-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/ETSW1499XS-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/S17ADEQ99S-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/S17ADEQ99S-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/img/S17ADEQ99S-3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Home/Card.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/List.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/containers/BasketPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/BasketPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/containers/CatalogPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/CatalogPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/containers/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/containers/Root.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/containers/Root.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/renderer.prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/renderer.prod.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dist/renderer.prod.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/dist/renderer.prod.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.prod.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.prod.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.prod.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/reducers/things.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/reducers/things.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.5.5.development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/queries.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -227,7 +102,8 @@
       <workItem from="1566926470497" duration="9334000" />
       <workItem from="1567004105937" duration="926000" />
       <workItem from="1567006295253" duration="1206000" />
-      <workItem from="1567074251092" duration="13346000" />
+      <workItem from="1567074251092" duration="13966000" />
+      <workItem from="1567149495300" duration="655000" />
     </task>
     <task id="LOCAL-00001" summary="from class to pure func">
       <created>1565116427486</created>
@@ -404,6 +280,8 @@
     <MESSAGE value="fix header" />
     <MESSAGE value="name and packager" />
     <MESSAGE value="add carousel" />
-    <option name="LAST_COMMIT_MESSAGE" value="add carousel" />
+    <MESSAGE value="add carousel and info" />
+    <MESSAGE value="add all sizes to thing" />
+    <option name="LAST_COMMIT_MESSAGE" value="add all sizes to thing" />
   </component>
 </project>
