@@ -41,6 +41,7 @@ a {
 }
 
 a:hover {
+  color: white;
   opacity: 1;
   text-decoration: none;
   cursor: pointer;
@@ -161,12 +162,16 @@ header a {
   color: #fff;
 }
 
+.size-button:active {
+  border-bottom: 3px solid greenyellow;
+  font-weight: bold;
+}
 .choose-list li button:focus {
   border-bottom: 3px solid greenyellow;
   font-weight: bold;
 }
 
-.color-btn {
+.color-button {
   min-height: 40px;
   min-width: 40px;
   border-radius: 10px;
@@ -270,3 +275,13 @@ header a {
 /*  overflow-y: auto;*/
 /*  width: 80%;*/
 /*}*/
+
+
+.alertContainer{
+  border: 1px solid rgba(154, 205, 50, 0.7);
+  background: #000;
+}
+
+.alertTitle {
+  color: #fff;
+}

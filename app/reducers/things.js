@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import * as actions from '../actions/things';
 import sockets from '../constants/sockets';
 
@@ -35,15 +36,31 @@ export default function things(state = initialState, action) {
   }
 }
 
+// Меняет размер
+// принимает в себя нужный размер, заменяет его у шмотки
+// и закидывает в store новую шмотку и измененным размером
 export const changeSize = size => (dispatch, getState) => {
   const state = getState();
   const thing = state.things.currentThing;
-  thing.size = size
+  thing.size = size;
   if (size) {
     dispatch(actions.setCurrentThing(thing));
   }
-}
+};
 
+// Меняет вещь на эту же вещь, но другого цвета и с другим vendorid
+export const changeColor = (color, vendorid) => (dispatch, getState) => {
+  const state = getState();
+  const thing = state.things.currentThing;
+  thing.color = color;
+  thing.vendorid = vendorid;
+  if (color && vendorid) {
+    dispatch(actions.setCurrentThing(thing));
+  }
+};
+
+// по баркоду вытаскивает с сервера инфу о вещи, и если ее не было в истории
+// то засовывает ее в историю
 export const setCurrentThingThunkCreator = barcode => (dispatch, getState) => {
   const state = getState();
   const { historyThings } = state.things;
@@ -57,15 +74,35 @@ export const setCurrentThingThunkCreator = barcode => (dispatch, getState) => {
     });
 };
 
+// Добавление вещи в корзину
+// смотрит в корзине вещь с таким же вендором и размером
+// если не находит, то добавляет в корзину
 export const addToBasketThunkCreator = thing => (dispatch, getState) => {
   if (thing) {
     const state = getState();
     const basket = state.things.basketThings;
-    const index = basket.findIndex(x => x.vendorid === thing.vendorid && x.size === thing.size);
+    const index = basket.findIndex(x => x.vendorid === thing.vendorid && x.size === thing.size && x.color === thing.color);
     if (index === -1) {
       dispatch(actions.addToBasket(thing));
+      Swal.fire({
+        title: 'Товар добавлен в корзину!',
+        type: 'success',
+        timer: '2000',
+        customClass: {
+          popup: 'alertContainer',
+          title: 'alertTitle',
+        }
+      });
     } else {
-      alert('товар уже есть в корзине');
+      Swal.fire({
+        title: 'Товар уже есть в корзине!',
+        type: 'info',
+        confirmButtonText: 'OK',
+        customClass: {
+          popup: 'alertContainer',
+          title: 'alertTitle',
+        }
+      });
     }
   } else {
     alert('выберите размер');

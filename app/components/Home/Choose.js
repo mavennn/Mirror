@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const getColorCode = (color) => {
   switch (color) {
@@ -29,7 +30,7 @@ const getColorCode = (color) => {
   }
 };
 
-const Choose = ({ thing, changeSize }) => (
+const Choose = ({ thing, changeSize, changeColor }) => (
   <div className="choose">
     <div className="sizes">
       <p><strong>Выберите размер: </strong></p>
@@ -37,7 +38,7 @@ const Choose = ({ thing, changeSize }) => (
         {
               thing.sizes.map(s => (
                 <li key={s}>
-                  <button onClick={() => changeSize(s)}>{s}</button>
+                  <button className="size-button" onClick={() => changeSize(s)}>{s}</button>
                 </li>
               ))
           }
@@ -50,7 +51,11 @@ const Choose = ({ thing, changeSize }) => (
                 thing.availableColors.map(c => (
                   <li key={c.barcode}>
                     <button>
-                        <div className="color-btn" style={{ backgroundColor: `${getColorCode(c.color)}` }} />
+                      <div
+                        className="color-button"
+                        style={{ backgroundColor: `${getColorCode(c.color)}` }}
+                        onClick={() => changeColor(c.color, c.vendorid)}
+                      />
                     </button>
                   </li>
                 ))
@@ -59,5 +64,15 @@ const Choose = ({ thing, changeSize }) => (
     </div>
   </div>
 );
+
+Choose.propTypes = {
+  changeSize: PropTypes.func,
+  changeColor: PropTypes.func,
+}
+
+Choose.defaultProps = {
+  changeSize: () => {},
+  changeColor: () => {},
+}
 
 export default Choose;

@@ -8,11 +8,11 @@ import Buttons from '../components/Home/Buttons';
 import List from '../components/List';
 import Emoji from '../components/Emoji';
 
-import { addToBasketThunkCreator, changeSize, setCurrentThingThunkCreator } from '../reducers/things';
+import { addToBasketThunkCreator, changeSize, setCurrentThingThunkCreator, changeColor } from '../reducers/things';
 
 // eslint-disable-next-line react/prop-types
 const HomePage = ({
-  currentThing, historyThings, capsule, addToBasketThunkCreator, changeSize, setCurrentThingThunkCreator
+  currentThing, historyThings, capsule, setCurrentThingThunkCreator, addToBasketThunkCreator, changeSize, changeColor,
 }) => {
   if (Object.keys(currentThing).length !== 0) {
     return (
@@ -27,6 +27,7 @@ const HomePage = ({
             <Choose
               thing={currentThing}
               changeSize={changeSize}
+              changeColor={changeColor}
             />
             <Buttons
               thing={currentThing}
@@ -72,6 +73,7 @@ const mapDispatchToProps = {
   setCurrentThingThunkCreator,
   addToBasketThunkCreator,
   changeSize,
+  changeColor,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

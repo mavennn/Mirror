@@ -19,6 +19,7 @@ const BasketList = ({ basketThings, setThing, history }) => (
                 <em className="brand">{item.brand}</em>
                 <p className="size">{item.size}</p>
                 <p className="price">{item.oldprice}</p>
+                <p className="color">{item.color}</p>
               </div>
             </li>
           ))
