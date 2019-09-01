@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { render } from 'react-dom';
 import { Provider, connect } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import axios from 'axios';
@@ -9,6 +10,7 @@ import {
   setCurrentThing, addToHistory
 } from '../actions/things';
 import { SET_SOCKET } from '../actions/sockets';
+import ExpectationPage from './ExpectationPage';
 
 require('dotenv');
 
@@ -24,10 +26,34 @@ type Props = {
   history: {}
 };
 
+function checkInaction(history) {
+  let timer;
+
+  window.onload = timerReset;
+  document.onkeypress = timerReset;
+  document.onmousemove = timerReset;
+  document.onmousedown = timerReset;
+  document.ontouchstart = timerReset;
+  document.onclick = timerReset;
+  document.onscroll = timerReset;
+  document.onkeypress = timerReset;
+
+  function timerElapsed() {
+    history.push(routes.EXPECTATION);
+  }
+
+  function timerReset() {
+    console.log('действие');
+    clearTimeout(timer);
+    timer = setTimeout(timerElapsed, 1 * 60 * 1000); // 1 min
+  }
+}
+
 class Root extends Component<Props> {
   componentDidMount(): * {
     const { store } = this.props;
     const { history } = this.props;
+    checkInaction(history);
     socket = io(`http://${ADDRESS}:${PORT}/rooms`);
     store.dispatch({ type: SET_SOCKET, payload: socket });
 
