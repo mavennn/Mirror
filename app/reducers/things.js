@@ -25,6 +25,8 @@ export default function things(state = initialState, action) {
       return { ...state, historyThings: state.historyThings.concat(action.payload) };
     case actions.ADD_TO_BASKET:
       return { ...state, basketThings: state.basketThings.concat(action.payload) };
+    case actions.REMOVE_FROM_BASKET:
+      return { ...state, basketThings: state.basketThings.splice(state.basketThings.findIndex(x => x.vendorid === action.payload.vendorid && x.size === action.payload.size && x.color === action.payload.color), 1) }
     case actions.CLEAR_BASKET:
       return { ...state, basketThings: action.payload };
     case actions.SET_TO_DEFAULT:

@@ -6,9 +6,9 @@ import BasketFooter from '../components/Basket/BasketFooter';
 import Emoji from '../components/Emoji';
 
 import { setCurrentThingThunkCreator } from '../reducers/things';
-import { clearBasket } from '../actions/things';
+import { clearBasket, removeFromBasket } from '../actions/things';
 
-const BasketPage = ({ basketThings, setCurrentThingThunkCreator, history, clearBasket}) => {
+const BasketPage = ({ basketThings, setCurrentThingThunkCreator, history, clearBasket, removeFromBasket }) => {
   if (basketThings.length !== 0) {
     return (
       <div id="basket">
@@ -17,6 +17,7 @@ const BasketPage = ({ basketThings, setCurrentThingThunkCreator, history, clearB
           history={history}
           basketThings={basketThings}
           setThing={setCurrentThingThunkCreator}
+          remove={removeFromBasket}
         />
         <BasketFooter
             clearBasket={clearBasket}
@@ -46,7 +47,8 @@ const mapStateToPorps = state => ({
 
 const mapDispatchToProps = {
   setCurrentThingThunkCreator,
-  clearBasket
+  clearBasket,
+  removeFromBasket
 };
 
 export default connect(mapStateToPorps, mapDispatchToProps)(BasketPage);
