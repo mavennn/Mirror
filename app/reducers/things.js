@@ -35,29 +35,35 @@ export default function things(state = initialState, action) {
   }
 }
 
-export const setCurrentThingThunkCreator = barcode => (dispatch, getState) => {
-  console.log(barcode);
+export const changeSize = size => (dispatch, getState) => {
   const state = getState();
-  const history = state.things.historyThings;
-  console.log(barcode);
+  const thing = state.things.currentThing;
+  thing.size = size
+  if (size) {
+    dispatch(actions.setCurrentThing(thing));
+  }
+}
+
+export const setCurrentThingThunkCreator = barcode => (dispatch, getState) => {
+  const state = getState();
+  const { historyThings } = state.things;
   axios.get(`http://${ADDRESS}:${PORT}/thing/${barcode}`)
     .then((response) => {
+      const isExist = historyThings.findIndex(x => x.vendorid === response.data.vendorid);
       dispatch(actions.setCurrentThing(response.data));
-      if (history.findIndex(x => x.vendor_code === response.data.vendor_code) === -1) {
+      if (isExist === -1) {
         dispatch(actions.addToHistory(response.data));
       }
     });
 };
 
-export const addToBasketThunkCreator = (thing, size) => (dispatch, getState) => {
-  if (size) {
+export const addToBasketThunkCreator = thing => (dispatch, getState) => {
+  if (thing) {
     const state = getState();
     const basket = state.things.basketThings;
-    const index = basket.findIndex(x => x.vendor_code === thing.vendor_code && x.sizes[0] === size);
+    const index = basket.findIndex(x => x.vendorid === thing.vendorid && x.size === thing.size);
     if (index === -1) {
-      dispatch(actions.addToBasket({ ...thing, sizes: [size] }));
-    } else if (basket[index].sizes[0] !== size) {
-      basket[index].sizes.push(size);
+      dispatch(actions.addToBasket(thing));
     } else {
       alert('товар уже есть в корзине');
     }

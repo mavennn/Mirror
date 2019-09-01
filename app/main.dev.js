@@ -105,7 +105,7 @@ app.on('ready', async () => {
       menuBuilder.buildMenu();
 
       // ввод barcode через ctrl V
-      globalShortcut.register('CommandOrControl+V', () => {
+      globalShortcut.register('CommandOrControl+D', () => {
         const barcode = clipboard.readText();
         console.log(barcode);
         mainWindow.webContents.send('vendorCode', barcode);

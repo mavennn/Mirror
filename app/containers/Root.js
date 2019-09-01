@@ -6,7 +6,7 @@ import io from 'socket.io-client';
 import Routes from '../Routes';
 import routes from '../constants/routes';
 import {
-  setCurrentThing, addToHistory, addRec
+  setCurrentThing, addToHistory
 } from '../actions/things';
 import { SET_SOCKET } from '../actions/sockets';
 
@@ -32,20 +32,18 @@ class Root extends Component<Props> {
     store.dispatch({ type: SET_SOCKET, payload: socket });
 
     ipcRenderer.on('vendorCode', (event, message) => {
+      const { historyThings } = store.getState().things;
       if (message) {
         axios.get(`http://${ADDRESS}:${PORT}/thing/${message}`)
           .then((response) => {
-            console.log(response.data);
             store.dispatch(setCurrentThing(response.data));
-            if (!store.getState().things.historyThings.includes(response.data)) {
+            if (historyThings.findIndex(x => x.vendorid === response.data.vendorid) === -1) {
               store.dispatch(addToHistory(response.data));
-              console.log(store.getState().things.currentThing);
+            }
+            if (store.getState().router.location.pathname !== routes.HOME) {
+              history.push(routes.HOME);
             }
           });
-
-        if (store.getState().router.location.pathname !== routes.HOME) {
-          history.push(routes.HOME);
-        }
       }
     });
   }

@@ -76,6 +76,9 @@ img {
 /* Header */
 header {
   margin: 10px;
+}
+
+.header-icons {
   display: flex;
 }
 
@@ -100,21 +103,29 @@ header a {
 }
 
 /* HomePage */
-.content {
-  justify-content: space-around;
+
+.homePage {
+  display: grid;
+  margin: 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
 /* Carousel */
 .picture-1 {
-  width: 20vw;
+  width: 15vw;
   height: auto;
 }
 
 .picture-2, .picture-3, .picture-4 {
   margin-left: 1vw;
   margin-top: 1vh;
-  width: 5vw;
+  width: 3vw;
   height: auto;
+}
+
+.carousel {
+  width: 50%;
 }
 
 .carousel img {
@@ -124,18 +135,23 @@ header a {
 /* Info */
 
 .info {
+  width: 50%;
   text-align: center;
 }
 
 /* Choose */
 
+.choose {
+  width: 50%;
+}
+
 .choose-list {
+  padding-top: 0;
   display: flex;
 }
 
 .choose-list li {
-  font-size: 2rem;
-  margin: 0 1vw;
+  font-size: 20px;
 }
 
 .choose-list li button {
@@ -147,20 +163,54 @@ header a {
 
 .choose-list li button:focus {
   border-bottom: 3px solid greenyellow;
+  font-weight: bold;
 }
 
-#list {
+.color-btn {
+  min-height: 40px;
+  min-width: 40px;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+/* Buttons */
+.buttons {
   width: 50%;
+  text-align: center;
 }
 
-#list ul {
+.buttons div {
+  margin: 3rem;
+  height: auto;
+}
+
+.buttons div button {
+  width: 15rem;
+  outline: 0;
+  background-color: #000;
+  border-radius: 5px;
+  color: #fff;
+  padding: 20px;
+}
+
+.buttons div button:active {
+  color: yellowgreen;
+  border-color: yellowgreen;
+}
+
+.list {
+  height: 27vh;
+  width: 40vw;
+}
+
+.list ul {
   display: flex;
   overflow-x: scroll;
   overflow-y: auto;
   height: 100%;
 }
 
-#list ul li {
+.list ul li {
   height: 150px;
   min-width: 100px;
   margin-left: 20px;
@@ -168,21 +218,55 @@ header a {
   text-align: center;
 }
 
-#list ul li img {
+.list ul li img {
   height: 150px;
   width: 100px;
   border-radius: 10px;
   hyphens: auto;
 }
 
-#list ul li p {
+.list ul li p {
   font-size: 15px;
   width: 100px;
   overflow: auto;
   white-space: pre-line;
 }
 
-.basket ul {
-  overflow-y: auto;
-  width: 80%;
+/* Basket */
+.basketList {
+  margin-top: 7rem;
+  margin-bottom: 3rem;
+  display: flex;
 }
+
+.basketList li {
+  margin: auto;
+}
+
+.basketList li img {
+  width: 15rem;
+  height: auto;
+}
+
+.basket-description *{
+  margin: 0 0;
+}
+
+.basketFooter {
+  display: flex;
+  justify-content: center;
+}
+
+.basketFooter button {
+  margin: 1rem 2rem;
+  background-color: #000;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  outline: none;
+  color: #fff;
+  padding: 2rem;
+}
+/*.basket ul {*/
+/*  overflow-y: auto;*/
+/*  width: 80%;*/
+/*}*/

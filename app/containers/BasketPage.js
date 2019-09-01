@@ -1,20 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
+import BasketList from '../components/Basket/BasketList';
+import BasketFooter from '../components/Basket/BasketFooter';
 import Emoji from '../components/Emoji';
 
-const BasketPage = ({ basket }) => {
-  if (basket.length !== 0) {
+import { setCurrentThingThunkCreator } from '../reducers/things';
+import { clearBasket } from '../actions/things';
+
+const BasketPage = ({ basketThings, setCurrentThingThunkCreator, history, clearBasket}) => {
+  if (basketThings.length !== 0) {
     return (
       <div id="basket">
         <Header />
-        <ul>
-          {
-            basket.map(item => (
-              <li key={item.id}>{item.model}</li>
-            ))
-        }
-        </ul>
+        <BasketList
+          history={history}
+          basketThings={basketThings}
+          setThing={setCurrentThingThunkCreator}
+        />
+        <BasketFooter
+            clearBasket={clearBasket}
+        />
       </div>
 
     );
@@ -23,7 +29,10 @@ const BasketPage = ({ basket }) => {
     <div id="basket">
       <Header />
       <div className="waiting">
-        <p>Здесь пока ничего нет <Emoji symbol="🙈" /></p>
+        <p>
+Здесь пока ничего нет
+          <Emoji symbol="🙈" />
+        </p>
         <p>Отсканируй товар или перейди в каталог</p>
       </div>
     </div>
@@ -32,7 +41,12 @@ const BasketPage = ({ basket }) => {
 };
 
 const mapStateToPorps = state => ({
-  basket: state.things.basketThings
+  basketThings: state.things.basketThings
 });
 
-export default connect(mapStateToPorps, null)(BasketPage);
+const mapDispatchToProps = {
+  setCurrentThingThunkCreator,
+  clearBasket
+};
+
+export default connect(mapStateToPorps, mapDispatchToProps)(BasketPage);

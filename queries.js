@@ -20,16 +20,20 @@ async function getThingByBarcode(request, response) {
   // поиск размеров
   const sz = await pool.query(`SELECT ${table}.size FROM ${table} WHERE vendorId = '${thing.vendorid}'`);
   const sizes = [];
-  sz.rows.map(s => sizes.push(s.size));
+  sz.rows.map((s) => {
+    if (!sizes.includes(s.size)) sizes.push(s.size);
+    return true;
+  });
   thing.sizes = sizes;
 
   // поиск цветов
   const availableColors = [];
   const colors = await pool.query(`SELECT vendorid, color, barcode FROM things WHERE vendorid ~ '^(${vendor}).+';`);
-  colors.rows.map(c => {
+  colors.rows.map((c) => {
     if (availableColors.findIndex(x => x.color === c.color && x.vendorid === c.vendorid) === -1) {
       availableColors.push(c);
     }
+    return true;
   })
   thing.availableColors = availableColors;
 
