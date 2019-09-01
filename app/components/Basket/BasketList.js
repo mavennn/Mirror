@@ -1,25 +1,28 @@
 import React from 'react';
 import routes from '../../constants/routes';
+import * as trash from '../../assets/icons/trash.svg';
 
-
-const BasketList = ({ basketThings, setThing, history }) => (
+const BasketList = ({ basketThings, setThing, history, remove }) => (
   <ul className="basketList">
     {
           basketThings.map(item => (
-            <li
-              key={item.barcode + item.size}
-              onClick={() => {
-                setThing(item.barcode);
-                history.push(routes.HOME);
-              }}
-            >
-              <img src={require('../../assets/img/template.jpg')} onClick={() => setThing(item.barcode)} />
+            <li key={item.barcode + item.size}>
+              <img
+                src={require('../../assets/img/template.jpg')}
+                onClick={() => {
+                  setThing(item.barcode);
+                  history.push(routes.HOME);
+                }}
+              />
               <div className="basket-description">
                 <p className="title">{item.title}</p>
                 <em className="brand">{item.brand}</em>
                 <p className="size">{item.size}</p>
                 <p className="price">{item.oldprice}</p>
-                <p className="color">{item.color}</p>
+                {/*<p className="color">{item.color}</p>*/}
+                <div className="remove">
+                  <img src={trash} alt="trash" onClick={() => remove(item)} />
+                </div>
               </div>
             </li>
           ))

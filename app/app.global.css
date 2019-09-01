@@ -239,13 +239,16 @@ header a {
 
 /* Basket */
 .basketList {
-  margin-top: 7rem;
-  margin-bottom: 3rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
   display: flex;
+  overflow-x: scroll;
 }
 
 .basketList li {
   margin: auto;
+  margin-left: 40px;
+  flex: 0 0 auto;
 }
 
 .basketList li img {
@@ -255,6 +258,10 @@ header a {
 
 .basket-description *{
   margin: 0 0;
+}
+
+p[class="price"] {
+  color: yellowgreen;
 }
 
 .basketFooter {
@@ -271,11 +278,20 @@ header a {
   color: #fff;
   padding: 2rem;
 }
-/*.basket ul {*/
-/*  overflow-y: auto;*/
-/*  width: 80%;*/
-/*}*/
 
+.remove {
+  display: flex;
+  width: inherit;
+  height: 3.5rem;
+}
+
+.remove img {
+  padding: 10px;
+  filter: brightness(0) invert(1);
+  width: 50px;
+  height: inherit;
+  border: 1px solid;
+}
 
 .alertContainer{
   border: 1px solid rgba(154, 205, 50, 0.7);

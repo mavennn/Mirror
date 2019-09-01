@@ -21,12 +21,16 @@ export default function things(state = initialState, action) {
   switch (action.type) {
     case actions.ADD_CURR_THING:
       return { ...state, currentThing: action.payload };
+    case actions.CHANGE_SIZE:
+      return { ...state, currentThing: { ...state.currentThing, size: action.payload } };
+    case actions.CHANGE_COLOR:
+      return { ...state, currentThing: { ...state.currentThing, color: action.color, vendorid: action.vendorid } };
     case actions.ADD_TO_HISTORY:
       return { ...state, historyThings: state.historyThings.concat(action.payload) };
     case actions.ADD_TO_BASKET:
       return { ...state, basketThings: state.basketThings.concat(action.payload) };
     case actions.REMOVE_FROM_BASKET:
-      return { ...state, basketThings: state.basketThings.splice(state.basketThings.findIndex(x => x.vendorid === action.payload.vendorid && x.size === action.payload.size && x.color === action.payload.color), 1) }
+      return { ...state, basketThings: state.basketThings.slice(0, action.payload).concat(state.basketThings.slice(action.payload + 1)) };
     case actions.CLEAR_BASKET:
       return { ...state, basketThings: action.payload };
     case actions.SET_TO_DEFAULT:
@@ -38,28 +42,26 @@ export default function things(state = initialState, action) {
   }
 }
 
-// Меняет размер
-// принимает в себя нужный размер, заменяет его у шмотки
-// и закидывает в store новую шмотку и измененным размером
-export const changeSize = size => (dispatch, getState) => {
-  const state = getState();
-  const thing = state.things.currentThing;
-  thing.size = size;
+export const changeSizeThunkCreator = size => (dispatch) => {
   if (size) {
-    dispatch(actions.setCurrentThing(thing));
+    dispatch(actions.changeSize(size));
   }
 };
 
-// Меняет вещь на эту же вещь, но другого цвета и с другим vendorid
-export const changeColor = (color, vendorid) => (dispatch, getState) => {
-  const state = getState();
-  const thing = state.things.currentThing;
-  thing.color = color;
-  thing.vendorid = vendorid;
-  if (color && vendorid) {
-    dispatch(actions.setCurrentThing(thing));
+export const changeColorThunkCreator = (color, vendorid) => (dispatch) => {
+  if (color) {
+    dispatch(actions.changeColor(color, vendorid));
   }
 };
+
+export const removeFromBasketThunkCreator = thing => (dispatch, getState) => {
+  if (thing) {
+    const state = getState();
+    const basket = state.things.basketThings;
+    const index = basket.findIndex(x => x.vendorid === thing.vendorid && x.size === thing.size && x.color === thing.color);
+    dispatch(actions.removeFromBasket(index));
+  }
+}
 
 // по баркоду вытаскивает с сервера инфу о вещи, и если ее не было в истории
 // то засовывает ее в историю
@@ -110,6 +112,34 @@ export const addToBasketThunkCreator = thing => (dispatch, getState) => {
     alert('выберите размер');
   }
 };
+
+// export const removeFromBasket = thing => (dispatch, getState) => {
+//   if (thing) {
+//     const state = getState();
+//     const basket = state.things.basketThings;
+//     const index = basket.findIndex(x => x.vendorid === thing.vendorid && x.size === thing.size && x.color === thing.color);
+//     basket.splice(index, 1);
+//     console.log(basket);
+//     Swal.fire({
+//       title: 'Are you sure?',
+//       text: "You won't be able to revert this!",
+//       type: 'warning',
+//       showCancelButton: true,
+//       confirmButtonColor: '#3085d6',
+//       cancelButtonColor: '#d33',
+//       confirmButtonText: 'Yes, delete it!'
+//     }).then((result) => {
+//       if (result.value) {
+//         Swal.fire(
+//           'Deleted!',
+//           'Your file has been deleted.',
+//           'success'
+//         );
+//       }
+//     });
+//     dispatch(actions.fillingBasket(basket));
+//   }
+// };
 
 export const getConsultantThunkCreator = (type, ...params) => (dispatch, getState) => {
   const roomNumber = process.env.ROOM;

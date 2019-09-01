@@ -8,11 +8,11 @@ import Buttons from '../components/Home/Buttons';
 import List from '../components/List';
 import Emoji from '../components/Emoji';
 
-import { addToBasketThunkCreator, changeSize, setCurrentThingThunkCreator, changeColor } from '../reducers/things';
+import { addToBasketThunkCreator, setCurrentThingThunkCreator, changeColorThunkCreator, changeSizeThunkCreator } from '../reducers/things';
 
 // eslint-disable-next-line react/prop-types
 const HomePage = ({
-  currentThing, historyThings, capsule, setCurrentThingThunkCreator, addToBasketThunkCreator, changeSize, changeColor,
+  currentThing, historyThings, capsule, setCurrentThingThunkCreator, addToBasketThunkCreator, changeColorThunkCreator, changeSizeThunkCreator
 }) => {
   if (Object.keys(currentThing).length !== 0) {
     return (
@@ -26,8 +26,8 @@ const HomePage = ({
           <div className="flex">
             <Choose
               thing={currentThing}
-              changeSize={changeSize}
-              changeColor={changeColor}
+              changeSize={changeSizeThunkCreator}
+              changeColor={changeColorThunkCreator}
             />
             <Buttons
               thing={currentThing}
@@ -72,8 +72,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   setCurrentThingThunkCreator,
   addToBasketThunkCreator,
-  changeSize,
-  changeColor,
+  changeSizeThunkCreator,
+  changeColorThunkCreator,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
