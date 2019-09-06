@@ -74,6 +74,10 @@ class Root extends Component<Props> {
     });
   }
 
+  componentWillUnmount() {
+    socket.emit('roomDisconnected', ROOM);
+  }
+
   render() {
     const { store, history } = this.props;
     return (
