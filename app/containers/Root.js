@@ -15,6 +15,7 @@ require('dotenv').config();
 
 const ADDRESS = process.env.SERVER_ADDRESS;
 const PORT = process.env.SERVER_PORT;
+const ROOM = process.env.ROOM;
 
 const { ipcRenderer } = window.require('electron');
 
@@ -53,6 +54,7 @@ class Root extends Component<Props> {
     const { history } = this.props;
     checkInaction(history);
     socket = io(`http://${ADDRESS}:${PORT}/rooms`);
+    socket.emit('newRoomConnection', ROOM);
     store.dispatch({ type: SET_SOCKET, payload: socket });
 
     ipcRenderer.on('vendorCode', (event, message) => {
