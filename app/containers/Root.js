@@ -11,7 +11,7 @@ import {
 } from '../actions/things';
 import { SET_SOCKET } from '../actions/sockets';
 
-require('dotenv');
+require('dotenv').config();
 
 const ADDRESS = process.env.SERVER_ADDRESS;
 const PORT = process.env.SERVER_PORT;
