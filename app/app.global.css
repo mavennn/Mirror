@@ -1,11 +1,6 @@
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
 @font-face {
-  font-family: SF;
-  src: url('./assets/fonts/SF-Pro-text-Ultralight.woff');
-}
-
-@font-face {
   font-family: Circe;
   src: url('assets/fonts/Circe-Rounded.ttf');
 }
