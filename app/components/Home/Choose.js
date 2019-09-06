@@ -56,7 +56,6 @@ const Choose = ({ thing, changeSize, changeColor }) => (
                         style={{ backgroundColor: `${getColorCode(c.color)}` }}
                         onClick={() => changeColor(c.color, c.vendorid)}
                       />
-                      {console.log(`vendor is ${c.vendorid}`)}
                     </button>
                   </li>
                 ))

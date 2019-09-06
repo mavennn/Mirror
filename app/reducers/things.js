@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import $ from 'jquery';
 import * as actions from '../actions/things';
 import sockets from '../constants/sockets';
 
@@ -113,37 +114,11 @@ export const addToBasketThunkCreator = thing => (dispatch, getState) => {
   }
 };
 
-// export const removeFromBasket = thing => (dispatch, getState) => {
-//   if (thing) {
-//     const state = getState();
-//     const basket = state.things.basketThings;
-//     const index = basket.findIndex(x => x.vendorid === thing.vendorid && x.size === thing.size && x.color === thing.color);
-//     basket.splice(index, 1);
-//     console.log(basket);
-//     Swal.fire({
-//       title: 'Are you sure?',
-//       text: "You won't be able to revert this!",
-//       type: 'warning',
-//       showCancelButton: true,
-//       confirmButtonColor: '#3085d6',
-//       cancelButtonColor: '#d33',
-//       confirmButtonText: 'Yes, delete it!'
-//     }).then((result) => {
-//       if (result.value) {
-//         Swal.fire(
-//           'Deleted!',
-//           'Your file has been deleted.',
-//           'success'
-//         );
-//       }
-//     });
-//     dispatch(actions.fillingBasket(basket));
-//   }
-// };
-
 export const getConsultantThunkCreator = (type, ...params) => (dispatch, getState) => {
+  console.log('Консультант вызывается');
   const roomNumber = process.env.ROOM;
   let query = {};
+  const inProcessing = false;
   const date = new Date();
   const time = `${date.getHours()}:${date.getMinutes()}`;
   const state = getState();
@@ -151,20 +126,47 @@ export const getConsultantThunkCreator = (type, ...params) => (dispatch, getStat
   switch (type) {
     case sockets.CALL_CONSULTANT:
       query = {
-        time, type, roomNumber, text: sockets.CALL_TEXT
+        time, type, roomNumber, text: sockets.CALL_TEXT, inProcessing
       };
+      Swal.fire({
+        title: 'Консультант вызван',
+        timer: 1000,
+        type: 'success',
+        customClass: {
+          popup: 'alertContainer',
+          title: 'alertTitle',
+        }
+      });
       break;
     case sockets.BRING_THING:
       const [title, vendorCode, size, price] = params;
       query = {
-        time, type, roomNumber, text: sockets.BRING_TEXT, title, vendorCode, size, price
+        time, type, roomNumber, text: sockets.BRING_TEXT, title, vendorCode, size, price, inProcessing
       };
+      Swal.fire({
+        title: 'Вашу вещь сейчас принесут',
+        timer: 1000,
+        type: 'success',
+        customClass: {
+          popup: 'alertContainer',
+          title: 'alertTitle',
+        }
+      });
       break;
     case sockets.TO_CHECKOUT:
       const [things] = params;
       query = {
-        time, type, text: sockets.TO_CHECKOUT_TEXT, roomNumber, things
+        time, type, text: sockets.TO_CHECKOUT_TEXT, roomNumber, things, inProcessing
       };
+      Swal.fire({
+        title: 'Сейчас отнесем на кассу :)',
+        timer: 1000,
+        type: 'success',
+        customClass: {
+          popup: 'alertContainer',
+          title: 'alertTitle',
+        }
+      });
       break;
     default:
       console.log('undefined type');

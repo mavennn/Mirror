@@ -36,7 +36,7 @@ async function getThingByBarcode(request, response) {
     return true;
   })
   thing.availableColors = availableColors;
-
+  console.log(thing);
   response.status(200).json(thing);
 }
 

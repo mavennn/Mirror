@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Buttons = ({ thing, addToBasket }) => (
+import * as sockets from '../../constants/sockets';
+
+const Buttons = ({ getConsultant, addToBasket, thing }) => (
   <div className="buttons">
     <div>
       <button onClick={() => {
@@ -12,16 +14,20 @@ const Buttons = ({ thing, addToBasket }) => (
       </button>
     </div>
     <div>
-      <button>Принести</button>
+      <button
+        onClick={() => getConsultant(sockets.BRING_THING, thing.title, thing.vendorid, thing.size, thing.newprice)}
+      >Принести</button>
     </div>
   </div>
 );
 
 Buttons.defaultProps = {
-  addToBasket: PropTypes.func,
+  getConsultant: () => {},
+  addToBasket: () => {},
 };
 
 Buttons.propTypes = {
+  getConsultant: PropTypes.func,
   addToBasket: PropTypes.func,
 };
 

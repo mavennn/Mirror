@@ -157,17 +157,24 @@ header a {
 
 .choose-list li button {
   outline: 0;
-  border: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
   background-color: #000;
   color: #fff;
 }
 
+.onBorderBottom {
+  border-bottom: 3px solid yellowgreen;
+}
+
 .size-button:active {
-  border-bottom: 3px solid greenyellow;
+  /*border-bottom: 3px solid greenyellow;*/
   font-weight: bold;
 }
 .choose-list li button:focus {
-  border-bottom: 3px solid greenyellow;
+  /*border-bottom: 3px solid greenyellow;*/
   font-weight: bold;
 }
 

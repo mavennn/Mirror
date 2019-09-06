@@ -82,7 +82,7 @@ app.on('ready', async () => {
         height: 728
       });
 
-      mainWindow.setFullScreen(true);
+      // mainWindow.setFullScreen(true);
 
       mainWindow.loadURL(`file://${__dirname}/app.html#${routes.EXPECTATION}`);
 
@@ -104,7 +104,7 @@ app.on('ready', async () => {
       const menuBuilder = new MenuBuilder(mainWindow);
       menuBuilder.buildMenu();
 
-      // ввод barcode через ctrl V
+      // ввод barcode через ctrl  V
       globalShortcut.register('CommandOrControl+D', () => {
         const barcode = clipboard.readText();
         console.log(barcode);

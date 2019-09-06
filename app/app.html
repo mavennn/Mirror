@@ -28,6 +28,14 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      const $ = require('jquery');
+
+      $(document).ready(function () {
+        const sizes = $('.size-button');
+        console.log(sizes)
+      })
+    </script>
     <script type="text/javascript">
       {
         const scripts = [];
@@ -65,7 +73,7 @@
     <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" crossorigin />
     <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin />
     <script type="text/javascript" src="./assets/slick/slick.min.js">
-      import $ from 'jquery';
+      const $ = require('jquery');
 
       $(document).ready(function(){
         $('.slider-for').slick({

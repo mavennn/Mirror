@@ -9,6 +9,7 @@ const db = require('./queries.js');
 const io = require('socket.io')(server);
 require('dotenv').config();
 const sockets = require('./app/constants/sockets');
+const _ = require('lodash');
 
 const PORT = process.env.SERVER_PORT;
 
@@ -29,30 +30,35 @@ const rooms = io.of(sockets.ROOMS);
 consultants.on('connection', (consultant) => {
   console.log(`Consultant ${consultant.handshake.address}`);
 
-  consultants.emit('getQueries', queries);
+  consultant.on('giveMeQueries', () => {
+    consultant.emit('giveYouQueries', queries);
+  });
 
-  consultant.on('disconnect', () => console.log(`Consultant ${consultant.handshake.address} disconnected`));
+  consultant.on('takeInWork', (query) => {
+    const index = _.findIndex(queries, query);
+    queries[index].inProcessing = true;
+    consultants.emit('getQueries', queries);
+  });
+
+  consultant.on('completed', (query) => {
+    const index = _.findIndex(queries, query);
+    queries.splice(index, 1);
+    consultants.emit('getQueries', queries);
+  });
+
+  consultants.on('disconnect', () => console.log(`Consultant ${consultant.handshake.address} disconnected`));
 });
 
 rooms.on('connection', (room) => {
   console.log(`Room ${room.handshake.address}`);
 
-
   room.on('getConsultant', (query) => {
-    console.log(query);
-    consultants.emit('newQuery', query);
+    if (_.find(queries, query) === undefined) {
+      queries.push(query);
+      console.log(query);
+      consultants.emit('getQueries', queries);
+    }
   });
-
-  //
-  // room.on(sockets.CALL_CONSULTANT, (roomNuer) => { // слушаем событие
-  //   // console.log(`нужен консультант в комнату ${room}`);
-  //   consultants.emit(sockets.CALL_CONSULTANT, roomNumber); // отправляем на все устройства консультанта
-  // });
-  //
-  // room.on(sockets.BRING_THING, (data) => {
-  //   console.log(`Принести вещь в комнату ${data[0]}`);
-  //   consultants.emit(sockets.BRING_THING, (data));
-  // });
 
   room.on('disconnect', () => console.log(`Room ${room.handshake.address} disconnected`));
 });

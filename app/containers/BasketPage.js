@@ -1,14 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
+
 import Header from '../components/Header';
 import BasketList from '../components/Basket/BasketList';
 import BasketFooter from '../components/Basket/BasketFooter';
 import Emoji from '../components/Emoji';
-
-import { setCurrentThingThunkCreator, removeFromBasketThunkCreator } from '../reducers/things';
+import {
+  getConsultantThunkCreator,
+  setCurrentThingThunkCreator,
+  removeFromBasketThunkCreator
+} from '../reducers/things';
 import { clearBasket } from '../actions/things';
 
-const BasketPage = ({ basketThings, setCurrentThingThunkCreator, history, clearBasket, removeFromBasketThunkCreator }) => {
+const BasketPage = ({
+  getConsultantThunkCreator,
+  setCurrentThingThunkCreator,
+  removeFromBasketThunkCreator,
+  clearBasket,
+  basketThings,
+  history,
+}) => {
   if (basketThings.length !== 0) {
     return (
       <div id="basket">
@@ -20,6 +33,7 @@ const BasketPage = ({ basketThings, setCurrentThingThunkCreator, history, clearB
           remove={removeFromBasketThunkCreator}
         />
         <BasketFooter
+          getConsultant={getConsultantThunkCreator}
           clearBasket={clearBasket}
         />
       </div>
@@ -41,11 +55,26 @@ const BasketPage = ({ basketThings, setCurrentThingThunkCreator, history, clearB
   );
 };
 
+BasketPage.defaultProps = {
+  getConsultantThunkCreator: () => {},
+  setCurrentThingThunkCreator: () => {},
+  removeFromBasketThunkCreator: () => {},
+  clearBasket: () => {},
+};
+
+BasketPage.propTypes = {
+  getConsultantThunkCreator: PropTypes.func,
+  setCurrentThingThunkCreator: PropTypes.func,
+  removeFromBasketThunkCreator: PropTypes.func,
+  clearBasket: PropTypes.func,
+};
+
 const mapStateToPorps = state => ({
   basketThings: state.things.basketThings
 });
 
 const mapDispatchToProps = {
+  getConsultantThunkCreator,
   setCurrentThingThunkCreator,
   removeFromBasketThunkCreator,
   clearBasket,

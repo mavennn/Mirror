@@ -10,7 +10,6 @@ import {
   setCurrentThing, addToHistory
 } from '../actions/things';
 import { SET_SOCKET } from '../actions/sockets';
-import ExpectationPage from './ExpectationPage';
 
 require('dotenv');
 
@@ -43,7 +42,6 @@ function checkInaction(history) {
   }
 
   function timerReset() {
-    console.log('действие');
     clearTimeout(timer);
     timer = setTimeout(timerElapsed, 1 * 60 * 1000); // 1 min
   }
