@@ -59,16 +59,32 @@ app.on('window-all-closed', () => {
 app.on('ready', async () => {
   SerialPort.list()
     .then((ports) => {
-      // const serialPortName = ports[ports.findIndex(x => x.vendorId === '23d0')].comName;
-      // console.log(serialPortName);
-      // const serialPort = new SerialPort(serialPortName, {
-      //   baudRate: 9600, // бит в секунду
-      //   dataBits: 8, // биты данных
-      //   parity: 'none', // четность
-      //   stopBits: 1, // стоповые
-      // });
+      const index = ports.findIndex(x => x.vendorId === '23d0');
 
+      if (index !== -1) {
+        const serialPortName = ports[index].comName;
+        console.log(serialPortName);
+        const serialPort = new SerialPort(serialPortName, {
+          baudRate: 9600, // бит в секунду
+          dataBits: 8, // биты данных
+          parity: 'none', // четность
+          stopBits: 1, // стоповые
+        });
 
+        serialPort.on('open', () => {
+          console.log(`Scanner: Open serial port ${serialPortName}`);
+          serialPort.on('data', (data) => {
+            const msg = data.toString('utf8').substr(0, Math.max(0, data.length - 1));
+            if (msg && msg.length > 0) {
+              console.log(`Scanner: vendor_code is ${msg}`);
+              mainWindow.webContents.send('vendorCode', msg);
+            } else {
+              console.log('Scanner: vendor_code is empty');
+            }
+          });
+        });
+      }
+    
       if (
         process.env.NODE_ENV === 'development'
         || process.env.DEBUG_PROD === 'true'
@@ -111,18 +127,7 @@ app.on('ready', async () => {
         mainWindow.webContents.send('vendorCode', barcode);
       });
 
-      // serialPort.on('open', () => {
-      //   console.log(`Scanner: Open serial port ${serialPortName}`);
-      //   serialPort.on('data', (data) => {
-      //     const msg = data.toString('utf8').substr(0, Math.max(0, data.length - 1));
-      //     if (msg && msg.length > 0) {
-      //       console.log(`Scanner: vendor_code is ${msg}`);
-      //       mainWindow.webContents.send('vendorCode', msg);
-      //     } else {
-      //       console.log('Scanner: vendor_code is empty');
-      //     }
-      //   });
-      // });
+      
 
       new AppUpdater();
     }).catch(console.log('no scanner'));
