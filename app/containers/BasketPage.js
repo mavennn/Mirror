@@ -35,6 +35,7 @@ const BasketPage = ({
         <BasketFooter
           getConsultant={getConsultantThunkCreator}
           clearBasket={clearBasket}
+          basketThings={basketThings}
         />
       </div>
 

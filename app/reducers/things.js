@@ -4,7 +4,7 @@ import $ from 'jquery';
 import * as actions from '../actions/things';
 import sockets from '../constants/sockets';
 
-require('dotenv');
+require('dotenv').config();
 
 const ADDRESS = process.env.SERVER_ADDRESS;
 const PORT = process.env.SERVER_PORT;
@@ -14,7 +14,7 @@ const initialState = {
   historyThings: [],
   basketThings: [],
   capsule: [],
-  isConsultantComing: false,
+  isConsultantCalled: false,
 };
 
 
@@ -62,7 +62,7 @@ export const removeFromBasketThunkCreator = thing => (dispatch, getState) => {
     const index = basket.findIndex(x => x.vendorid === thing.vendorid && x.size === thing.size && x.color === thing.color);
     dispatch(actions.removeFromBasket(index));
   }
-}
+};
 
 // по баркоду вытаскивает с сервера инфу о вещи, и если ее не было в истории
 // то засовывает ее в историю
@@ -114,63 +114,85 @@ export const addToBasketThunkCreator = thing => (dispatch, getState) => {
   }
 };
 
+export const mutualQueryParams = () => ({
+  roomNumber: process.env.ROOM,
+  inProcessing: false,
+  time:  `${new Date().getHours()}:${new Date().getMinutes()}`,
+  consultantName: '',
+});
+
+export const createCallCansultantQuery = () => Object.assign({ text: sockets.CALL_TEXT }, mutualQueryParams());
+
+export const createBringThingQuery = (title, vendorCode, size, price) => {
+  const bringThingParams = {title, vendorCode, size, price, text: sockets.BRING_TEXT, type: sockets.BRING_THING};
+  return Object.assign(bringThingParams, mutualQueryParams());
+};
+
+export const createToCheckoutQuery = (things) => {
+  return Object.assign({ text: sockets.TO_CHECKOUT_TEXT, type: sockets.TO_CHECKOUT, things }, mutualQueryParams());
+};
+
+export const sendCallConsultantQueryToServer = (socket) => {
+  const query = createCallCansultantQuery();
+  socket.emit('getConsultant', query);
+  Swal.fire({
+    title: 'Консультант вызван',
+    timer: 1000,
+    type: 'success',
+    customClass: {
+      popup: 'alertContainer',
+      title: 'alertTitle',
+    }
+  });
+};
+
+export const sendBringThingQueryToServer = (socket, ...params) => {
+  const query = createBringThingQuery(...params);
+  socket.emit('getConsultant', query);
+  Swal.fire({
+    title: 'Вашу вещь сейчас принесут',
+    timer: 1000,
+    type: 'success',
+    customClass: {
+      popup: 'alertContainer',
+      title: 'alertTitle',
+    }
+  });
+};
+
+export const sendToCheckOutQueryToServer = (socket, ...params) => {
+  const query = createToCheckoutQuery(...params);
+  console.log(query);
+  Swal.fire({
+    title: 'Сейчас отнесем на кассу :)',
+    timer: 1000,
+    type: 'success',
+    customClass: {
+      popup: 'alertContainer',
+      title: 'alertTitle',
+    }
+  });
+  socket.emit('getConsultant', query);
+};
+
 export const getConsultantThunkCreator = (type, ...params) => (dispatch, getState) => {
-  console.log('Консультант вызывается');
-  const roomNumber = process.env.ROOM;
-  let query = {};
-  const inProcessing = false;
-  const date = new Date();
-  const time = `${date.getHours()}:${date.getMinutes()}`;
   const state = getState();
   const { socket } = state.sockets;
+  const { isConsultantCalled } = state.things;
+  if (isConsultantCalled) {
+
+  }
   switch (type) {
     case sockets.CALL_CONSULTANT:
-      query = {
-        time, type, roomNumber, text: sockets.CALL_TEXT, inProcessing
-      };
-      Swal.fire({
-        title: 'Консультант вызван',
-        timer: 1000,
-        type: 'success',
-        customClass: {
-          popup: 'alertContainer',
-          title: 'alertTitle',
-        }
-      });
+      sendCallConsultantQueryToServer(socket);
       break;
     case sockets.BRING_THING:
-      const [title, vendorCode, size, price] = params;
-      query = {
-        time, type, roomNumber, text: sockets.BRING_TEXT, title, vendorCode, size, price, inProcessing
-      };
-      Swal.fire({
-        title: 'Вашу вещь сейчас принесут',
-        timer: 1000,
-        type: 'success',
-        customClass: {
-          popup: 'alertContainer',
-          title: 'alertTitle',
-        }
-      });
+      sendBringThingQueryToServer(socket, ...params);
       break;
     case sockets.TO_CHECKOUT:
-      const [things] = params;
-      query = {
-        time, type, text: sockets.TO_CHECKOUT_TEXT, roomNumber, things, inProcessing
-      };
-      Swal.fire({
-        title: 'Сейчас отнесем на кассу :)',
-        timer: 1000,
-        type: 'success',
-        customClass: {
-          popup: 'alertContainer',
-          title: 'alertTitle',
-        }
-      });
+      sendToCheckOutQueryToServer(socket, params);
       break;
     default:
       console.log('undefined type');
   }
-  console.log(query);
-  socket.emit('getConsultant', query);
 };
