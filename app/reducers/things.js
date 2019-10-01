@@ -1,6 +1,5 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import $ from 'jquery';
 import * as actions from '../actions/things';
 import sockets from '../constants/sockets';
 
@@ -42,6 +41,13 @@ export default function things(state = initialState, action) {
       return state;
   }
 }
+
+export const setToDefaultThunkCreator = () => (dispatch, getState) => {
+  const state = getState();
+  const { socket } = state.sockets;
+  socket.emit('clearRoom', process.env.ROOM);
+  dispatch(actions.setToDefault());
+};
 
 export const changeSizeThunkCreator = size => (dispatch) => {
   if (size) {
@@ -117,20 +123,26 @@ export const addToBasketThunkCreator = thing => (dispatch, getState) => {
 export const mutualQueryParams = () => ({
   roomNumber: process.env.ROOM,
   inProcessing: false,
-  time:  `${new Date().getHours()}:${new Date().getMinutes()}`,
+  time: `${new Date().getHours()}:${new Date().getMinutes()}`,
   consultantName: '',
 });
 
 export const createCallCansultantQuery = () => Object.assign({ text: sockets.CALL_TEXT }, mutualQueryParams());
 
 export const createBringThingQuery = (title, vendorCode, size, price) => {
-  const bringThingParams = {title, vendorCode, size, price, text: sockets.BRING_TEXT, type: sockets.BRING_THING};
+  const bringThingParams = {
+    title,
+    vendorCode,
+    size,
+    price,
+    text: sockets.BRING_TEXT,
+    type: sockets.BRING_THING
+  };
   return Object.assign(bringThingParams, mutualQueryParams());
 };
 
-export const createToCheckoutQuery = (things) => {
-  return Object.assign({ text: sockets.TO_CHECKOUT_TEXT, type: sockets.TO_CHECKOUT, things }, mutualQueryParams());
-};
+// eslint-disable-next-line no-shadow,max-len
+export const createToCheckoutQuery = things => Object.assign({ text: sockets.TO_CHECKOUT_TEXT, type: sockets.TO_CHECKOUT, things }, mutualQueryParams());
 
 export const sendCallConsultantQueryToServer = (socket) => {
   const query = createCallCansultantQuery();

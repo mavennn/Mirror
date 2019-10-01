@@ -11,6 +11,8 @@ import {
 } from '../actions/things';
 import { SET_SOCKET } from '../actions/sockets';
 
+import Thing from '../../.configs/thing';
+
 require('dotenv').config();
 
 const ADDRESS = process.env.SERVER_ADDRESS;
@@ -62,9 +64,10 @@ class Root extends Component<Props> {
       if (message) {
         axios.get(`http://${ADDRESS}:${PORT}/thing/${message}`)
           .then((response) => {
+            let thingObject = new Thing(response.data);
             store.dispatch(setCurrentThing(response.data));
-            if (historyThings.findIndex(x => x.vendorid === response.data.vendorid) === -1) {
-              store.dispatch(addToHistory(response.data));
+            if (historyThings.findIndex(x => x.vendorcode === thingObject.vendorcode) === -1) {
+              store.dispatch(addToHistory(thingObject));
             }
             if (store.getState().router.location.pathname !== routes.HOME) {
               history.push(routes.HOME);

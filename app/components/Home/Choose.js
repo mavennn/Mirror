@@ -34,7 +34,7 @@ const Choose = ({ thing, changeSize, changeColor }) => (
   <div className="choose">
     <div className="sizes">
       <p><strong>Выберите размер: </strong></p>
-      <ul className="choose-list">
+      {/* <ul className="choose-list">
         {
               thing.sizes.map(s => (
                 <li key={s}>
@@ -42,11 +42,11 @@ const Choose = ({ thing, changeSize, changeColor }) => (
                 </li>
               ))
           }
-      </ul>
+      </ul> */}
     </div>
     <div className="colors">
       <p><strong>Выберите цвет: </strong></p>
-      <ul className="choose-list">
+      {/* <ul className="choose-list">
         {
                 thing.availableColors.map(c => (
                   <li key={c.barcode}>
@@ -60,7 +60,7 @@ const Choose = ({ thing, changeSize, changeColor }) => (
                   </li>
                 ))
             }
-      </ul>
+      </ul> */}
     </div>
   </div>
 );

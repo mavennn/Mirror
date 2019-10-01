@@ -9,5 +9,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="smartMirror" />
+    <orderEntry type="module" module-name="server" />
+    <orderEntry type="module" module-name="ConsultantApp" />
   </component>
 </module>

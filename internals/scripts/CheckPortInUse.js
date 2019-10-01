@@ -1,4 +1,3 @@
-// @flow
 import chalk from 'chalk';
 import detectPort from 'detect-port';
 
@@ -16,4 +15,4 @@ import detectPort from 'detect-port';
       process.exit(0);
     }
   });
-})();
+}());

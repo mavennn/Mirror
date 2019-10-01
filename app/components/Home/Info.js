@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const Info = ({ thing }) => (
+const Info = ({ thing }) => {
+  useEffect (() => {
+    console.log(thing)
+  });
+
+  return (
   <div className="info">
     <div>
       <h2>{thing.title}</h2>
@@ -16,6 +21,7 @@ const Info = ({ thing }) => (
         }
     </div>
   </div>
-);
+  );
+};
 
 export default Info;
