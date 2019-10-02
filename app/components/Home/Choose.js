@@ -25,6 +25,8 @@ const getColorCode = (color) => {
       return 'red';
     case 'Бордовый':
       return 'burgundy';
+    case 'Коричневый':
+      return 'brown';
     default:
       return null;
   }
@@ -34,19 +36,19 @@ const Choose = ({ thing, changeSize, changeColor }) => (
   <div className="choose">
     <div className="sizes">
       <p><strong>Выберите размер: </strong></p>
-      {/* <ul className="choose-list">
+      <ul className="choose-list">
         {
-              thing.sizes.map(s => (
+              thing.availableSizes.map(s => (
                 <li key={s}>
                   <button className="size-button" onClick={() => changeSize(s)}>{s}</button>
                 </li>
               ))
           }
-      </ul> */}
+      </ul>
     </div>
     <div className="colors">
       <p><strong>Выберите цвет: </strong></p>
-      {/* <ul className="choose-list">
+      <ul className="choose-list">
         {
                 thing.availableColors.map(c => (
                   <li key={c.barcode}>
@@ -54,13 +56,13 @@ const Choose = ({ thing, changeSize, changeColor }) => (
                       <div
                         className="color-button"
                         style={{ backgroundColor: `${getColorCode(c.color)}` }}
-                        onClick={() => changeColor(c.color, c.vendorid)}
+                        onClick={() => changeColor(c.color, c.vendorcode)}
                       />
                     </button>
                   </li>
                 ))
             }
-      </ul> */}
+      </ul>
     </div>
   </div>
 );

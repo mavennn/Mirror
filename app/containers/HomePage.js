@@ -54,6 +54,7 @@ const HomePage = ({
           <div>
             <List
               title="Просмотренное"
+              thing={currentThing}
               list={historyThings}
               setThing={setCurrentThingThunkCreator}
             />

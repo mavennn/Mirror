@@ -135,6 +135,18 @@ eval("module.exports = axios;\n\n//# sourceURL=webpack://renderer/external_%22ax
 
 /***/ }),
 
+/***/ "bcrypt":
+/*!*************************!*\
+  !*** external "bcrypt" ***!
+  \*************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = bcrypt;\n\n//# sourceURL=webpack://renderer/external_%22bcrypt%22?");
+
+/***/ }),
+
 /***/ "body-parser":
 /*!******************************!*\
   !*** external "body-parser" ***!
@@ -303,6 +315,18 @@ eval("module.exports = jquery;\n\n//# sourceURL=webpack://renderer/external_%22j
 
 /***/ }),
 
+/***/ "lodash":
+/*!*************************!*\
+  !*** external "lodash" ***!
+  \*************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = lodash;\n\n//# sourceURL=webpack://renderer/external_%22lodash%22?");
+
+/***/ }),
+
 /***/ "nodemon":
 /*!**************************!*\
   !*** external "nodemon" ***!
@@ -348,6 +372,18 @@ eval("module.exports = prop-types;\n\n//# sourceURL=webpack://renderer/external_
 /***/ (function(module, exports) {
 
 eval("module.exports = react;\n\n//# sourceURL=webpack://renderer/external_%22react%22?");
+
+/***/ }),
+
+/***/ "react-bootstrap":
+/*!**********************************!*\
+  !*** external "react-bootstrap" ***!
+  \**********************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = react-bootstrap;\n\n//# sourceURL=webpack://renderer/external_%22react-bootstrap%22?");
 
 /***/ }),
 
@@ -528,6 +564,18 @@ eval("module.exports = socket.io-client;\n\n//# sourceURL=webpack://renderer/ext
 /***/ (function(module, exports) {
 
 eval("module.exports = source-map-support;\n\n//# sourceURL=webpack://renderer/external_%22source-map-support%22?");
+
+/***/ }),
+
+/***/ "sweetalert2":
+/*!******************************!*\
+  !*** external "sweetalert2" ***!
+  \******************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = sweetalert2;\n\n//# sourceURL=webpack://renderer/external_%22sweetalert2%22?");
 
 /***/ })
 

@@ -1,54 +1,54 @@
 class Thing {
     constructor ({ brand, color, price, title , size, barcode, vendorcode, img_base64, availableSizes, availableColors}) {
-        this.title = title;
-        this.price = price;
-        this.vendorcode = vendorcode;
-        this.brand = brand;
-        this.size = size;
-        this.barcode = barcode;
-        this.color = color;
-        this.img_base64 = img_base64;
-        this.availableColors = availableColors;
-        this.availableSizes = availableSizes;
+        this._title = title;
+        this._price = price;
+        this._vendorcode = vendorcode;
+        this._brand = brand;
+        this._size = size;
+        this._barcode = barcode;
+        this._color = color;
+        this._img_base64 = img_base64;
+        this._availableColors = availableColors;
+        this._availableSizes = availableSizes;
     }
     
-    get _title () {
-        return this.title;
+    get title () {
+        return this._title;
     }
 
-    get _price () {
-        return this.price;
+    get price () {
+        return this._price;
     }
 
-    get _vendorcode() {
-        return this.vendorcode;
+    get vendorcode() {
+        return this._vendorcode;
     }
 
-    get _brand () {
-        return this.brand;
+    get brand () {
+        return this._brand;
     }
 
-    get _size () {
-        return this.size;
+    get size () {
+        return this._size;
     }
 
-    get _color () {
-        return this.color;
+    get color () {
+        return this._color;
     }
 
-    get _img_base64 () {
-        return this.img_base64;
+    get img_base64 () {
+        return this._img_base64;
     }
 
-    get _barcode () {
-        return this.barcode;
+    get barcode () {
+        return this._barcode;
     }
 
-    get _availableSizes () {
-        return this.availableSizes;
+    get availableSizes () {
+        return this._availableSizes;
     }
 
-    get _availableColors () {
+    get availableColors () {
         return this._availableColors;
     }
 };

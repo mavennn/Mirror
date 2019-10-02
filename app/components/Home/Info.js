@@ -14,11 +14,7 @@ const Info = ({ thing }) => {
       <h3>{thing.brand}</h3>
     </div>
     <div>
-      {
-            thing.newprice === '0'
-              ? <h1>{thing.oldprice}</h1>
-              : <h1>{thing.newprice}</h1>
-        }
+      { thing.price }
     </div>
   </div>
   );
