@@ -1,11 +1,6 @@
-import React, {useEffect}  from 'react';
+import React from 'react';
 
 const Carousel = ({ thing }) => {
-
-  useEffect(() => {
-    console.log(thing.img_base64);
-  });
-
   return(
     <div className="flex">
       <div className="slider-for">
