@@ -8,7 +8,7 @@ const BasketList = ({ basketThings, setThing, history, remove }) => (
           basketThings.map(item => (
             <li key={item.barcode + item.size}>
               <img
-                src={require('../../assets/img/template.jpg')}
+                src={item.img_base64}
                 onClick={() => {
                   setThing(item.barcode);
                   history.push(routes.HOME);
@@ -18,8 +18,8 @@ const BasketList = ({ basketThings, setThing, history, remove }) => (
                 <p className="title">{item.title}</p>
                 <em className="brand">{item.brand}</em>
                 <p className="size">{item.size}</p>
-                <p className="price">{item.oldprice}</p>
-                {/*<p className="color">{item.color}</p>*/}
+                <p className="price">{item.price}</p>
+                <p className="color">{item.color}</p>
                 <div className="remove">
                   <img src={trash} alt="trash" onClick={() => remove(item)} />
                 </div>
