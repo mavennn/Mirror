@@ -49,12 +49,15 @@ const HomePage = ({
             />
           </div>
           <div>
-            <List title="Рекомендации" list={capsule} />
+            <List 
+              title="Рекомендации" 
+              list={currentThing.recommendations}
+              setThing={setCurrentThingThunkCreator}
+            />
           </div>
           <div>
             <List
               title="Просмотренное"
-              thing={currentThing}
               list={historyThings}
               setThing={setCurrentThingThunkCreator}
             />
