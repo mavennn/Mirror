@@ -1,5 +1,5 @@
 class Thing {
-    constructor ({ brand, color, price, title , size, barcode, vendorcode, img_base64, availableSizes, availableColors}) {
+    constructor ({ brand, color, price, title , size, barcode, vendorcode, img_base64, availableSizes, availableColors, recommendations}) {
         this._title = title;
         this._price = price;
         this._vendorcode = vendorcode;
@@ -10,6 +10,7 @@ class Thing {
         this._img_base64 = img_base64;
         this._availableColors = availableColors;
         this._availableSizes = availableSizes;
+        this._recommendations = recommendations;
     }
     
     get title () {
@@ -50,6 +51,10 @@ class Thing {
 
     get availableColors () {
         return this._availableColors;
+    }
+
+    get recommendations () {
+        return this._recommendations;
     }
 };
 
