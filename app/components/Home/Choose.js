@@ -55,7 +55,7 @@ const Choose = ({ thing, changeSize, changeColor }) => (
                     <button>
                       <div
                         className="color-button"
-                        style={{ backgroundColor: `${getColorCode(c.color)}` }}
+                        style={{ backgroundColor: `${getColorCode(c)}` }}
                         onClick={() => changeColor(c.color, c.vendorcode)}
                       />
                     </button>
