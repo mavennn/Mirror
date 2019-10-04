@@ -66,7 +66,7 @@ class Root extends Component<Props> {
           .then((response) => {
             let thingObject = new Thing(response.data);
             console.log(thingObject);
-            store.dispatch(setCurrentThing(response.data));
+            store.dispatch(setCurrentThing(thingObject));
             if (historyThings.findIndex(x => x.vendorcode === thingObject.vendorcode) === -1) {
               store.dispatch(addToHistory(thingObject));
             }
