@@ -70,6 +70,8 @@ export const removeFromBasketThunkCreator = thing => (dispatch, getState) => {
   }
 };
 
+
+
 // по баркоду вытаскивает с сервера инфу о вещи, и если ее не было в истории
 // то засовывает ее в историю
 export const setCurrentThingThunkCreator = barcode => (dispatch, getState) => {

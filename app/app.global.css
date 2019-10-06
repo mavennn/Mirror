@@ -107,6 +107,10 @@ header a {
   grid-template-rows: 1fr 1fr;
 }
 
+.homePage  div {
+  padding: 10px;
+}
+
 /* Carousel */
 .picture-1 {
   width: 15vw;
@@ -133,6 +137,10 @@ header a {
 .info {
   width: 50%;
   text-align: center;
+}
+
+.info * {
+  padding: 10px 0;
 }
 
 /* Choose */

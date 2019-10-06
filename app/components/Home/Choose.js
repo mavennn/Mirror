@@ -51,7 +51,7 @@ const Choose = ({ thing, changeSize, changeColor }) => (
       <ul className="choose-list">
         {
                 thing.availableColors.map(c => (
-                  <li key={c.barcode}>
+                  <li key={c}>
                     <button>
                       <div
                         className="color-button"
