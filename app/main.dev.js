@@ -2,7 +2,6 @@ import { app, BrowserWindow, globalShortcut } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import io from 'socket.io-client';
-import MenuBuilder from './menu';
 import routes from './constants/routes';
 
 const { clipboard } = require('electron');
@@ -117,8 +116,6 @@ app.on('ready', async () => {
       mainWindow.on('closed', () => {
         mainWindow = null;
       });
-      const menuBuilder = new MenuBuilder(mainWindow);
-      menuBuilder.buildMenu();
 
       // ввод barcode через ctrl  V
       globalShortcut.register('CommandOrControl+D', () => {
