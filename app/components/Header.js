@@ -9,18 +9,32 @@ import * as alarm from '../assets/icons/alarm.svg';
 import * as hanger from '../assets/icons/hanger.svg';
 import * as shoppingCart from '../assets/icons/shopping-cart.svg';
 import * as eye from '../assets/icons/eye.svg';
+import * as error from '../assets/icons/error.svg';
 
 // call consultant function
-import { getConsultantThunkCreator } from '../reducers/things';
+import { getConsultantThunkCreator, cancelConsultantThunkCreator } from '../reducers/things';
 import sockets from '../constants/sockets';
 
-const Header = ({ getConsultantThunkCreator }) => (
+const Header = ({ 
+  getConsultantThunkCreator, 
+  cancelConsultantThunkCreator,
+  isConsultantCalled 
+}) => (
   <header>
     <div className="header-icons">
-      <a className="header-block flex" onClick={() => getConsultantThunkCreator(sockets.CALL_CONSULTANT)}>
-        <img src={alarm} alt="Вызывать консультанта" />
-        <h3 className="pa2">Вызвать консультанта </h3>
-      </a>
+      {
+        !isConsultantCalled
+          ?
+          <a className="header-block flex" onClick={() => getConsultantThunkCreator(sockets.CALL_CONSULTANT)}>
+            <img src={alarm} alt="Вызывать консультанта" />
+            <h3 className="pa2">Вызвать консультанта </h3>
+          </a>
+          : 
+          <a className="header-block flex" onClick={() => cancelConsultantThunkCreator()}>
+            <img src={error} alt="Отменить вызов" />
+            <h3 className="pa2">Отменить вызов</h3>
+          </a>
+      }
       <Link to={routes.CATALOG} className="header-block flex">
         <img src={hanger} alt="Каталог" />
         <h3 className="pa2">Каталог</h3>
@@ -37,4 +51,13 @@ const Header = ({ getConsultantThunkCreator }) => (
   </header>
 );
 
-export default connect(null, { getConsultantThunkCreator })(Header);
+const mapStateToProps = state => ({
+  isConsultantCalled: state.things.isConsultantCalled,
+})
+
+const mapDispatchToProps = {
+  getConsultantThunkCreator,
+  cancelConsultantThunkCreator,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
