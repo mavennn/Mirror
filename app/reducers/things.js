@@ -2,6 +2,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import * as actions from '../actions/things';
 import sockets from '../constants/sockets';
+import Thing from '../../.configs/thing';
 
 require('dotenv').config();
 
@@ -42,6 +43,10 @@ export default function things(state = initialState, action) {
   }
 }
 
+export const setThingFromRecs = (thing) => {
+  
+};
+
 export const setToDefaultThunkCreator = () => (dispatch, getState) => {
   const state = getState();
   const { socket } = state.sockets;
@@ -79,10 +84,10 @@ export const setCurrentThingThunkCreator = barcode => (dispatch, getState) => {
   const { historyThings } = state.things;
   axios.get(`http://${ADDRESS}:${PORT}/thing/${barcode}`)
     .then((response) => {
-      const isExist = historyThings.findIndex(x => x.vendorid === response.data.vendorid);
-      dispatch(actions.setCurrentThing(response.data));
-      if (isExist === -1) {
-        dispatch(actions.addToHistory(response.data));
+      let thingObject = new Thing(response.data);
+      dispatch(actions.setCurrentThing(thingObject));
+      if (historyThings.findIndex(x => x.vendorcode === thingObject.vendorcode) === -1) {
+        dispatch(actions.addToHistory(thingObject));
       }
     });
 };
