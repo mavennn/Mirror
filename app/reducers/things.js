@@ -38,6 +38,10 @@ export default function things(state = initialState, action) {
       return {
         ...state, currentThing: {}, historyThings: [], basketThings: []
       };
+    case 'GET_CONSULTANT': 
+      return { ...state, isConsultantCalled: true }
+    case 'CANCEL_CONSULTANT':
+      return { ...state, isConsultantCalled: false }
     default:
       return state;
   }
@@ -198,9 +202,6 @@ export const getConsultantThunkCreator = (type, ...params) => (dispatch, getStat
   const state = getState();
   const { socket } = state.sockets;
   const { isConsultantCalled } = state.things;
-  if (isConsultantCalled) {
-
-  }
   switch (type) {
     case sockets.CALL_CONSULTANT:
       sendCallConsultantQueryToServer(socket);
@@ -214,4 +215,24 @@ export const getConsultantThunkCreator = (type, ...params) => (dispatch, getStat
     default:
       console.log('undefined type');
   }
+  dispatch({ type: 'GET_CONSULTANT' });
+};
+
+export const cancelConsultantThunkCreator = () => (dispatch) => {
+
+  /*
+    здесь должен socket.emit...
+  */
+
+  Swal.fire({
+    title: 'Вызов отменен',
+    timer: 1000,
+    type: 'success',
+    customClass: {
+      popup: 'alertContainer',
+      title: 'alertTitle',
+    }
+  });
+
+  dispatch({ type: 'CANCEL_CONSULTANT' });
 };
