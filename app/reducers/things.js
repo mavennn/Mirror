@@ -23,9 +23,9 @@ export default function things(state = initialState, action) {
     case actions.ADD_CURR_THING:
       return { ...state, currentThing: action.payload };
     case actions.CHANGE_SIZE:
-      return { ...state, currentThing: { ...state.currentThing, size: action.payload } };
+      return { ...state, currentThing: { ...state.currentThing, _size: action.payload } };
     case actions.CHANGE_COLOR:
-      return { ...state, currentThing: { ...state.currentThing, color: action.color, vendorid: action.vendorid } };
+      return { ...state, currentThing: { ...state.currentThing, _color: action.payload } };
     case actions.ADD_TO_HISTORY:
       return { ...state, historyThings: state.historyThings.concat(action.payload) };
     case actions.ADD_TO_BASKET:
@@ -58,15 +58,16 @@ export const setToDefaultThunkCreator = () => (dispatch, getState) => {
   dispatch(actions.setToDefault());
 };
 
-export const changeSizeThunkCreator = size => (dispatch) => {
+export const changeSizeThunkCreator = size => (dispatch, getState) => {
+  console.log(size);
   if (size) {
-    dispatch(actions.changeSize(size));
+    dispatch({ type: actions.CHANGE_SIZE, payload: size });
   }
 };
 
-export const changeColorThunkCreator = (color, vendorid) => (dispatch) => {
+export const changeColorThunkCreator = (color) => (dispatch) => {
   if (color) {
-    dispatch(actions.changeColor(color, vendorid));
+    dispatch(actions.changeColor(color));
   }
 };
 

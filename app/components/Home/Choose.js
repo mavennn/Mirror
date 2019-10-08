@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 const getColorCode = (color) => {
@@ -32,40 +32,43 @@ const getColorCode = (color) => {
   }
 };
 
-const Choose = ({ thing, changeSize, changeColor }) => (
-  <div className="choose">
-    <div className="sizes">
-      <p><strong>Выберите размер: </strong></p>
-      <ul className="choose-list">
-        {
-              thing.availableSizes.map(s => (
-                <li key={s}>
-                  <button className="size-button" onClick={() => changeSize(s)}>{s}</button>
-                </li>
-              ))
-          }
-      </ul>
-    </div>
-    <div className="colors">
-      <p><strong>Выберите цвет: </strong></p>
-      <ul className="choose-list">
-        {
-                thing.availableColors.map(c => (
-                  <li key={c}>
-                    <button>
-                      <div
-                        className="color-button"
-                        style={{ backgroundColor: `${getColorCode(c)}` }}
-                        onClick={() => changeColor(c.color, c.vendorcode)}
-                      />
-                    </button>
+const Choose = ({ thing, changeSize, changeColor }) => {
+
+  return (
+    <div className="choose">
+      <div className="sizes">
+        <p><strong>Выберите размер: </strong></p>
+        <ul className="choose-list">
+          {
+                thing._availableSizes.map(s => (
+                  <li key={s}>
+                    <button className="size-button" onClick={() => changeSize(s)}>{s}</button>
                   </li>
                 ))
             }
-      </ul>
+        </ul>
+      </div>
+      <div className="colors">
+        <p><strong>Выберите цвет: </strong></p>
+        <ul className="choose-list">
+          {
+                  thing._availableColors.map(c => (
+                    <li key={c}>
+                      <button>
+                        <div
+                          className="color-button"
+                          style={{ backgroundColor: `${getColorCode(c)}` }}
+                          onClick={() => changeColor(c)}
+                        />
+                      </button>
+                    </li>
+                  ))
+              }
+        </ul>
+      </div>
     </div>
-  </div>
-);
+  )
+};
 
 Choose.propTypes = {
   changeSize: PropTypes.func,

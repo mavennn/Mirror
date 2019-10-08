@@ -4,7 +4,7 @@ const Carousel = ({ thing }) => {
   return(
     <div className="flex">
       <div className="slider-for">
-        <div><img src={thing.img_base64} alt="pic" className="picture-1" /></div>
+        <div><img src={thing._img_base64} alt="pic" className="picture-1" /></div>
       </div>
       {/* <div className="slider-nav">
         {

@@ -51,7 +51,7 @@ const HomePage = ({
           <div>
             <List 
               title="Рекомендации" 
-              list={currentThing.recommendations}
+              list={currentThing._recommendations}
               setThing={setCurrentThingThunkCreator}
             />
           </div>

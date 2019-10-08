@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react';
 
 const Info = ({ thing }) => {
-  useEffect (() => {
-    console.log(thing)
-  });
-
   return (
-  <div className="info">
-      <h2>{thing.title}</h2>
-      <h3>{thing.brand}</h3>
-      <h4>{ thing.price }</h4>
-  </div>
+    <div className="info">
+        <h2>{ thing._title }</h2>
+        <h3>{ thing._brand }</h3>
+        <h4>{ thing._price } руб.</h4>
+    </div>
   );
 };
 

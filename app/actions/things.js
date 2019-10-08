@@ -17,10 +17,9 @@ export const changeSize = size => ({
   payload: size,
 });
 
-export const changeColor = (color, vendorid) => ({
+export const changeColor = color => ({
   type: 'CHANGE_COLOR',
-  color,
-  vendorid,
+  payload: color,
 });
 
 export const addToHistory = thing => ({
