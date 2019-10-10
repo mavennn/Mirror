@@ -177,7 +177,7 @@ header a {
   font-weight: bold;
 }
 .choose-list li button:focus {
-  /*border-bottom: 3px solid greenyellow;*/
+  border-bottom: 3px solid greenyellow;
   font-weight: bold;
 }
 
