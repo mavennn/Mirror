@@ -1,0 +1,22 @@
+import {
+  SET_SOCKET,
+  SET_QUERY,
+} from '../actions/socketsActions';
+
+const initialState = {
+  socket: {},
+  queries: []
+};
+
+const socketsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_SOCKET:
+      return { ...state, socket: action.payload };
+    case SET_QUERY:
+      return { ...state, queries: action.payload };
+    default:
+      return state;
+  }
+};
+
+export default socketsReducer;
