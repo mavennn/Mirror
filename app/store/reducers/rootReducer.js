@@ -5,6 +5,7 @@ import currentThingReducer from './currentThingReducer';
 import socketsReducer from './socketsReducer';
 import basketThingsReducer from './basketThingReducer';
 
+
 export default function createRootReducer(history) {
   return combineReducers({
     router: connectRouter(history),

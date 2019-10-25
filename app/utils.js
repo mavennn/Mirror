@@ -26,4 +26,6 @@ class Env {
     }
 };
 
-export default Env;
+const env = new Env();
+
+export default env;

@@ -9,6 +9,7 @@ import AvailableSizesContainer from "../../components/AvailableSizes/AvailableSi
 import HistoryContainer from "../../components/History/HistoryContainer";
 import RecommendationsContainer from "../../components/Recommendations/RecommendationsContainer";
 import AddToBasketButtonContainer from '../../components/AddToBasketButton/AddToBasketButtonContainer';
+import BringThingButtonContainer from "../../components/BringThingButton/BringThingButtonContainer";
 
 const HomePage = ({ currentThing }) => {
   if (currentThing.barcode !== "") {
@@ -27,15 +28,15 @@ const HomePage = ({ currentThing }) => {
               </div>
               <div className="buttons">
                   <AddToBasketButtonContainer />
-                  {/*<BringThingButtonContainer />*/}
+                  <BringThingButtonContainer />
               </div>
           {/*  место для кнопок */}
           </div>
           <div>
-            <HistoryContainer />
+            <RecommendationsContainer />
           </div>
           <div>
-            <RecommendationsContainer />
+            <HistoryContainer />
           </div>
         </div>
       </div>

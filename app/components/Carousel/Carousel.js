@@ -4,8 +4,7 @@ import React from 'react';
 // const SERVER = process.env.SERVER_ADDRESS || '192.168.1.231';
 // const PORT = process.env.SERVER_PORT || '3123';
 
-import Env from '../../utils';
-const env = new Env();
+import env from '../../utils';
 
 const Carousel = ({ vendorcode }) => {
   return(

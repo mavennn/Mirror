@@ -1,10 +1,11 @@
 import React from 'react';
+import * as sockets from '../../constants/sockets';
 
-const BringThingButton = () => (
+const BringThingButton = ({ getConsultant }) => (
     <div>
-        <button
-            // onClick={() => getConsultant(sockets.BRING_THING, thing.title, thing.vendorid, thing.size, thing.newprice)}
-        >Принести</button>
+        <button onClick={() => getConsultant(sockets.BRING_THING)}>
+            Принести
+        </button>
     </div>
 );
 

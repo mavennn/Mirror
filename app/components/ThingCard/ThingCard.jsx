@@ -1,6 +1,5 @@
 import React from 'react';
-import Env from '../../utils';
-const env = new Env();
+import env from '../../utils';
 
 /*
 * item = {
