@@ -28,4 +28,8 @@ class Env {
 
 const env = new Env();
 
+<<<<<<< HEAD
 export default env;
+=======
+export default env;
+>>>>>>> c6baf4d34dec18512207c6203b6ebb0e3e1f986a

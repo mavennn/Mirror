@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import io from 'socket.io-client';
 import Swal from 'sweetalert2';
 import env from '../../utils';
+=======
+import io from "socket.io-client";
+import env from '../../utils';
+import Swal from 'sweetalert2';
+>>>>>>> c6baf4d34dec18512207c6203b6ebb0e3e1f986a
 import * as sockets from '../../constants/sockets';
 
 const SERVER = env.getServer();
@@ -17,7 +23,11 @@ export const setSocket = () => dispatch => {
   dispatch({ type: SET_SOCKET, payload: socket });
 };
 
+<<<<<<< HEAD
 /* --------------------- ОБЩИЕ ПАРАМЕТРЫ --------------------- */
+=======
+/*--------------------- ОБЩИЕ ПАРАМЕТРЫ --------------------- */
+>>>>>>> c6baf4d34dec18512207c6203b6ebb0e3e1f986a
 
 export const mutualQueryParams = () => ({
   roomNumber: env.getRoomNumber(),
@@ -26,6 +36,7 @@ export const mutualQueryParams = () => ({
   consultantName: ''
 });
 
+<<<<<<< HEAD
 /* --------------------- ПРОСТО ВЫЗВАТЬ КОНСУЛЬТАНТА --------------------- */
 
 export const createCallCansultantQuery = () => ({
@@ -51,6 +62,30 @@ export const sendCallConsultantQueryToServer = socket => dispatch => {
 
 /* --------------------- ПРИНЕСТИ ОДНУ ВЕЩЬ --------------------- */
 
+=======
+/*--------------------- ПРОСТО ВЫЗВАТЬ КОНСУЛЬТАНТА --------------------- */
+
+export const createCallCansultantQuery = () => Object.assign({ text: sockets.CALL_TEXT }, mutualQueryParams());
+
+export const sendCallConsultantQueryToServer = (socket) => (dispatch) => {
+  const query = createCallCansultantQuery();
+  socket.emit('getConsultant', query);
+  Swal.fire({
+    title: 'Консультант вызван',
+    timer: 1000,
+    type: 'success',
+    customClass: {
+      popup: 'alertContainer',
+      title: 'alertTitle',
+    }
+  });
+
+  dispatch({ type: GET_CONSULTANT });
+};
+
+/*--------------------- ПРИНЕСТИ ОДНУ ВЕЩЬ --------------------- */
+
+>>>>>>> c6baf4d34dec18512207c6203b6ebb0e3e1f986a
 export const createBringThingQuery = (title, vendorcode, size, price) => {
   const bringThingParams = {
     title,
@@ -63,7 +98,11 @@ export const createBringThingQuery = (title, vendorcode, size, price) => {
   return Object.assign(bringThingParams, mutualQueryParams());
 };
 
+<<<<<<< HEAD
 export const sendBringThingQueryToServer = (socket, ...params) => dispatch => {
+=======
+export const sendBringThingQueryToServer = (socket, ...params) => (dispatch) =>{
+>>>>>>> c6baf4d34dec18512207c6203b6ebb0e3e1f986a
   const query = createBringThingQuery(...params);
   socket.emit('getConsultant', query);
   Swal.fire({
@@ -78,6 +117,7 @@ export const sendBringThingQueryToServer = (socket, ...params) => dispatch => {
   dispatch({ type: GET_CONSULTANT });
 };
 
+<<<<<<< HEAD
 /* --------------------- ОТНЕСТИ НА КАССУ --------------------- */
 
 // eslint-disable-next-line no-shadow,max-len
@@ -89,6 +129,14 @@ export const createToCheckoutQuery = things => ({
 });
 
 export const sendToCheckOutQueryToServer = (socket, ...params) => dispatch => {
+=======
+/*--------------------- ОТНЕСТИ НА КАССУ --------------------- */
+
+// eslint-disable-next-line no-shadow,max-len
+export const createToCheckoutQuery = things => Object.assign({ text: sockets.TO_CHECKOUT_TEXT, type: sockets.TO_CHECKOUT, things }, mutualQueryParams());
+
+export const sendToCheckOutQueryToServer = (socket, ...params) => (dispatch) => {
+>>>>>>> c6baf4d34dec18512207c6203b6ebb0e3e1f986a
   const query = createToCheckoutQuery(...params);
   Swal.fire({
     title: 'Сейчас отнесем на кассу :)',
@@ -103,6 +151,7 @@ export const sendToCheckOutQueryToServer = (socket, ...params) => dispatch => {
   dispatch({ type: GET_CONSULTANT });
 };
 
+<<<<<<< HEAD
 /* --------------------- ОТМЕНА ВЫЗОВА КОНСУЛЬТАНТА --------------------- */
 
 export const createCancelConsultantQuery = () => ({
@@ -111,6 +160,13 @@ export const createCancelConsultantQuery = () => ({
 });
 
 export const sendCancelConsultantQueryToServer = socket => dispatch => {
+=======
+/*--------------------- ОТМЕНА ВЫЗОВА КОНСУЛЬТАНТА --------------------- */
+
+export const createCancelConsultantQuery = () => Object.assign({ text: sockets.CANCEL_CONSULTANT }, mutualQueryParams());
+
+export const sendCancelConsultantQueryToServer = (socket) => (dispatch) => {
+>>>>>>> c6baf4d34dec18512207c6203b6ebb0e3e1f986a
   const query = createCancelConsultantQuery();
   socket.emit('cancelConsultant', query);
   Swal.fire({
@@ -125,12 +181,18 @@ export const sendCancelConsultantQueryToServer = socket => dispatch => {
   dispatch({ type: CANCEL_CONSULTANT });
 };
 
+<<<<<<< HEAD
 /* --------------------- ОСНОВАНАЯ ФУНКЦИЯ ВЫЗОВА КОНСУЛЬТАНТА --------------------- */
 
 export const getConsultantThunkCreator = (type, ...params) => (
   dispatch,
   getState
 ) => {
+=======
+/*--------------------- ОСНОВАНАЯ ФУНКЦИЯ ВЫЗОВА КОНСУЛЬТАНТА --------------------- */
+
+export const getConsultantThunkCreator = (type, ...params) => (dispatch, getState) => {
+>>>>>>> c6baf4d34dec18512207c6203b6ebb0e3e1f986a
   const state = getState();
   const { socket } = state.sockets;
   const { title, vendorcode, price, size } = state.currentThing;
@@ -140,9 +202,13 @@ export const getConsultantThunkCreator = (type, ...params) => (
       dispatch(sendCallConsultantQueryToServer(socket));
       break;
     case sockets.BRING_THING:
+<<<<<<< HEAD
       dispatch(
         sendBringThingQueryToServer(socket, title, vendorcode, price, size)
       );
+=======
+      dispatch(sendBringThingQueryToServer(socket, title, vendorcode, price, size));
+>>>>>>> c6baf4d34dec18512207c6203b6ebb0e3e1f986a
       break;
     case sockets.TO_CHECKOUT:
       dispatch(sendToCheckOutQueryToServer(socket, basketThings));
@@ -154,3 +220,7 @@ export const getConsultantThunkCreator = (type, ...params) => (
       console.log('undefined type');
   }
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> c6baf4d34dec18512207c6203b6ebb0e3e1f986a
