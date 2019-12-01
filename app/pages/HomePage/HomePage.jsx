@@ -2,16 +2,17 @@ import React from 'react';
 
 import Emoji from '../../components/Emoji/Emoji';
 import HeaderContainer from '../../components/Header/HeaderContainer';
-import CarouselContainer from "../../components/Carousel/CarouselContainer";
+import CarouselContainer from '../../components/Carousel/CarouselContainer';
 import ThingInfoContainer from '../../components/ThingInfo/ThingInfoContainer';
-import AvailableColorsContainer from "../../components/AvailableColors/AvailableColorsContainer";
-import AvailableSizesContainer from "../../components/AvailableSizes/AvailableSizesContainer";
-import HistoryContainer from "../../components/History/HistoryContainer";
-import RecommendationsContainer from "../../components/Recommendations/RecommendationsContainer";
+import AvailableColorsContainer from '../../components/AvailableColors/AvailableColorsContainer';
+import AvailableSizesContainer from '../../components/AvailableSizes/AvailableSizesContainer';
+import HistoryContainer from '../../components/History/HistoryContainer';
+import RecommendationsContainer from '../../components/Recommendations/RecommendationsContainer';
 import AddToBasketButtonContainer from '../../components/AddToBasketButton/AddToBasketButtonContainer';
+import BringThingButtonContainer from '../../components/BringThingButton/BringThingButtonContainer';
 
 const HomePage = ({ currentThing }) => {
-  if (currentThing.barcode !== "") {
+  if (currentThing.ware !== '') {
     return (
       <div>
         <HeaderContainer />
@@ -21,21 +22,21 @@ const HomePage = ({ currentThing }) => {
             <ThingInfoContainer />
           </div>
           <div className="flex">
-              <div className="choose">
-                <AvailableColorsContainer />
-                <AvailableSizesContainer />
-              </div>
-              <div className="buttons">
-                  <AddToBasketButtonContainer />
-                  {/*<BringThingButtonContainer />*/}
-              </div>
-          {/*  место для кнопок */}
-          </div>
-          <div>
-            <HistoryContainer />
+            <div className="choose">
+              <AvailableColorsContainer />
+              <AvailableSizesContainer />
+            </div>
+            <div className="buttons">
+              <AddToBasketButtonContainer />
+              <BringThingButtonContainer />
+            </div>
+            {/*  место для кнопок */}
           </div>
           <div>
             <RecommendationsContainer />
+          </div>
+          <div>
+            <HistoryContainer />
           </div>
         </div>
       </div>
@@ -46,7 +47,7 @@ const HomePage = ({ currentThing }) => {
       <HeaderContainer />
       <div className="waiting">
         <p>
-Чтобы начать работу, отсканируйте штрихкод
+          Чтобы начать работу, отсканируйте штрихкод
           <Emoji symbol="👗" />
           <Emoji symbol="👉" />
         </p>

@@ -6,7 +6,7 @@ import HomePageContainer from './pages/HomePage/HomePageContainer';
 import ExpectationPageContainer from './pages/ExpectationPage/ExpectationPageContiner';
 import BasketPageContainer from './pages/BasketPage/BasketPageContainer';
 import CatalogContainer from './pages/CatalogPage/CatalogPageContainer';
-import MirrorPageContainer from "./pages/MirrorPage/MirrorPageContainer";
+import MirrorPageContainer from './pages/MirrorPage/MirrorPageContainer';
 
 const Routes = () => (
   <App>

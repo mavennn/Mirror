@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import MirrorPage from './MirrorPage';
 
-const MirrorPageContainer = () => (
-    <MirrorPage />
-);
+const MirrorPageContainer = () => <MirrorPage />;
 
 export default connect()(MirrorPageContainer);

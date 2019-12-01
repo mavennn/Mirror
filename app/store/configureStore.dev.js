@@ -10,7 +10,7 @@ const history = createHashHistory();
 const rootReducer = createRootReducer(history);
 
 const configureStore = (initialState?: counterStateType) => {
-  const saveState = (state) => {
+  const saveState = state => {
     try {
       const serialisedState = JSON.stringify(state);
       window.localStorage.setItem('app_state', serialisedState);
@@ -39,7 +39,6 @@ const configureStore = (initialState?: counterStateType) => {
   };
 
   const oldState = loadState();
-
 
   // Redux Configuration
   const middleware = [];
@@ -71,9 +70,9 @@ const configureStore = (initialState?: counterStateType) => {
   /* eslint-disable no-underscore-dangle */
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      // Options: http://extension.remotedev.io/docs/API/Arguments.html
-      actionCreators
-    })
+        // Options: http://extension.remotedev.io/docs/API/Arguments.html
+        actionCreators
+      })
     : compose;
   /* eslint-enable no-underscore-dangle */
 

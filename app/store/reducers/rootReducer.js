@@ -10,6 +10,6 @@ export default function createRootReducer(history) {
     router: connectRouter(history),
     currentThing: currentThingReducer,
     sockets: socketsReducer,
-    basketThings: basketThingsReducer,
+    basketThings: basketThingsReducer
   });
 }

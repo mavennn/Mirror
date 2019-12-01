@@ -2,7 +2,7 @@ import React from 'react';
 
 // import BasketFooter from '../../components/BasketFooter';
 import Emoji from '../../components/Emoji/Emoji';
-import HeaderContainer from "../../components/Header/HeaderContainer";
+import HeaderContainer from '../../components/Header/HeaderContainer';
 import BasketThingsListContainer from '../../components/BasketThingsList/BasketThingsListContainer';
 import ClearBasketButtonContainer from '../../components/ClearBasketButton/ClearBasketButtonContainer';
 import PackToCheckoutButtonContainer from '../../components/PackToCheckoutButton/PackToCheckoutButtonContainer';
@@ -13,12 +13,11 @@ const BasketPage = ({ basketThings }) => {
       <div id="basket">
         <HeaderContainer />
         <BasketThingsListContainer />
-          <div className="basketFooter">
-              <ClearBasketButtonContainer />
-              <PackToCheckoutButtonContainer />
-          </div>
+        <div className="basketFooter">
+          <ClearBasketButtonContainer />
+          <PackToCheckoutButtonContainer />
+        </div>
       </div>
-
     );
   }
   return (
@@ -26,13 +25,12 @@ const BasketPage = ({ basketThings }) => {
       <HeaderContainer />
       <div className="waiting">
         <p>
-Здесь пока ничего нет
+          Здесь пока ничего нет
           <Emoji symbol="🙈" />
         </p>
         <p>Отсканируй товар или перейди в каталог</p>
       </div>
     </div>
-
   );
 };
 

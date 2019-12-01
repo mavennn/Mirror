@@ -1,14 +1,14 @@
 import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import HomePage from './HomePage';
 
 const HomePageContainer = ({ currentThing }) => (
-    <HomePage currentThing={currentThing} />
+  <HomePage currentThing={currentThing} />
 );
 
 const mapStateToProps = state => ({
-  currentThing: state.currentThing,
+  currentThing: state.currentThing
 });
 
 export default connect(mapStateToProps, null)(HomePageContainer);

@@ -1,51 +1,39 @@
-import io from "socket.io-client";
+import io from 'socket.io-client';
+import Swal from 'sweetalert2';
+import env from '../../utils';
+import * as sockets from '../../constants/sockets';
 
-require('dotenv').config();
-const SERVER = process.env.SERVER_ADDRESS || '192.168.1.231';
-const PORT = process.env.SERVER_PORT || '3123';
-const ROOM = process.env.ROOM;
+const SERVER = env.getServer();
+const PORT = env.getPort();
+const ROOM = env.getRoomNumber();
 
 export const SET_SOCKET = 'SET_SOCKET';
-export const SET_QUERY = 'SEND_QUERY';
+export const GET_CONSULTANT = 'GET_CONSULTANT';
+export const CANCEL_CONSULTANT = 'CANCEL_CONSULTANT';
 
-export const setSocket = () => {
-  return dispatch => {
-    const socket = io(`http://${SERVER}:${PORT}/rooms`);
-    socket.emit('newRoomConnection', ROOM);
-    dispatch({ type: SET_SOCKET, payload: socket });
-  }
+export const setSocket = () => dispatch => {
+  const socket = io(`http://${SERVER}:${PORT}/rooms`);
+  socket.emit('newRoomConnection', ROOM);
+  dispatch({ type: SET_SOCKET, payload: socket });
 };
 
-export const setQuery = data => ({
-  type: SET_QUERY,
-  payload: data
-});
+/* --------------------- ОБЩИЕ ПАРАМЕТРЫ --------------------- */
 
 export const mutualQueryParams = () => ({
-  roomNumber: process.env.ROOM,
+  roomNumber: env.getRoomNumber(),
   inProcessing: false,
   time: `${new Date().getHours()}:${new Date().getMinutes()}`,
-  consultantName: '',
+  consultantName: ''
 });
 
-export const createCallCansultantQuery = () => Object.assign({ text: sockets.CALL_TEXT }, mutualQueryParams());
+/* --------------------- ПРОСТО ВЫЗВАТЬ КОНСУЛЬТАНТА --------------------- */
 
-export const createBringThingQuery = (title, vendorCode, size, price) => {
-  const bringThingParams = {
-    title,
-    vendorCode,
-    size,
-    price,
-    text: sockets.BRING_TEXT,
-    type: sockets.BRING_THING
-  };
-  return Object.assign(bringThingParams, mutualQueryParams());
-};
+export const createCallCansultantQuery = () => ({
+  text: sockets.CALL_TEXT,
+  ...mutualQueryParams()
+});
 
-// eslint-disable-next-line no-shadow,max-len
-export const createToCheckoutQuery = things => Object.assign({ text: sockets.TO_CHECKOUT_TEXT, type: sockets.TO_CHECKOUT, things }, mutualQueryParams());
-
-export const sendCallConsultantQueryToServer = (socket) => {
+export const sendCallConsultantQueryToServer = socket => dispatch => {
   const query = createCallCansultantQuery();
   socket.emit('getConsultant', query);
   Swal.fire({
@@ -54,12 +42,28 @@ export const sendCallConsultantQueryToServer = (socket) => {
     type: 'success',
     customClass: {
       popup: 'alertContainer',
-      title: 'alertTitle',
+      title: 'alertTitle'
     }
   });
+
+  dispatch({ type: GET_CONSULTANT });
 };
 
-export const sendBringThingQueryToServer = (socket, ...params) => {
+/* --------------------- ПРИНЕСТИ ОДНУ ВЕЩЬ --------------------- */
+
+export const createBringThingQuery = (title, vendorcode, size, price) => {
+  const bringThingParams = {
+    title,
+    vendorcode,
+    size,
+    price,
+    text: sockets.BRING_TEXT,
+    type: sockets.BRING_THING
+  };
+  return Object.assign(bringThingParams, mutualQueryParams());
+};
+
+export const sendBringThingQueryToServer = (socket, ...params) => dispatch => {
   const query = createBringThingQuery(...params);
   socket.emit('getConsultant', query);
   Swal.fire({
@@ -68,61 +72,85 @@ export const sendBringThingQueryToServer = (socket, ...params) => {
     type: 'success',
     customClass: {
       popup: 'alertContainer',
-      title: 'alertTitle',
+      title: 'alertTitle'
     }
   });
+  dispatch({ type: GET_CONSULTANT });
 };
 
-export const sendToCheckOutQueryToServer = (socket, ...params) => {
+/* --------------------- ОТНЕСТИ НА КАССУ --------------------- */
+
+// eslint-disable-next-line no-shadow,max-len
+export const createToCheckoutQuery = things => ({
+  text: sockets.TO_CHECKOUT_TEXT,
+  type: sockets.TO_CHECKOUT,
+  things,
+  ...mutualQueryParams()
+});
+
+export const sendToCheckOutQueryToServer = (socket, ...params) => dispatch => {
   const query = createToCheckoutQuery(...params);
-  console.log(query);
   Swal.fire({
     title: 'Сейчас отнесем на кассу :)',
     timer: 1000,
     type: 'success',
     customClass: {
       popup: 'alertContainer',
-      title: 'alertTitle',
+      title: 'alertTitle'
     }
   });
   socket.emit('getConsultant', query);
+  dispatch({ type: GET_CONSULTANT });
 };
 
-export const getConsultantThunkCreator = (type, ...params) => (dispatch, getState) => {
-  const state = getState();
-  const { socket } = state.sockets;
-  const { isConsultantCalled } = state.things;
-  switch (type) {
-    case sockets.CALL_CONSULTANT:
-      sendCallConsultantQueryToServer(socket);
-      break;
-    case sockets.BRING_THING:
-      sendBringThingQueryToServer(socket, ...params);
-      break;
-    case sockets.TO_CHECKOUT:
-      sendToCheckOutQueryToServer(socket, params);
-      break;
-    default:
-      console.log('undefined type');
-  }
-  dispatch({ type: 'GET_CONSULTANT' });
-};
+/* --------------------- ОТМЕНА ВЫЗОВА КОНСУЛЬТАНТА --------------------- */
 
-export const cancelConsultantThunkCreator = () => (dispatch) => {
+export const createCancelConsultantQuery = () => ({
+  text: sockets.CANCEL_CONSULTANT,
+  ...mutualQueryParams()
+});
 
-  /*
-    здесь должен socket.emit...
-  */
-
+export const sendCancelConsultantQueryToServer = socket => dispatch => {
+  const query = createCancelConsultantQuery();
+  socket.emit('cancelConsultant', query);
   Swal.fire({
     title: 'Вызов отменен',
     timer: 1000,
     type: 'success',
     customClass: {
       popup: 'alertContainer',
-      title: 'alertTitle',
+      title: 'alertTitle'
     }
   });
+  dispatch({ type: CANCEL_CONSULTANT });
+};
 
-  dispatch({ type: 'CANCEL_CONSULTANT' });
+/* --------------------- ОСНОВАНАЯ ФУНКЦИЯ ВЫЗОВА КОНСУЛЬТАНТА --------------------- */
+
+export const getConsultantThunkCreator = (type, ...params) => (
+  dispatch,
+  getState
+) => {
+  const state = getState();
+  const { socket } = state.sockets;
+  const { title, vendorcode, price, size } = state.currentThing;
+  const { basketThings } = state.basketThings;
+  switch (type) {
+    case sockets.CALL_CONSULTANT:
+      dispatch(sendCallConsultantQueryToServer(socket));
+      break;
+    case sockets.BRING_THING:
+      dispatch(
+        sendBringThingQueryToServer(socket, title, vendorcode, price, size)
+      );
+      break;
+    case sockets.TO_CHECKOUT:
+      dispatch(sendToCheckOutQueryToServer(socket, basketThings));
+      break;
+    case sockets.CANCEL_CONSULTANT:
+      dispatch(sendCancelConsultantQueryToServer(socket));
+      break;
+    default:
+      console.log('undefined type');
+  }
 };

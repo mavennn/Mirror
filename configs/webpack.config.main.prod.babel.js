@@ -8,7 +8,7 @@ import merge from 'webpack-merge';
 import TerserPlugin from 'terser-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import baseConfig from './webpack.config.base';
-import CheckNodeEnv from '../configs/scripts/CheckNodeEnv';
+import CheckNodeEnv from './scripts/CheckNodeEnv';
 
 CheckNodeEnv('production');
 

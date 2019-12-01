@@ -5,26 +5,27 @@ import BasketThingCard from './BasketThingCard';
 import { removeFromBasket } from '../../store/actions/basketThingsActions';
 
 const BasketThingCardContainer = ({
-                                      barcode,
-                                      vendorcode,
-                                      title,
-                                      size,
-                                      color,
-                                      price,
-                                      removeFromBasket
+  barcode,
+  vendorcode,
+  title,
+  size,
+  color,
+  price,
+  removeFromBasket
 }) => (
-    <BasketThingCard
-        barcode={barcode}
-        vendorcode={vendorcode}
-        title={title}
-        size={size}
-        color={color}
-        price={price}
-        removeFromBasket={removeFromBasket}/>
+  <BasketThingCard
+    barcode={barcode}
+    vendorcode={vendorcode}
+    title={title}
+    size={size}
+    color={color}
+    price={price}
+    removeFromBasket={removeFromBasket}
+  />
 );
 
 const mapDispatchToProps = {
-    removeFromBasket,
+  removeFromBasket
 };
 
 export default connect(null, mapDispatchToProps)(BasketThingCardContainer);

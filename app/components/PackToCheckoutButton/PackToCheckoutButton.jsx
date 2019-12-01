@@ -1,7 +1,10 @@
 import React from 'react';
+import * as sockets from '../../constants/sockets';
 
-const PackToCheckoutButton = ({  }) => (
-    <button onClick={() => {}}>Упаковать на кассу</button>
+const PackToCheckoutButton = ({ getConsultant }) => (
+  <button onClick={() => getConsultant(sockets.TO_CHECKOUT)}>
+    Упаковать на кассу
+  </button>
 );
 
 export default PackToCheckoutButton;

@@ -107,7 +107,7 @@ header a {
   grid-template-rows: 1fr 1fr;
 }
 
-.homePage  div {
+.homePage div {
   padding: 10px;
 }
 
@@ -262,11 +262,11 @@ header a {
   height: auto;
 }
 
-.basket-description *{
+.basket-description * {
   margin: 0 0;
 }
 
-p[class="price"] {
+p[class='price'] {
   color: yellowgreen;
 }
 
@@ -299,7 +299,7 @@ p[class="price"] {
   border: 1px solid;
 }
 
-.alertContainer{
+.alertContainer {
   border: 1px solid rgba(154, 205, 50, 0.7);
   background: #000;
 }

@@ -1,13 +1,14 @@
 import * as actions from '../actions/сurrentThingActions';
 
 const initialState = {
-  barcode: "",
-  vendorcode: "",
-  title: "",
+  barcode: '',
+  ware: '',
+  name: '',
   price: 0,
-  brand: "",
-  size: "",
-  color: "",
+  brand: '',
+  size: '',
+  color: '',
+  pictures: [],
   availableSizes: [],
   availableColors: [],
   history: [],
@@ -15,7 +16,6 @@ const initialState = {
   error: '',
   recs: []
 };
-
 
 const CurrentThingReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -30,7 +30,7 @@ const CurrentThingReducer = (state = initialState, action) => {
     case actions.CHANGE_SIZE:
       return { ...state, size: action.payload };
     case actions.ADD_TO_HISTORY:
-      return { ...state, history: state.history.concat(action.payload)};
+      return { ...state, history: state.history.concat(action.payload) };
     case actions.SET_TO_DEFAULT:
       return initialState;
     default:
@@ -39,5 +39,3 @@ const CurrentThingReducer = (state = initialState, action) => {
 };
 
 export default CurrentThingReducer;
-
-

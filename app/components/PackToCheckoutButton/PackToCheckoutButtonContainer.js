@@ -2,9 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import PackToCheckoutButton from './PackToCheckoutButton';
+import { getConsultantThunkCreator } from '../../store/actions/socketsActions';
 
-const PackToCheckoutButtonContainer = ({  }) => (
-    <PackToCheckoutButton />
+const PackToCheckoutButtonContainer = ({ getConsultantThunkCreator }) => (
+  <PackToCheckoutButton getConsultant={getConsultantThunkCreator} />
 );
 
-export default connect(null, {  })(PackToCheckoutButtonContainer);
+const mapDispatchToProps = {
+  getConsultantThunkCreator
+};
+
+export default connect(null, mapDispatchToProps)(PackToCheckoutButtonContainer);

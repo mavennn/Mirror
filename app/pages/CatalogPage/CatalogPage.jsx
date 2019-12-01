@@ -1,9 +1,6 @@
 import React from 'react';
-import HeaderContainer from "../../components/Header/HeaderContainer";
+import HeaderContainer from '../../components/Header/HeaderContainer';
 
-const CatalogPage = () => (
-    <HeaderContainer />
-);
-
+const CatalogPage = () => <HeaderContainer />;
 
 export default CatalogPage;
