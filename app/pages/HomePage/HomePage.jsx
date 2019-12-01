@@ -9,11 +9,7 @@ import AvailableSizesContainer from '../../components/AvailableSizes/AvailableSi
 import HistoryContainer from '../../components/History/HistoryContainer';
 import RecommendationsContainer from '../../components/Recommendations/RecommendationsContainer';
 import AddToBasketButtonContainer from '../../components/AddToBasketButton/AddToBasketButtonContainer';
-<<<<<<< HEAD
 import BringThingButtonContainer from '../../components/BringThingButton/BringThingButtonContainer';
-=======
-import BringThingButtonContainer from "../../components/BringThingButton/BringThingButtonContainer";
->>>>>>> c6baf4d34dec18512207c6203b6ebb0e3e1f986a
 
 const HomePage = ({ currentThing }) => {
   if (currentThing.ware !== '') {
@@ -26,7 +22,6 @@ const HomePage = ({ currentThing }) => {
             <ThingInfoContainer />
           </div>
           <div className="flex">
-<<<<<<< HEAD
             <div className="choose">
               <AvailableColorsContainer />
               <AvailableSizesContainer />
@@ -36,17 +31,6 @@ const HomePage = ({ currentThing }) => {
               <BringThingButtonContainer />
             </div>
             {/*  место для кнопок */}
-=======
-              <div className="choose">
-                <AvailableColorsContainer />
-                <AvailableSizesContainer />
-              </div>
-              <div className="buttons">
-                  <AddToBasketButtonContainer />
-                  <BringThingButtonContainer />
-              </div>
-          {/*  место для кнопок */}
->>>>>>> c6baf4d34dec18512207c6203b6ebb0e3e1f986a
           </div>
           <div>
             <RecommendationsContainer />
