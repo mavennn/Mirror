@@ -80,10 +80,18 @@
       ]
     },
     "win": {
-      "target": ["nsis", "msi"]
+      "target": [
+        "nsis",
+        "msi"
+      ]
     },
     "linux": {
-      "target": ["deb", "rpm", "snap", "AppImage"],
+      "target": [
+        "deb",
+        "rpm",
+        "snap",
+        "AppImage"
+      ],
       "category": "Development"
     },
     "directories": {
@@ -117,18 +125,28 @@
       "url": "https://github.com/amilajack"
     }
   ],
-  "keywords": ["SmartMirror", "sportmaster", "croc"],
+  "keywords": [
+    "SmartMirror",
+    "sportmaster",
+    "croc"
+  ],
   "jest": {
     "testURL": "http://localhost/",
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
       "\\.(css|less|sass|scss)$": "identity-obj-proxy"
     },
-    "moduleFileExtensions": ["js", "jsx", "json"],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ],
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     },
-    "setupFiles": ["./internals/scripts/CheckBuiltsExist.js"]
+    "setupFiles": [
+      "./internals/scripts/CheckBuiltsExist.js"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
@@ -194,7 +212,6 @@
     "flow-bin": "^0.95.1",
     "flow-runtime": "^0.17.0",
     "flow-typed": "^2.5.1",
-    "husky": "^1.3.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.5.0",
     "lint-staged": "^8.1.5",
