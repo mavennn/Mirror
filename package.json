@@ -243,10 +243,10 @@
     "yarn": "^1.15.2"
   },
   "dependencies": {
-    "babel-plugin-dev-expression": "^0.2.1",
     "@fortawesome/fontawesome-free": "^5.8.1",
     "@hot-loader/react-dom": "^16.8.6",
     "axios": "^0.19.0",
+    "babel-plugin-dev-expression": "^0.2.1",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "connected-react-router": "^6.3.2",
@@ -263,6 +263,7 @@
     "ip": "^1.1.5",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
+    "node-sass": "^4.13.0",
     "nodemon": "^1.19.1",
     "pg": "^7.12.1",
     "prop-types": "^15.7.2",

@@ -50,6 +50,18 @@ img {
   margin-top: 300px;
   text-align: center;
 }
+
+.flex {
+  display: flex;
+}
+
+.border {
+  border: 1px solid greenyellow;
+}
+
+.scroll {
+  overflow-x: scroll;
+}
 /* Expectation */
 
 .hello {
@@ -243,7 +255,7 @@ header a {
   white-space: pre-line;
 }
 
-/* Basket */
+/* ----------------- Basket ----------------- */
 .basketList {
   margin-top: 4rem;
   margin-bottom: 2rem;
@@ -306,4 +318,44 @@ p[class='price'] {
 
 .alertTitle {
   color: #fff;
+}
+
+/* ----------------- Catalog ----------------- */
+
+.first-layer-containter {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttons-second {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gender-button {
+  width: 10rem;
+  padding: 2rem;
+}
+
+.width100 {
+  width: 100%;
+}
+
+.second-layer-button {
+  border: 1px solid greenyellow;
+  padding: 5rem;
+  height: 300px;
+}
+
+.category-card {
+  padding: 5rem;
+  margin: 0 10px;
 }
