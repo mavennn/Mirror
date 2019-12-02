@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import HeaderContainer from '../../components/Header/HeaderContainer';
 
-import CategoriesListContainer from '../../components/CategoriesList/CategoriesListContainer';
+import FirstLayerContainer from '../../components/Catalog/FirstLayer/FirstLayerContainer';
+import SecondLayerContainer from '../../components/Catalog/SecondLayer/SecondLayerContainer';
+import ThirdLayerContainer from '../../components/Catalog/ThirdLayer/ThirdLayerContainer';
 
 // Мужская одежда 21589
 // Мужская обувь 21652
@@ -12,69 +14,16 @@ import CategoriesListContainer from '../../components/CategoriesList/CategoriesL
 // Одежда для мальчиков 21602
 // Обувь для мальчиков 21673
 
-const manBlocks = (fetchCategories) => (
-  <div className="buttons">
-    <div className="second-layer-button" onClick={() => fetchCategories(21589)}>
-      {' '}
-      Мужская одежда
-      {' '}
-    </div>
-    <div className="second-layer-button" onClick={() => fetchCategories(21652)}>
-      {' '}
-      Мужская обувь
-      {' '}
-    </div>
-  </div>
-);
-const womanBlocks = (fetchCategories) => (
-  <div className="buttons">
-    <div className="second-layer-button" onClick={() => fetchCategories(21435)}>
-      {' '}
-      Женская одежда
-      {' '}
-    </div>
-    <div className="second-layer-button" onClick={() => fetchCategories(21662)}>
-      {' '}
-      Женская обувь
-      {' '}
-    </div>
-  </div>
-);
-const childrenBlocks = (fetchCategories) => (
-  <div className="buttons width100">
-    <div className="second-layer-button" onClick={() => fetchCategories(21455)}>
-      {' '}
-      Одежда для девочек
-      {' '}
-    </div>
-    <div className="second-layer-button" onClick={() => fetchCategories(21683)}>
-      {' '}
-      Одежда для мальчиков
-      {' '}
-    </div>
-    <div className="second-layer-button" onClick={() => fetchCategories(21602)}>
-      {' '}
-      Обувь для мальчиков
-      {' '}
-    </div>
-    <div className="second-layer-button" onClick={() => fetchCategories(21673)}>
-      {' '}
-      Обувь для девочек
-      {' '}
-    </div>
-  </div>
-);
-
-const renderBlock = (gender, fetchCategories) => {
-  switch (gender) {
-    case 'male':
-      return manBlocks(fetchCategories);
-    case 'female':
-      return womanBlocks(fetchCategories);
-    case 'child':
-      return childrenBlocks(fetchCategories);
+const mainCatalogRenderer = (status) => {
+  switch (status) {
+    case 1:
+      return <FirstLayerContainer />;
+    case 2:
+      return <SecondLayerContainer />;
+    case 3:
+      return <ThirdLayerContainer />;
     default:
-      return childrenBlocks(fetchCategories);
+      return null;
   }
 };
 
@@ -90,9 +39,7 @@ const buttonsHighlighting = () => {
   });
 };
 
-const CatalogPage = ({
-  gender, toggleGender, fetchCategories, categories,
-}) => {
+const CatalogPage = ({ status, toggleGender }) => {
   useEffect(() => {
     buttonsHighlighting();
   });
@@ -113,16 +60,7 @@ const CatalogPage = ({
           </div>
         </div>
       </div>
-      {
-          categories.length === 0
-              ? (
-                <div className="second-layer-container">
-                  {renderBlock(gender, fetchCategories)}
-                </div>
-              )
-              : <CategoriesListContainer />
-        }
-
+      {mainCatalogRenderer(status)}
     </>
   );
 };

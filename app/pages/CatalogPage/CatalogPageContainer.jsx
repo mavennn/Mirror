@@ -1,26 +1,19 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
-import CatalogPage from "./CatalogPage";
-import { toggleGender, fetchCategories } from "../../store/actions/catalogActions";
+import CatalogPage from './CatalogPage';
+import { toggleGender } from '../../store/actions/catalogActions';
 
-const CatalogPageContainer = ({ gender, toggleGender, fetchCategories, categories }) => (
-  <CatalogPage
-      gender={gender}
-      toggleGender={toggleGender}
-      fetchCategories={fetchCategories}
-      categories={categories}
-  />
+const CatalogPageContainer = ({ status, toggleGender }) => (
+  <CatalogPage status={status} toggleGender={toggleGender} />
 );
 
-const mapStateToProps = state => ({
-  gender: state.catalog.gender,
-  categories: state.catalog.categories,
+const mapStateToProps = (state) => ({
+  status: state.catalog.status,
 });
 
 const mapDispatchToProps = {
   toggleGender,
-  fetchCategories
 };
 
 export default connect(
