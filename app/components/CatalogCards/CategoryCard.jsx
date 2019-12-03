@@ -26,13 +26,12 @@ const CategoryCard = ({ categoryId, fetchThings }) => {
   }, []);
 
   return (
-    <li
-      key={category.id}
+    <div
       className="border category-card"
       onClick={() => fetchThings(categoryId)}
     >
       <h4>{category.name}</h4>
-    </li>
+    </div>
   );
 };
 

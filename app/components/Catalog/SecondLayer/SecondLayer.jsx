@@ -5,7 +5,9 @@ const SecondLayer = ({ categoriesId }) => {
   return (
     <ul className="flex scroll">
       {categoriesId.map((id) => (
-        <CategoryCard categoryId={id} />
+        <li key={id}>
+          <CategoryCard categoryId={id} />
+        </li>
       ))}
     </ul>
   );

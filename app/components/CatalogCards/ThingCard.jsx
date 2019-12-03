@@ -31,11 +31,15 @@ const ThingCard = ({ thingId, fetchThingInfo }) => {
   }, []);
 
   return (
-    <li key={thing.id} className="border category-card" onClick={() => fetchThingInfo(thing.ware)}>
+    <div
+      className="category-card"
+      onClick={() => fetchThingInfo(thing.ware)}
+    >
       <div>
-        <h2>{thing.name}</h2>
+        <img src={thing.picture} />
+        <p>{thing.name}</p>
       </div>
-    </li>
+    </div>
   );
 };
 
