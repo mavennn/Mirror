@@ -53,16 +53,17 @@ export const fetchThingInfo = (barcode) => (dispatch, getState) => {
         dispatch(fetchThingInfoSuccess(thing.data));
         if (
           getState().currentThing.history.findIndex(
-            (x) => x.vendorcode === thing.vendorcode,
+            (x) => x.ware === thing.ware,
           ) === -1
         ) {
           dispatch(
             addToHistory({
               // тут формируется объект информации для маленькой карточки товара
-              title: thing.title,
-              barcode: thing.barcode,
-              vendorcode: thing.vendorcode,
-              price: thing.price,
+              name: thing.data.name,
+              picture: thing.data.pictures[0],
+              ware: thing.data.ware,
+              pid: thing.data.pid,
+              price: thing.data.price,
             }),
           );
         }

@@ -3,21 +3,17 @@ import env from '../../utils';
 
 /*
  * item = {
- *   barcode: '8050567312312',
- *   vendorcode: 'E035VDF1353.900',
- *   title: 'Юбка женская',
+ *   title: '8050567312312',
+ *   ware: 'E035VDF1353.900',
+ *   pid: 'Юбка женская',
  *   price: 3000,
  * }/
  * */
 
 const ThingCard = ({ item, fetchThingInfo }) => (
-  <div onClick={() => fetchThingInfo(item.barcode)}>
-    <img
-      src={`http://${env.getServer()}:${env.getPort()}/images/${
-        item.vendorcode
-      }-01.jpg`}
-    />
-    <>{item.title}</>
+  <div onClick={() => fetchThingInfo(item.ware)}>
+    <img src={item.picture}/>
+    <p>{item.name}</p>
     <p>{item.price}</p>
   </div>
 );

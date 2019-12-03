@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { fetchThingInfo } from '../../store/actions/сurrentThingActions';
 
 require('dotenv').config();
 
 const PORT = process.env.SERVER_PORT;
 const SERVER = process.env.SERVER_ADDRESS;
 
-const ThingCard = ({ thingId }) => {
+const ThingCard = ({ thingId, fetchThingInfo }) => {
   const [thing, setThing] = useState({
     id: '',
     name: '',
     picture: '',
+    ware: '',
   });
 
   const [pic, setPic] = useState('');
@@ -29,7 +31,7 @@ const ThingCard = ({ thingId }) => {
   }, []);
 
   return (
-    <li key={thing.id} className="border category-card" onClick={() => {}}>
+    <li key={thing.id} className="border category-card" onClick={() => fetchThingInfo(thing.ware)}>
       <div>
         <h2>{thing.name}</h2>
       </div>
@@ -37,4 +39,8 @@ const ThingCard = ({ thingId }) => {
   );
 };
 
-export default connect()(ThingCard);
+const mapDispatchToProps = {
+  fetchThingInfo,
+};
+
+export default connect(null, mapDispatchToProps)(ThingCard);

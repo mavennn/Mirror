@@ -9,7 +9,7 @@ const ThingCardContainer = ({ item, fetchThingInfo }) => (
 );
 
 const mapDispatchToProps = {
-  fetchThingInfo
+  fetchThingInfo,
 };
 
 export default connect(null, mapDispatchToProps)(ThingCardContainer);

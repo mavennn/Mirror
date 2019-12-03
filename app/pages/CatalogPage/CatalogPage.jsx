@@ -34,7 +34,7 @@ const buttonsHighlighting = () => {
       buttons.map((color) => {
         color.style.borderBottom = '0px';
       });
-      button.style.borderBottom = '5px solid greenyellow';
+      button.style.borderBottom = '3px solid greenyellow';
     });
   });
 };
@@ -55,7 +55,7 @@ const CatalogPage = ({ status, toggleGender }) => {
           <div className="gender-button" onClick={() => toggleGender('female')}>
             Женщинам
           </div>
-          <div className="gender-button" onClick={() => toggleGender('child')}>
+          <div className="gender-button" onClick={() => toggleGender('child')} style={{ borderBottom: '3px solid greenyellow' }}>
             Детям
           </div>
         </div>
