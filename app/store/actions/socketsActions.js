@@ -7,8 +7,6 @@ const SERVER = env.getServer();
 const PORT = env.getPort();
 const ROOM = env.getRoomNumber();
 
-console.log(`${SERVER}:${PORT}`);
-
 export const SET_SOCKET = 'SET_SOCKET';
 export const GET_CONSULTANT = 'GET_CONSULTANT';
 export const CANCEL_CONSULTANT = 'CANCEL_CONSULTANT';
