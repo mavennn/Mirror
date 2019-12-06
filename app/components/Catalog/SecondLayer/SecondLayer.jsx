@@ -1,12 +1,12 @@
 import React from 'react';
 import CategoryCard from '../../CatalogCards/CategoryCard';
 
-const SecondLayer = ({ categoriesId }) => {
+const SecondLayer = ({ categories }) => {
   return (
     <ul className="flex scroll">
-      {categoriesId.map((id) => (
-        <li key={id}>
-          <CategoryCard categoryId={id} />
+      {categories.map((category) => (
+        <li key={category.id}>
+          <CategoryCard category={category} />
         </li>
       ))}
     </ul>

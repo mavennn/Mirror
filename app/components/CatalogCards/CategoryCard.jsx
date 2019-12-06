@@ -1,34 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { fetchThings } from '../../store/actions/catalogActions';
 
-require('dotenv').config();
-
-const PORT = process.env.SERVER_PORT;
-const SERVER = process.env.SERVER_ADDRESS;
-
-const CategoryCard = ({ categoryId, fetchThings }) => {
-  const [category, setCategory] = useState({
-    id: '',
-    name: '',
-  });
-
-  useEffect(() => {
-    fetch(`http://${SERVER}:${PORT}/categoryInfo/${categoryId}`)
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.type === 'Success') {
-          setCategory(response.data);
-        } else {
-          // alert('Упс, сломалось :(');
-        }
-      });
-  }, []);
-
+const CategoryCard = ({ category, fetchThings }) => {
   return (
     <div
       className="border category-card"
-      onClick={() => fetchThings(categoryId)}
+      onClick={() => fetchThings(category.id)}
     >
       <h4>{category.name}</h4>
     </div>

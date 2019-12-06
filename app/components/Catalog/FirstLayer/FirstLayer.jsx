@@ -60,7 +60,6 @@ const renderBlock = (gender, fetchCategories) => {
   }
 };
 
-const FirstLayer = ({ gender, fetchCategories }) =>
-  renderBlock(gender, fetchCategories);
+const FirstLayer = ({ gender, fetchCategories }) => renderBlock(gender, fetchCategories);
 
 export default FirstLayer;

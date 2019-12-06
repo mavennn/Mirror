@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import ThingCard from '../../CatalogCards/ThingCard';
 
-const ThirdLayer = ({ thingsIds }) => {
+const ThirdLayer = ({ things }) => {
   // useEffect(() => console.log(thingsIds), [])
   return (
     <ul className="flex scroll">
-      {thingsIds.map((id) => (
-        <li key={id}>
-          <ThingCard thingId={id} />
+      {things.map((thing) => (
+        <li key={thing.ware}>
+          <ThingCard thing={thing} />
         </li>
       ))}
     </ul>

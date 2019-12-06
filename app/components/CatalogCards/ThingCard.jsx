@@ -1,37 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { fetchThingInfo } from '../../store/actions/сurrentThingActions';
 import { history } from '../../store/configureStore';
 import routes from '../../constants/routes';
 
-require('dotenv').config();
-
-const PORT = process.env.SERVER_PORT;
-const SERVER = process.env.SERVER_ADDRESS;
-
-const ThingCard = ({ thingId, fetchThingInfo }) => {
-  const [thing, setThing] = useState({
-    id: '',
-    name: '',
-    picture: '',
-    ware: '',
-  });
-
-  const [pic, setPic] = useState('');
-
-  useEffect(() => {
-    fetch(`http://${SERVER}:${PORT}/thing/pid/${thingId}`)
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.type === 'Success') {
-          setThing(response.data);
-          setPic(response.data.picture);
-        } else {
-          // alert('Упс, сломалось :(');
-        }
-      });
-  }, []);
-
+const ThingCard = ({ thing, fetchThingInfo }) => {
   return (
     <div
       className="category-card"
@@ -41,7 +14,7 @@ const ThingCard = ({ thingId, fetchThingInfo }) => {
       }}
     >
       <div>
-        <img src={thing.picture} />
+        <img src={thing.pictures[0]} />
         <p>{thing.name}</p>
       </div>
     </div>

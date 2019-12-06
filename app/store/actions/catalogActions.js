@@ -42,7 +42,7 @@ export const fetchCategoriesFailure = (error) => ({
 
 export const fetchCategories = (parentId) => (dispatch) => {
   dispatch(fetchCategoriesRequest());
-  return fetch(`http://${SERVER}:${PORT}/categories/${parentId}`)
+  return fetch(`http://${SERVER}:${PORT}/category/${parentId}/subcategories`)
     .then((response) => response.json())
     .then((data) => {
       if (data.type === 'Success') {
@@ -52,7 +52,7 @@ export const fetchCategories = (parentId) => (dispatch) => {
     .catch((error) => dispatch(fetchCategoriesFailure(error)));
 };
 
-// <------------------ получение категорий ------------------->
+// <------------------ получение Шмоток ------------------->
 
 export const fetchThingsRequest = () => ({
   type: FETCH_THINGS_REQUEST,
@@ -70,7 +70,7 @@ export const fetchThingsFailure = (error) => ({
 
 export const fetchThings = (categoryId) => (dispatch) => {
   dispatch(fetchThingsRequest());
-  return fetch(`http:${SERVER}:${PORT}/category/things/${categoryId}`)
+  return fetch(`http:${SERVER}:${PORT}/things/by/${categoryId}`)
     .then((response) => response.json())
     .then((response) => {
       if (response.type === 'Success') {

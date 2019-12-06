@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import SecondLayer from './SecondLayer';
 
-const SecondLayerContainer = ({ categoriesId }) => (
-  <SecondLayer categoriesId={categoriesId} />
-);
+const SecondLayerContainer = ({ categories }) => {
+  return <SecondLayer categories={categories} />;
+};
 
 const mapStateToProps = (state) => ({
-  categoriesId: state.catalog.categories,
+  categories: state.catalog.categories,
 });
 
 export default connect(mapStateToProps, null)(SecondLayerContainer);

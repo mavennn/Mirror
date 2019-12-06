@@ -1,11 +1,12 @@
 import Swal from 'sweetalert2';
 import io from 'socket.io-client';
-import env from '../../utils';
 import * as sockets from '../../constants/sockets';
 
-const SERVER = env.getServer();
-const PORT = env.getPort();
-const ROOM = env.getRoomNumber();
+require('dotenv');
+
+const SERVER = process.env.SERVER_ADDRESS;
+const PORT = process.env.SERVER_PORT;
+const ROOM = process.env;
 
 export const SET_SOCKET = 'SET_SOCKET';
 export const GET_CONSULTANT = 'GET_CONSULTANT';
@@ -13,14 +14,14 @@ export const CANCEL_CONSULTANT = 'CANCEL_CONSULTANT';
 
 export const setSocket = () => (dispatch) => {
   const socket = io(`http://${SERVER}:${PORT}/rooms`);
-  socket.emit('newRoomConnection', ROOM);
+  console.log(socket);
   dispatch({ type: SET_SOCKET, payload: socket });
 };
 
 /* --------------------- ОБЩИЕ ПАРАМЕТРЫ --------------------- */
 
 export const mutualQueryParams = () => ({
-  roomNumber: env.getRoomNumber(),
+  roomNumber: process.env.ROOM,
   inProcessing: false,
   time: `${new Date().getHours()}:${new Date().getMinutes()}`,
   consultantName: '',
@@ -35,6 +36,7 @@ export const createCallCansultantQuery = () => ({
 
 export const sendCallConsultantQueryToServer = (socket) => (dispatch) => {
   const query = createCallCansultantQuery();
+  console.log('call consultant', query);
   socket.emit('getConsultant', query);
   Swal.fire({
     title: 'Консультант вызван',
@@ -42,8 +44,8 @@ export const sendCallConsultantQueryToServer = (socket) => (dispatch) => {
     type: 'success',
     customClass: {
       popup: 'alertContainer',
-      title: 'alertTitle'
-    }
+      title: 'alertTitle',
+    },
   });
 
   dispatch({ type: GET_CONSULTANT });
@@ -58,13 +60,14 @@ export const createBringThingQuery = (title, vendorcode, size, price) => {
     size,
     price,
     text: sockets.BRING_TEXT,
-    type: sockets.BRING_THING
+    type: sockets.BRING_THING,
   };
   return Object.assign(bringThingParams, mutualQueryParams());
 };
 
-export const sendBringThingQueryToServer = (socket, ...params) => (dispatch) =>{
+export const sendBringThingQueryToServer = (socket, ...params) => (dispatch) => {
   const query = createBringThingQuery(...params);
+  console.log('bring thing', query);
   socket.emit('getConsultant', query);
   Swal.fire({
     title: 'Вашу вещь сейчас принесут',
@@ -90,6 +93,7 @@ export const createToCheckoutQuery = (things) => ({
 
 export const sendToCheckOutQueryToServer = (socket, ...params) => (dispatch) => {
   const query = createToCheckoutQuery(...params);
+  console.log('checkout', query);
   Swal.fire({
     title: 'Сейчас отнесем на кассу :)',
     timer: 1000,

@@ -123,6 +123,18 @@ eval("module.exports = @hot-loader/react-dom;\n\n//# sourceURL=webpack://rendere
 
 /***/ }),
 
+/***/ "app-builder-lib":
+/*!**********************************!*\
+  !*** external "app-builder-lib" ***!
+  \**********************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = app-builder-lib;\n\n//# sourceURL=webpack://renderer/external_%22app-builder-lib%22?");
+
+/***/ }),
+
 /***/ "axios":
 /*!************************!*\
   !*** external "axios" ***!
@@ -336,6 +348,18 @@ eval("module.exports = jquery;\n\n//# sourceURL=webpack://renderer/external_%22j
 /***/ (function(module, exports) {
 
 eval("module.exports = lodash;\n\n//# sourceURL=webpack://renderer/external_%22lodash%22?");
+
+/***/ }),
+
+/***/ "node-sass":
+/*!****************************!*\
+  !*** external "node-sass" ***!
+  \****************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+eval("module.exports = node-sass;\n\n//# sourceURL=webpack://renderer/external_%22node-sass%22?");
 
 /***/ }),
 

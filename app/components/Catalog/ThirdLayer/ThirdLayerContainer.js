@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import ThirdLayer from './ThirdLayer';
 
-const ThirdLayerContainer = ({ thingsIds }) => (
-  <ThirdLayer thingsIds={thingsIds} />
+const ThirdLayerContainer = ({ things }) => (
+  <ThirdLayer things={things} />
 );
 
 const mapStateToProps = (state) => ({
-  thingsIds: state.catalog.allThings,
+  things: state.catalog.allThings,
 });
 
 export default connect(mapStateToProps, null)(ThirdLayerContainer);
