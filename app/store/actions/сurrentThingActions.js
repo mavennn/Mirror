@@ -46,7 +46,7 @@ export const setToDefault = () => ({
 
 export const fetchThingInfo = (barcode) => (dispatch, getState) => {
   dispatch(fetchThingInfoRequest());
-  return fetch(`http://${SERVER}:${PORT}/thing/${barcode}`)
+  return fetch(`http://${SERVER}:${PORT}/thing/ware/${barcode}`)
     .then((response) => response.json())
     .then((thing) => {
       if (thing.type === 'Success') {

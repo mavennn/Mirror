@@ -3,12 +3,14 @@ import CategoryCard from '../../CatalogCards/CategoryCard';
 
 const SecondLayer = ({ categories }) => {
   return (
-    <ul className="flex scroll">
-      {categories.map((category) => (
-        <li key={category.id}>
-          <CategoryCard category={category} />
-        </li>
-      ))}
+    <ul className="main-catalog-container">
+      {categories.map((category, index) => {
+        return (
+          <li key={index}>
+            <CategoryCard category={category} />
+          </li>
+        );
+      })}
     </ul>
   );
 };

@@ -1,7 +1,6 @@
 import { app, BrowserWindow, globalShortcut } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
-import io from 'socket.io-client';
 import routes from './constants/routes';
 
 const { clipboard } = require('electron');
@@ -30,7 +29,10 @@ if (
   process.env.NODE_ENV === 'development' ||
   process.env.DEBUG_PROD === 'true'
 ) {
-  require('electron-debug')();
+  require('electron-debug')({
+    showDevTools: true,
+    devToolsMode: 'bottom',
+  });
 }
 
 const installExtensions = async () => {
@@ -39,7 +41,7 @@ const installExtensions = async () => {
   const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'];
 
   return Promise.all(
-    extensions.map(name => installer.default(installer[name], forceDownload))
+    extensions.map((name) => installer.default(installer[name], forceDownload))
   ).catch(console.log);
 };
 
@@ -57,8 +59,8 @@ app.on('window-all-closed', () => {
 
 app.on('ready', async () => {
   SerialPort.list()
-    .then(ports => {
-      const index = ports.findIndex(x => x.vendorId === '23d0');
+    .then((ports) => {
+      const index = ports.findIndex((x) => x.vendorId === '23d0');
 
       if (index !== -1) {
         const serialPortName = ports[index].comName;
@@ -67,12 +69,12 @@ app.on('ready', async () => {
           baudRate: 9600, // бит в секунду
           dataBits: 8, // биты данных
           parity: 'none', // четность
-          stopBits: 1 // стоповые
+          stopBits: 1, // стоповые
         });
 
         serialPort.on('open', () => {
           console.log(`Scanner: Open serial port ${serialPortName}`);
-          serialPort.on('data', data => {
+          serialPort.on('data', (data) => {
             const msg = data
               .toString('utf8')
               .substr(0, Math.max(0, data.length - 1));
@@ -96,10 +98,10 @@ app.on('ready', async () => {
       mainWindow = new BrowserWindow({
         show: false,
         width: 1024,
-        height: 728
+        height: 728,
       });
 
-      // mainWindow.setFullScreen(true);
+      mainWindow.setFullScreen(true);
 
       mainWindow.loadURL(`file://${__dirname}/app.html#${routes.EXPECTATION}`);
 

@@ -1,65 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const manBlocks = (fetchCategories) => (
-  <div className="buttons">
-    <div className="second-layer-button" onClick={() => fetchCategories(21589)}>
-      {' '}
-      Мужская одежда{' '}
-    </div>
-    <div className="second-layer-button" onClick={() => fetchCategories(21652)}>
-      {' '}
-      Мужская обувь{' '}
-    </div>
-  </div>
+const FirstLayer = ({ categories, fetchCategories }) => (
+  <ul className="main-catalog-container ">
+    {categories.map((category) => (
+      <li key={category.id}>
+        <div
+          className="border category-card"
+          onClick={() => fetchCategories(category.id)}
+        >
+          <h4>{category.name}</h4>
+        </div>
+      </li>
+    ))}
+  </ul>
 );
 
-const womanBlocks = (fetchCategories) => (
-  <div className="buttons">
-    <div className="second-layer-button" onClick={() => fetchCategories(21435)}>
-      {' '}
-      Женская одежда{' '}
-    </div>
-    <div className="second-layer-button" onClick={() => fetchCategories(21662)}>
-      {' '}
-      Женская обувь{' '}
-    </div>
-  </div>
-);
-
-const childrenBlocks = (fetchCategories) => (
-  <div className="buttons width100">
-    <div className="second-layer-button" onClick={() => fetchCategories(21455)}>
-      {' '}
-      Одежда для девочек{' '}
-    </div>
-    <div className="second-layer-button" onClick={() => fetchCategories(21683)}>
-      {' '}
-      Одежда для мальчиков{' '}
-    </div>
-    <div className="second-layer-button" onClick={() => fetchCategories(21602)}>
-      {' '}
-      Обувь для мальчиков{' '}
-    </div>
-    <div className="second-layer-button" onClick={() => fetchCategories(21673)}>
-      {' '}
-      Обувь для девочек{' '}
-    </div>
-  </div>
-);
-
-const renderBlock = (gender, fetchCategories) => {
-  switch (gender) {
-    case 'male':
-      return manBlocks(fetchCategories);
-    case 'female':
-      return womanBlocks(fetchCategories);
-    case 'child':
-      return childrenBlocks(fetchCategories);
-    default:
-      return childrenBlocks(fetchCategories);
-  }
+FirstLayer.propTypes = {
+  fetchCategories: PropTypes.func,
+  categories: PropTypes.arrayOf({
+    id: PropTypes.number,
+    name: PropTypes.string,
+  }),
 };
 
-const FirstLayer = ({ gender, fetchCategories }) => renderBlock(gender, fetchCategories);
+FirstLayer.defaultProps = {
+  fetchCategories: () => {},
+  categories: [
+    {
+      id: 21589,
+      name: 'Мужская одежда',
+    },
+  ],
+};
 
 export default FirstLayer;

@@ -27,7 +27,7 @@ module.exports = (function(e) {
         2 & t && typeof e !== 'string')
       ) {
         for (const o in e) {
-          r.d(n, o, (t => e[t]).bind(null, o));
+          r.d(n, o, ((t) => e[t]).bind(null, o));
         }
       }
       return n;
@@ -80,8 +80,8 @@ module.exports = (function(e) {
     }),
       n.app.on('ready', async () => {
         u.list()
-          .then(e => {
-            const t = e.findIndex(e => e.vendorId === '23d0');
+          .then((e) => {
+            const t = e.findIndex((e) => e.vendorId === '23d0');
             if (t !== -1) {
               const r = e[t].comName;
               console.log(r);
@@ -89,11 +89,11 @@ module.exports = (function(e) {
                 baudRate: 9600,
                 dataBits: 8,
                 parity: 'none',
-                stopBits: 1
+                stopBits: 1,
               });
               n.on('open', () => {
                 console.log(`Scanner: Open serial port ${r}`),
-                  n.on('data', e => {
+                  n.on('data', (e) => {
                     const t = e
                       .toString('utf8')
                       .substr(0, Math.max(0, e.length - 1));
@@ -107,7 +107,7 @@ module.exports = (function(e) {
             (h = new n.BrowserWindow({
               show: !1,
               width: 1024,
-              height: 728
+              height: 728,
             })).loadURL(`file://${__dirname}/app.html#${a.EXPECTATION}`),
               h.webContents.on('did-finish-load', () => {
                 if (!h) throw new Error('"mainWindow" is not defined');
@@ -153,7 +153,7 @@ module.exports = (function(e) {
           end: n[1],
           pre: r.slice(0, n[0]),
           body: r.slice(n[0] + e.length, n[1]),
-          post: r.slice(n[1] + t.length)
+          post: r.slice(n[1] + t.length),
         }
       );
     }
@@ -226,7 +226,7 @@ module.exports = (function(e) {
           (g = e(g[0], !1).map(p)).length === 1
         ) {
           var y = s.post.length ? e(s.post, !1) : [''];
-          return y.map(e => s.pre + g[0] + e);
+          return y.map((e) => s.pre + g[0] + e);
         }
         const b = s.pre;
         var y = s.post.length ? e(s.post, !1) : [''];
@@ -254,7 +254,7 @@ module.exports = (function(e) {
             E.push(T);
           }
         } else {
-          E = n(g, t => e(t, !1));
+          E = n(g, (t) => e(t, !1));
         }
         for (let P = 0; P < E.length; P++) {
           for (let I = 0; I < y.length; I++) {
@@ -352,10 +352,10 @@ module.exports = (function(e) {
           s || ((s = !0), i.apply(this, o.call(arguments)));
         });
       const a = n(e, t, { stdio: 'ignore' });
-      a.on('error', e => {
+      a.on('error', (e) => {
         r(e);
       }),
-        a.on('exit', e => {
+        a.on('exit', (e) => {
           r(e ? new Error(`Exited with code ${e}`) : null);
         });
     }
@@ -388,7 +388,7 @@ module.exports = (function(e) {
           const f = o.default.resolve(`${l}.crx`);
           (0, a.downloadFile)(p, f)
             .then(() => {
-              (0, s.default)(f, l, e => {
+              (0, s.default)(f, l, (e) => {
                 if (
                   e &&
                   !n.default.existsSync(o.default.resolve(l, 'manifest.json'))
@@ -397,7 +397,7 @@ module.exports = (function(e) {
                 (0, a.changePermissions)(l, 755), u(l);
               });
             })
-            .catch(n => {
+            .catch((n) => {
               if (
                 (console.log(
                   `Failed to fetch extension, trying ${c - 1} more times`
@@ -460,7 +460,7 @@ module.exports = (function(e) {
               value: r,
               enumerable: !0,
               configurable: !0,
-              writable: !0
+              writable: !0,
             })
           : (e[t] = r),
         e
@@ -481,7 +481,7 @@ module.exports = (function(e) {
     t.default = function e(t) {
       const r = arguments.length > 1 && void 0 !== arguments[1] && arguments[1];
       if (Array.isArray(t)) {
-        return Promise.all(t.map(t => e(t, r)));
+        return Promise.all(t.map((t) => e(t, r)));
       }
       let o = void 0;
       if ((void 0 === t ? 'undefined' : n(t)) === 'object' && t.id) {
@@ -506,7 +506,7 @@ module.exports = (function(e) {
       const l = a && f.getDevToolsExtensions && f.getDevToolsExtensions()[a];
       return !r && l
         ? Promise.resolve(d[o])
-        : (0, u.default)(o, r).then(e => {
+        : (0, u.default)(o, r).then((e) => {
             l && f.removeDevToolsExtension(a);
             const t = f.addDevToolsExtension(e);
             return (
@@ -520,47 +520,47 @@ module.exports = (function(e) {
     };
     (t.EMBER_INSPECTOR = {
       id: 'bmdblncegkenkacieihfhpjfppoconhi',
-      electron: '>=1.2.1'
+      electron: '>=1.2.1',
     }),
       (t.REACT_DEVELOPER_TOOLS = {
         id: 'fmkadmapgofadopljbjfkapdkoienihi',
-        electron: '>=1.2.1'
+        electron: '>=1.2.1',
       }),
       (t.BACKBONE_DEBUGGER = {
         id: 'bhljhndlimiafopmmhjlgfpnnchjjbhd',
-        electron: '>=1.2.1'
+        electron: '>=1.2.1',
       }),
       (t.JQUERY_DEBUGGER = {
         id: 'dbhhnnnpaeobfddmlalhnehgclcmjimi',
-        electron: '>=1.2.1'
+        electron: '>=1.2.1',
       }),
       (t.ANGULARJS_BATARANG = {
         id: 'ighdmehidhipcmcojjgiloacoafjmpfk',
-        electron: '>=1.2.1'
+        electron: '>=1.2.1',
       }),
       (t.VUEJS_DEVTOOLS = {
         id: 'nhdogjmejiglipccpnnnanhbledajbpd',
-        electron: '>=1.2.1'
+        electron: '>=1.2.1',
       }),
       (t.REDUX_DEVTOOLS = {
         id: 'lmhkpmbekcpmknklioeibfkpmmfibljd',
-        electron: '>=1.2.1'
+        electron: '>=1.2.1',
       }),
       (t.REACT_PERF = {
         id: 'hacmcodfllhbnekmghgdlplbdnahmhmm',
-        electron: '>=1.2.6'
+        electron: '>=1.2.6',
       }),
       (t.CYCLEJS_DEVTOOL = {
         id: 'dfgplfmhhmdekalbpejekgfegkonjpfp',
-        electron: '>=1.2.1'
+        electron: '>=1.2.1',
       }),
       (t.APOLLO_DEVELOPER_TOOLS = {
         id: 'jdkknkkbebbapilgoeccciglkfbmbnfm',
-        electron: '>=1.2.1'
+        electron: '>=1.2.1',
       }),
       (t.MOBX_DEVTOOLS = {
         id: 'pfgnfdagidkfgccljigdamigbcnndkod',
-        electron: '>=1.2.1'
+        electron: '>=1.2.1',
       });
   },
   './node_modules/electron-devtools-installer/dist/utils.js': function(
@@ -587,7 +587,7 @@ module.exports = (function(e) {
     (t.downloadFile = function e(t, r) {
       return new Promise((n, o) => {
         const s = l(t);
-        s.on('response', t => {
+        s.on('response', (t) => {
           if (t.statusCode >= 300 && t.statusCode < 400 && t.headers.location) {
             return e(t.headers.location, r)
               .then(n)
@@ -600,7 +600,7 @@ module.exports = (function(e) {
       });
     }),
       (t.changePermissions = function e(t, r) {
-        i.default.readdirSync(t).forEach(n => {
+        i.default.readdirSync(t).forEach((n) => {
           const o = s.default.join(t, n);
           i.default.chmodSync(o, parseInt(r, 8)),
             i.default.statSync(o).isDirectory() && e(o, r);
@@ -752,7 +752,7 @@ module.exports = (function(e) {
       if (this.patch > o || this.patch < 0)
         throw new TypeError('Invalid patch version');
       s[4]
-        ? (this.prerelease = s[4].split('.').map(e => {
+        ? (this.prerelease = s[4].split('.').map((e) => {
             if (/^[0-9]+$/.test(e)) {
               const t = +e;
               if (t >= 0 && t < o) return t;
@@ -1044,7 +1044,7 @@ module.exports = (function(e) {
           .map(function(e) {
             return this.parseRange(e.trim());
           }, this)
-          .filter(e => e.length)),
+          .filter((e) => e.length)),
         !this.set.length)
       )
         throw new TypeError(`Invalid SemVer Range: ${e}`);
@@ -1121,7 +1121,7 @@ module.exports = (function(e) {
         var h = null;
         var p = null;
         if (
-          (l.forEach(e => {
+          (l.forEach((e) => {
             e.semver === ie && (e = new oe('>=0.0.0')),
               (h = h || e),
               (p = p || e),
@@ -1196,7 +1196,7 @@ module.exports = (function(e) {
       (se.prototype.format = function() {
         return (
           (this.range = this.set
-            .map(e => e.join(' ').trim())
+            .map((e) => e.join(' ').trim())
             .join('||')
             .trim()),
           this.range
@@ -1227,7 +1227,7 @@ module.exports = (function(e) {
                   return e
                     .trim()
                     .split(/\s+/)
-                    .map(e =>
+                    .map((e) =>
                       (function(e, t) {
                         r('caret', e, t);
                         const n = t.loose ? i[G] : i[M];
@@ -1274,7 +1274,7 @@ module.exports = (function(e) {
                   return e
                     .trim()
                     .split(/\s+/)
-                    .map(e =>
+                    .map((e) =>
                       (function(e, t) {
                         const n = t.loose ? i[L] : i[I];
                         return e.replace(n, (t, n, o, i, s) => {
@@ -1305,7 +1305,7 @@ module.exports = (function(e) {
                     r('replaceXRanges', e, t),
                     e
                       .split(/\s+/)
-                      .map(e =>
+                      .map((e) =>
                         (function(e, t) {
                           e = e.trim();
                           const n = t.loose ? i[T] : i[A];
@@ -1354,7 +1354,7 @@ module.exports = (function(e) {
           .join(' ')
           .split(/\s+/);
         return (
-          this.options.loose && (s = s.filter(e => !!e.match(o))),
+          this.options.loose && (s = s.filter((e) => !!e.match(o))),
           (s = s.map(function(e) {
             return new oe(e, this.options);
           }, this))
@@ -1362,14 +1362,14 @@ module.exports = (function(e) {
       }),
       (se.prototype.intersects = function(e, t) {
         if (!(e instanceof se)) throw new TypeError('a Range is required');
-        return this.set.some(r =>
-          r.every(r => e.set.some(e => e.every(e => r.intersects(e, t))))
+        return this.set.some((r) =>
+          r.every((r) => e.set.some((e) => e.every((e) => r.intersects(e, t))))
         );
       }),
       (t.toComparators = function(e, t) {
-        return new se(e, t).set.map(e =>
+        return new se(e, t).set.map((e) =>
           e
-            .map(e => e.value)
+            .map((e) => e.value)
             .join(' ')
             .trim()
             .split(' ')
@@ -1392,7 +1392,7 @@ module.exports = (function(e) {
           return null;
         }
         return (
-          e.forEach(e => {
+          e.forEach((e) => {
             i.test(e) &&
               ((n && o.compare(e) !== -1) || (o = new Q((n = e), r)));
           }),
@@ -1408,7 +1408,7 @@ module.exports = (function(e) {
           return null;
         }
         return (
-          e.forEach(e => {
+          e.forEach((e) => {
             i.test(e) && ((n && o.compare(e) !== 1) || (o = new Q((n = e), r)));
           }),
           n
@@ -1421,7 +1421,7 @@ module.exports = (function(e) {
         if (((r = new Q('0.0.0-0')), e.test(r))) return r;
         r = null;
         for (let n = 0; n < e.set.length; ++n) {
-          e.set[n].forEach(e => {
+          e.set[n].forEach((e) => {
             const t = new Q(e.semver.version);
             switch (e.operator) {
               case '>':
@@ -1619,7 +1619,7 @@ module.exports = (function(e) {
             (h = t[0]),
             (p = ''),
             o && !m[h]
-              ? i.lstat(h, e => {
+              ? i.lstat(h, (e) => {
                   if (e) return r(e);
                   (m[h] = !0), g();
                 })
@@ -1649,7 +1649,7 @@ module.exports = (function(e) {
             var s = `${n.dev.toString(32)}:${n.ino.toString(32)}`;
             if (d.hasOwnProperty(s)) return b(null, d[s], h);
           }
-          i.stat(h, e => {
+          i.stat(h, (e) => {
             if (e) return r(e);
             i.readlink(h, (e, t) => {
               o || (d[s] = t), b(e, t);
@@ -1739,7 +1739,7 @@ module.exports = (function(e) {
             const s = Object.keys(i);
             t
               ? r.push.apply(r, s)
-              : s.forEach(e => {
+              : s.forEach((e) => {
                   r[e] = !0;
                 });
           } else if (e.nonull) {
@@ -1752,13 +1752,13 @@ module.exports = (function(e) {
         if (e.mark) {
           for (n = 0; n < r.length; n++) r[n] = e._mark(r[n]);
           e.nodir &&
-            (r = r.filter(t => {
+            (r = r.filter((t) => {
               let r = !/\/$/.test(t);
               const n = e.cache[t] || e.cache[h(e, t)];
               return r && n && (r = n !== 'DIR' && !Array.isArray(n)), r;
             }));
         }
-        e.ignore.length && (r = r.filter(t => !p(e, t)));
+        e.ignore.length && (r = r.filter((t) => !p(e, t)));
         e.found = r;
       }),
       (t.mark = function(e, t) {
@@ -1781,7 +1781,7 @@ module.exports = (function(e) {
       (t.childrenIgnored = function(e, t) {
         return (
           !!e.ignore.length &&
-          e.ignore.some(e => !(!e.gmatcher || !e.gmatcher.match(t)))
+          e.ignore.some((e) => !(!e.gmatcher || !e.gmatcher.match(t)))
         );
       });
     var o = r('path');
@@ -1821,7 +1821,7 @@ module.exports = (function(e) {
       return (
         !!e.ignore.length &&
         e.ignore.some(
-          e => e.matcher.match(t) || !(!e.gmatcher || !e.gmatcher.match(t))
+          (e) => e.matcher.match(t) || !(!e.gmatcher || !e.gmatcher.match(t))
         )
       );
     }
@@ -1867,7 +1867,7 @@ module.exports = (function(e) {
         typeof r === 'function' &&
           ((r = y(r)),
           this.on('error', r),
-          this.on('end', e => {
+          this.on('end', (e) => {
             r(null, e);
           }));
       const o = this;
@@ -2555,8 +2555,8 @@ module.exports = (function(e) {
                 value: e,
                 enumerable: !1,
                 writable: !0,
-                configurable: !0
-              }
+                configurable: !0,
+              },
             })));
         })
       : (e.exports = function(e, t) {
@@ -2582,7 +2582,7 @@ module.exports = (function(e) {
       '?': { open: '(?:', close: ')?' },
       '+': { open: '(?:', close: ')+' },
       '*': { open: '(?:', close: ')*' },
-      '@': { open: '(?:', close: ')' }
+      '@': { open: '(?:', close: ')' },
     };
     const a = '[^/]';
     const c = `${a}*?`;
@@ -2596,10 +2596,10 @@ module.exports = (function(e) {
       (e = e || {}), (t = t || {});
       const r = {};
       return (
-        Object.keys(t).forEach(e => {
+        Object.keys(t).forEach((e) => {
           r[e] = t[e];
         }),
-        Object.keys(e).forEach(t => {
+        Object.keys(e).forEach((t) => {
           r[t] = e[t];
         }),
         r
@@ -2674,13 +2674,13 @@ module.exports = (function(e) {
         let r = (this.globSet = this.braceExpand());
         t.debug && (this.debug = console.error);
         this.debug(this.pattern, r),
-          (r = this.globParts = r.map(e => e.split(p))),
+          (r = this.globParts = r.map((e) => e.split(p))),
           this.debug(this.pattern, r),
           (r = r.map(function(e, t, r) {
             return e.map(this.parse, this);
           }, this)),
           this.debug(this.pattern, r),
-          (r = r.filter(e => e.indexOf(!1) === -1)),
+          (r = r.filter((e) => e.indexOf(!1) === -1)),
           this.debug(this.pattern, r),
           (this.set = r);
       }),
@@ -2775,7 +2775,7 @@ module.exports = (function(e) {
                   start: _ - 1,
                   reStart: i.length,
                   open: s[n].open,
-                  close: s[n].close
+                  close: s[n].close,
                 }),
                   (i += n === '!' ? '(?:(?!(?:' : '(?:'),
                   this.debug('plType %j %j', n, i),
@@ -2897,9 +2897,9 @@ module.exports = (function(e) {
         const r = t.noglobstar ? c : t.dot ? u : l;
         const n = t.nocase ? 'i' : '';
         let i = e
-          .map(e =>
+          .map((e) =>
             e
-              .map(e =>
+              .map((e) =>
                 e === o
                   ? r
                   : typeof e === 'string'
@@ -2922,7 +2922,7 @@ module.exports = (function(e) {
       (d.match = function(e, t, r) {
         const n = new m(t, (r = r || {}));
         return (
-          (e = e.filter(e => n.match(e))),
+          (e = e.filter((e) => n.match(e))),
           n.options.nonull && !e.length && e.push(t),
           e
         );
@@ -3043,13 +3043,13 @@ module.exports = (function(e) {
           value() {
             return o(this);
           },
-          configurable: !0
+          configurable: !0,
         }),
           Object.defineProperty(Function.prototype, 'onceStrict', {
             value() {
               return i(this);
             },
-            configurable: !0
+            configurable: !0,
           });
       }));
   },
@@ -3080,7 +3080,7 @@ module.exports = (function(e) {
     let u = 0;
     const l = process.platform === 'win32';
     function h(e) {
-      ['unlink', 'chmod', 'stat', 'lstat', 'rmdir', 'readdir'].forEach(t => {
+      ['unlink', 'chmod', 'stat', 'lstat', 'rmdir', 'readdir'].forEach((t) => {
         (e[t] = e[t] || i[t]), (e[(t += 'Sync')] = e[t] || i[t]);
       }),
         (e.maxBusyTries = e.maxBusyTries || 3),
@@ -3106,7 +3106,7 @@ module.exports = (function(e) {
           ? r(e)
           : (a = n.length) === 0
           ? r()
-          : void n.forEach(e => {
+          : void n.forEach((e) => {
               f(e, t, function n(s) {
                 if (s) {
                   if (
@@ -3151,7 +3151,7 @@ module.exports = (function(e) {
             : (n && n.code === 'EPERM' && l && d(e, t, n, r),
               o && o.isDirectory()
                 ? v(e, t, n, r)
-                : void t.unlink(e, n => {
+                : void t.unlink(e, (n) => {
                     if (n) {
                       if (n.code === 'ENOENT') return r(null);
                       if (n.code === 'EPERM')
@@ -3167,7 +3167,7 @@ module.exports = (function(e) {
         n(t),
         n(typeof o === 'function'),
         r && n(r instanceof Error),
-        t.chmod(e, a, n => {
+        t.chmod(e, a, (n) => {
           n
             ? o(n.code === 'ENOENT' ? null : r)
             : t.stat(e, (n, i) => {
@@ -3200,7 +3200,7 @@ module.exports = (function(e) {
         n(t),
         r && n(r instanceof Error),
         n(typeof i === 'function'),
-        t.rmdir(e, s => {
+        t.rmdir(e, (s) => {
           !s ||
           (s.code !== 'ENOTEMPTY' && s.code !== 'EEXIST' && s.code !== 'EPERM')
             ? s && s.code === 'ENOTDIR'
@@ -3215,8 +3215,8 @@ module.exports = (function(e) {
                     let s;
                     let a = i.length;
                     if (a === 0) return t.rmdir(e, r);
-                    i.forEach(n => {
-                      p(o.join(e, n), t, n => {
+                    i.forEach((n) => {
+                      p(o.join(e, n), t, (n) => {
                         if (!s) {
                           return n
                             ? r((s = n))
@@ -3277,7 +3277,7 @@ module.exports = (function(e) {
           (function(e, t) {
             n(e),
               n(t),
-              t.readdirSync(e).forEach(r => {
+              t.readdirSync(e).forEach((r) => {
                 g(o.join(e, r), t);
               });
             const r = l ? 100 : 1;
@@ -3299,7 +3299,7 @@ module.exports = (function(e) {
     e.exports = function e(t, r) {
       if (t && r) return e(t)(r);
       if (typeof t !== 'function') throw new TypeError('need wrapper function');
-      Object.keys(t).forEach(e => {
+      Object.keys(t).forEach((e) => {
         n[e] = t[e];
       });
       return n;
@@ -3311,7 +3311,7 @@ module.exports = (function(e) {
         return (
           typeof n === 'function' &&
             n !== o &&
-            Object.keys(o).forEach(e => {
+            Object.keys(o).forEach((e) => {
               n[e] = o[e];
             }),
           n
@@ -3363,6 +3363,6 @@ module.exports = (function(e) {
   },
   util(e, t) {
     e.exports = require('util');
-  }
+  },
 });
 // # sourceMappingURL=main.prod.js.map

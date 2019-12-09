@@ -7,16 +7,14 @@ import routes from '../../constants/routes';
 const ThingCard = ({ thing, fetchThingInfo }) => {
   return (
     <div
-      className="category-card"
+      className="catalog-thing-card"
       onClick={() => {
         fetchThingInfo(thing.ware);
         history.push(routes.HOME);
       }}
     >
-      <div>
-        <img src={thing.pictures[0]} />
-        <p>{thing.name}</p>
-      </div>
+      <img src={thing.image} />
+      <p> {thing.name} </p>
     </div>
   );
 };

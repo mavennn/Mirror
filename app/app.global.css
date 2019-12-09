@@ -322,40 +322,65 @@ p[class='price'] {
 
 /* ----------------- Catalog ----------------- */
 
-.first-layer-containter {
-  display: block;
-  height: auto;
-  width: 100%;
-}
-
-.buttons {
+/* gender buttons */
+.gender-button-container {
+  margin-top: 5rem;
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.buttons-second {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  justify-content: center;
 }
 
 .gender-button {
   width: 10rem;
-  padding: 2rem;
+  height: 2rem;
+  text-align: center;
+  font-family: "Circe";
+}
+
+/* main catalog container */
+
+.main-catalog-container {
+  align-items: center;
+  overflow-x: scroll;
+  display: flex;
+  /*justify-content: center;*/
+  /*background-color: red;*/
+  height: 25rem;
+}
+
+/* category-card */
+.category-card {
+  margin-left: 20px;
+  height: 20rem;
+  width: 20rem;
+}
+
+/* сatalog-item-card */
+.catalog-thing-card {
+  height: 10rem;
+  width: 10rem;
+}
+
+.catalog-thing-card p {
+  font-size: 10px;
+}
+
+/* things-layer */
+.things-layer {
+  display: flex;
+}
+
+.filter {
+  width: 20%;
+}
+
+.things-list {
+  display: grid;
+  overflow-x: scroll;
+  grid-gap: 10px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 2fr 2fr;
 }
 
 .width100 {
   width: 100%;
-}
-
-.second-layer-button {
-  border: 1px solid greenyellow;
-  padding: 5rem;
-  height: 300px;
-}
-
-.category-card {
-  padding: 5rem;
-  margin: 0 10px;
 }
