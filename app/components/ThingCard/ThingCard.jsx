@@ -11,10 +11,10 @@ import env from '../../utils';
  * */
 
 const ThingCard = ({ item, fetchThingInfo }) => (
-  <div onClick={() => fetchThingInfo(item.ware)}>
-    <img src={item.picture}/>
+  // fetchThingInfo(item.barcode)
+  <div onClick={() => {}}>
+    <img src={item.image}/>
     <p>{item.name}</p>
-    <p>{item.price}</p>
   </div>
 );
 

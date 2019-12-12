@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
+import getColorCode from '../../helpers/color-square';
 
-const AvailableColors = ({ colors, changeColor }) => {
+const AvailableColors = ({ colors, changeColor, getColorCode }) => {
   useEffect(() => {
     const allColorsButtonsArray = [
-      ...document.querySelectorAll('.color-button')
+      ...document.querySelectorAll('.color-button'),
     ];
-    allColorsButtonsArray.map(button => {
+    allColorsButtonsArray.map((button) => {
       button.addEventListener('click', () => {
-        allColorsButtonsArray.map(color => {
+        allColorsButtonsArray.map((color) => {
           color.style.borderBottom = '0px';
         });
         button.style.borderBottom = '3px solid greenyellow';
@@ -21,10 +22,9 @@ const AvailableColors = ({ colors, changeColor }) => {
         <strong>Выберите размер: </strong>
       </p>
       <ul className="choose-list">
-        {colors.map(color => (
+        {colors.map((color) => (
           <li key={color}>
-            <button className="color-button" onClick={() => changeColor(color)}>
-              {color}
+            <button className="color-button" style={{ backgroundColor: getColorCode(color) }} onClick={() => changeColor(color)}>
             </button>
           </li>
         ))}

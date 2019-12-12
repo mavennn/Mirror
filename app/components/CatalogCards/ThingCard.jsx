@@ -9,11 +9,11 @@ const ThingCard = ({ thing, fetchThingInfo }) => {
     <div
       className="catalog-thing-card"
       onClick={() => {
-        fetchThingInfo(thing.ware);
+        fetchThingInfo(thing.pid, "pid");
         history.push(routes.HOME);
       }}
     >
-      <img src={thing.image} />
+      <img src={thing.pictures[0]} />
       <p> {thing.name} </p>
     </div>
   );

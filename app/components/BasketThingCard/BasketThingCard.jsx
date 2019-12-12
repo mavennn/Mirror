@@ -18,7 +18,7 @@ const BasketThingCard = ({
   <li
     key={barcode + size}
     onClick={() => {
-      fetchThingInfo(barcode);
+      fetchThingInfo(barcode, 'barcode');
       // history.push(routes.HOME);
     }}
   >

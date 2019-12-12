@@ -45,8 +45,8 @@ export const fetchCategories = (parentId) => (dispatch) => {
   return fetch(`http://${SERVER}:${PORT}/category/${parentId}/subcategories`)
     .then((response) => response.json())
     .then((data) => {
-      if (data.type === 'Success') {
-        dispatch(fetchCategoriesSucces(data.data));
+      if (data.length !== 0) {
+        dispatch(fetchCategoriesSucces(data));
       }
     })
     .catch((error) => dispatch(fetchCategoriesFailure(error)));
@@ -70,11 +70,11 @@ export const fetchThingsFailure = (error) => ({
 
 export const fetchThings = (categoryId) => (dispatch) => {
   dispatch(fetchThingsRequest());
-  return fetch(`http:${SERVER}:${PORT}/things/by/${categoryId}`)
+  return fetch(`http:${SERVER}:${PORT}/category/${categoryId}/things`)
     .then((response) => response.json())
-    .then((response) => {
-      if (response.type === 'Success') {
-        dispatch(fetchThingsSuccess(response.data));
+    .then((data) => {
+      if (data.length !== 0) {
+        dispatch(fetchThingsSuccess(data));
       } else {
         alert('Вещей данной категории нет');
       }

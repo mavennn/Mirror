@@ -44,26 +44,38 @@ export const setToDefault = () => ({
   type: SET_TO_DEFAULT,
 });
 
-export const fetchThingInfo = (barcode) => (dispatch, getState) => {
+export const fetchThingInfo = (identificator, type) => (dispatch, getState) => {
   dispatch(fetchThingInfoRequest());
-  return fetch(`http://${SERVER}:${PORT}/thing/ware/${barcode}`)
+  let url = `http://${SERVER}:${PORT}/thing/`;
+  switch (type) {
+    case 'barcode':
+      url += `barcode/${identificator}`;
+      break;
+    case 'pid':
+      url += `pid/${identificator}`;
+      break;
+    default:
+      break;
+  }
+  return fetch(url)
     .then((response) => response.json())
     .then((thing) => {
-      if (thing.type === 'Success') {
-        dispatch(fetchThingInfoSuccess(thing.data));
+      if (thing.pid !== undefined) {
+        dispatch(fetchThingInfoSuccess(thing));
         if (
           getState().currentThing.history.findIndex(
-            (x) => x.ware === thing.ware,
+            (x) => x.name === thing.name
           ) === -1
         ) {
           dispatch(
             addToHistory({
               // тут формируется объект информации для маленькой карточки товара
-              name: thing.data.name,
-              picture: thing.data.pictures[0],
-              ware: thing.data.ware,
-              pid: thing.data.pid,
-              price: thing.data.price,
+              name: thing.name,
+              image: thing.pictures[0],
+              ware: thing.ware,
+              pid: thing.pid,
+              price: thing.price,
+              barcode: thing.barcode,
             }),
           );
         }

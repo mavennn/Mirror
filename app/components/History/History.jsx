@@ -7,7 +7,7 @@ const History = ({ historyThings }) => (
     <p>ПРОСМОТРЕННОЕ </p>
     <ul>
       {historyThings.map(thing => (
-        <li key={thing.ware}>
+        <li key={thing.barcode}>
           <ThingCardContainer item={thing} />
         </li>
       ))}

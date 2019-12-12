@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Recommendations from './Recommendations';
 
-const RecommendationsContainer = ({ recs }) => <Recommendations recs={recs} />;
+require('dotenv').config();
+const SERVER = process.env.SERVER_ADDRESS;
+const PORT = process.env.SERVER_PORT;
 
-const mapStateToProps = state => ({
-  recs: state.currentThing.recs
+const RecommendationsContainer = ({ barcode }) => {
+  const [recs, setRecs] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://${SERVER}:${PORT}/thingRecs/${barcode}`)
+      .then((response) => response.json())
+      .then((data) => setRecs(data));
+  }, []);
+
+  return <Recommendations recs={recs} />;
+};
+
+const mapStateToProps = (state) => ({
+  barcode: state.currentThing.barcode,
 });
 
 RecommendationsContainer.propTypes = {
-  recsThings: PropTypes.arrayOf(PropTypes.string)
+  barcode: PropTypes.number,
 };
 
 RecommendationsContainer.defaultProps = {
-  recsThings: ['E012ODF1025.710', 'E026PE71875.890']
+  barcode: 299101395860,
 };
 
 export default connect(mapStateToProps, null)(RecommendationsContainer);

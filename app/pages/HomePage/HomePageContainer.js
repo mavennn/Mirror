@@ -7,8 +7,8 @@ const HomePageContainer = ({ currentThing }) => (
   <HomePage currentThing={currentThing} />
 );
 
-const mapStateToProps = state => ({
-  currentThing: state.currentThing
+const mapStateToProps = (state) => ({
+  currentThing: state.currentThing,
 });
 
 export default connect(mapStateToProps, null)(HomePageContainer);

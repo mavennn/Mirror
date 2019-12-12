@@ -7,9 +7,9 @@ const CarouselContainer = ({ ware, pictures }) => (
   <Carousel ware={ware} pictures={pictures} />
 );
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   ware: state.currentThing.ware,
-  pictures: state.currentThing.pictures
+  pictures: state.currentThing.pictures,
 });
 
 export default connect(mapStateToProps, null)(CarouselContainer);

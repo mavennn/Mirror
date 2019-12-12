@@ -6,28 +6,7 @@ import Routes from './Routes';
 import routes from './constants/routes';
 import { fetchThingInfo } from './store/actions/сurrentThingActions';
 import { setSocket } from './store/actions/socketsActions';
-
-function checkInaction(history) {
-  let timer;
-
-  window.onload = timerReset;
-  document.onkeypress = timerReset;
-  document.onmousemove = timerReset;
-  document.onmousedown = timerReset;
-  document.ontouchstart = timerReset;
-  document.onclick = timerReset;
-  document.onscroll = timerReset;
-  document.onkeypress = timerReset;
-
-  function timerElapsed() {
-    history.push(routes.EXPECTATION);
-  }
-
-  function timerReset() {
-    clearTimeout(timer);
-    timer = setTimeout(timerElapsed, 1 * 60 * 1000); // 1 min
-  }
-}
+import checkInaction from './helpers/check-in-action';
 
 class Root extends Component {
   componentDidMount() {
@@ -37,7 +16,7 @@ class Root extends Component {
 
     ipcRenderer.on('vendorCode', (event, barcode) => {
       if (barcode) {
-        store.dispatch(fetchThingInfo(barcode));
+        store.dispatch(fetchThingInfo(barcode, 'barcode'));
         if (store.getState().router.location.pathname !== routes.HOME) {
           history.push(routes.HOME);
         }
