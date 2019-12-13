@@ -33,7 +33,7 @@ const HomePage = ({ currentThing }) => {
             {/*  место для кнопок */}
           </div>
           <div>
-            <RecommendationsContainer />
+            {/*<RecommendationsContainer />*/}
           </div>
           <div>
             <HistoryContainer />

@@ -6,9 +6,9 @@ const History = ({ historyThings }) => (
   <div className="list">
     <p>ПРОСМОТРЕННОЕ </p>
     <ul>
-      {historyThings.map(thing => (
-        <li key={thing.barcode}>
-          <ThingCardContainer item={thing} />
+      {historyThings.map((item) => (
+        <li key={item.barcode + item.name}>
+          <ThingCardContainer item={item} />
         </li>
       ))}
     </ul>

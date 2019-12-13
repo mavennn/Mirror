@@ -10,8 +10,9 @@ const BasketThingsList = ({ basketThings }) => {
       {basketThings.map(item => (
         <BasketThingCardContainer
           barcode={item.barcode}
-          vendorcode={item.vendorcode}
-          title={item.title}
+          ware={item.ware}
+          image={item.image}
+          name={item.name}
           size={item.size}
           color={item.color}
           price={item.price}

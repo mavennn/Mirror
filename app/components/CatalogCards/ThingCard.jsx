@@ -9,7 +9,7 @@ const ThingCard = ({ thing, fetchThingInfo }) => {
     <div
       className="catalog-thing-card"
       onClick={() => {
-        fetchThingInfo(thing.pid, "pid");
+        fetchThingInfo(thing.barcode);
         history.push(routes.HOME);
       }}
     >

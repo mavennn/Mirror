@@ -1,5 +1,7 @@
 import React from 'react';
 import * as trash from '../../assets/icons/trash.svg';
+import { history } from '../../store/configureStore';
+import routes from '../../constants/routes';
 
 require('dotenv').config();
 
@@ -8,26 +10,26 @@ const PORT = process.env.SERVER_PORT;
 
 const BasketThingCard = ({
   barcode,
-  vendorcode,
-  title,
+  ware,
+  name,
+  image,
   size,
   color,
   price,
-  removeFromBasket
+  removeFromBasket,
+  fetchThingInfo,
 }) => (
-  <li
-    key={barcode + size}
-    onClick={() => {
-      fetchThingInfo(barcode, 'barcode');
-      // history.push(routes.HOME);
-    }}
-  >
+  <li key={barcode + size}>
     <img
-      src={`http://${SERVER}:${PORT}/images/${vendorcode}-01.jpg`}
+      src={image}
       alt="pic"
+      onClick={() => {
+        fetchThingInfo(barcode);
+        history.push(routes.HOME);
+      }}
     />
     <div className="basket-description">
-      <p className="title">{title}</p>
+      <p className="title">{name}</p>
       <p className="size">{size}</p>
       <p className="price">{price}</p>
       <p className="color">{color}</p>
@@ -35,7 +37,7 @@ const BasketThingCard = ({
         <img
           src={trash}
           alt="trash"
-          onClick={() => removeFromBasket(vendorcode, size)}
+          onClick={() => removeFromBasket(ware, size)}
         />
       </div>
     </div>

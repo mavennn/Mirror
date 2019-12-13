@@ -4,23 +4,25 @@ export const ADD_TO_BASKET = 'ADD_TO_BASKET';
 export const REMOVE_FROM_BASKET = 'REMOVE_FROM_BASKET';
 export const CLEAR_BASKET = 'CLEAR_BASKET';
 
-export const addToBasket = thing => (dispatch, getState) => {
+export const addToBasket = (thing) => (dispatch, getState) => {
   const { basketThings } = getState().basketThings;
   const indexOfThingInBasket = basketThings.findIndex(
-    x => x.vendorcode === thing.vendorcode && x.size === thing.size
+    (x) => x.ware === thing.ware && x.size === thing.size
   );
   if (indexOfThingInBasket === -1) {
     dispatch({
       type: ADD_TO_BASKET,
       payload: {
-        title: thing.title,
+        name: thing.name,
+        image: thing.pictures[0],
         barcode: thing.barcode,
-        vendorcode: thing.vendorcode,
+        pid: thing.pid,
+        ware: thing.ware,
         color: thing.color,
         size: thing.size,
         count: 1,
-        price: thing.price
-      }
+        price: thing.price,
+      },
     });
     Swal.fire({
       title: 'Товар добавлен в корзину!',
@@ -28,8 +30,8 @@ export const addToBasket = thing => (dispatch, getState) => {
       timer: '2000',
       customClass: {
         popup: 'alertContainer',
-        title: 'alertTitle'
-      }
+        title: 'alertTitle',
+      },
     });
   } else {
     Swal.fire({
@@ -38,17 +40,17 @@ export const addToBasket = thing => (dispatch, getState) => {
       confirmButtonText: 'OK',
       customClass: {
         popup: 'alertContainer',
-        title: 'alertTitle'
-      }
+        title: 'alertTitle',
+      },
     });
   }
 };
 
-export const removeFromBasket = (vendorcode, size) => (dispatch, getState) => {
-  if (vendorcode && size) {
+export const removeFromBasket = (ware, size) => (dispatch, getState) => {
+  if (ware && size) {
     const { basketThings } = getState().basketThings;
     const indexOfThingInBasket = basketThings.findIndex(
-      x => x.vendorcode === vendorcode && x.size === size
+      (x) => x.ware === ware && x.size === size,
     );
     dispatch({ type: REMOVE_FROM_BASKET, payload: indexOfThingInBasket });
   }
@@ -56,5 +58,5 @@ export const removeFromBasket = (vendorcode, size) => (dispatch, getState) => {
 
 export const clearBasket = () => ({
   type: CLEAR_BASKET,
-  payload: []
+  payload: [],
 });
