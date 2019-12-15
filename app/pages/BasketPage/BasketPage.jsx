@@ -1,29 +1,57 @@
 import React from 'react';
+import styles from './BasketPage.css';
 
-// import BasketFooter from '../../components/BasketFooter';
 import Emoji from '../../components/Emoji/Emoji';
+import routes from '../../constants/routes';
 import HeaderContainer from '../../components/Header/HeaderContainer';
-import BasketThingsListContainer from '../../components/BasketThingsList/BasketThingsListContainer';
-import ClearBasketButtonContainer from '../../components/ClearBasketButton/ClearBasketButtonContainer';
-import PackToCheckoutButtonContainer from '../../components/PackToCheckoutButton/PackToCheckoutButtonContainer';
 
-const BasketPage = ({ basketThings }) => {
+const BasketPage = ({
+  basketThings,
+  getConsultantThunkCreator,
+  removeFromBasket,
+  clearBasket,
+  goBack,
+  fetchThingInfo,
+}) => {
   if (basketThings.length !== 0) {
     return (
-      <div id="basket">
+      <div className={styles.container}>
         <HeaderContainer />
-        <BasketThingsListContainer />
-        <div className="basketFooter">
-          <ClearBasketButtonContainer />
-          <PackToCheckoutButtonContainer />
+        <ul className={styles.basket_things_list}>
+          {basketThings.map((item) => (
+            <li
+              className={styles.basket_things_list__item}
+              onClick={() => {
+                fetchThingInfo(item.barcode);
+                goBack(routes.HOME);
+              }}
+            >
+              <div className={styles.basket_item_cart}>
+                <div className={styles.basket_cart__image_container}>
+                  <img src={item.image} className={styles.basket_cart__image} />
+                </div>
+                <div className={styles.basket_cart__title}>
+                  <p>{item.name}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div className={styles.basket_footer}>
+          <button className={styles.basket_footer__button} onClick={() => clearBasket()}>
+            Очистить корзину
+          </button>
+          <button className={styles.basket_footer__button} onClick={() => {}}>
+            Упаковать на кассу
+          </button>
         </div>
       </div>
     );
   }
   return (
-    <div id="basket">
+    <div className={styles.container}>
       <HeaderContainer />
-      <div className="waiting">
+      <div className={styles.waiting}>
         <p>
           Здесь пока ничего нет
           <Emoji symbol="🙈" />

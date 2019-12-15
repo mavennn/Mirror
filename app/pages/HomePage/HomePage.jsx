@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './HomePage.css';
 
 import Emoji from '../../components/Emoji/Emoji';
 import HeaderContainer from '../../components/Header/HeaderContainer';
@@ -14,38 +15,34 @@ import BringThingButtonContainer from '../../components/BringThingButton/BringTh
 const HomePage = ({ currentThing }) => {
   if (currentThing.ware !== '') {
     return (
-      <div>
+      <div className={styles.container}>
         <HeaderContainer />
-        <div className="homePage">
-          <div className="flex">
-            <CarouselContainer />
-            <ThingInfoContainer />
+        <div className={styles.main}>
+          <CarouselContainer />
+          <ThingInfoContainer />
+          <div className={styles.colors_and_sizes}>
+            <AvailableColorsContainer />
+            <AvailableSizesContainer />
           </div>
-          <div className="flex">
-            <div className="choose">
-              <AvailableColorsContainer />
-              <AvailableSizesContainer />
-            </div>
-            <div className="buttons">
-              <AddToBasketButtonContainer />
-              <BringThingButtonContainer />
-            </div>
-            {/*  место для кнопок */}
+          <div className={styles.user_buttons}>
+            <AddToBasketButtonContainer />
+            <BringThingButtonContainer />
           </div>
-          <div>
-            {/*<RecommendationsContainer />*/}
-          </div>
-          <div>
-            <HistoryContainer />
-          </div>
+        </div>
+        <div className={styles.footer}>
+          <RecommendationsContainer />
+          <HistoryContainer />
         </div>
       </div>
     );
   }
+  if (currentThing.isFetching) {
+    return <div>loader</div>;
+  }
   return (
-    <div className="home">
+    <div className={styles.container}>
       <HeaderContainer />
-      <div className="waiting">
+      <div className={styles.waiting}>
         <p>
           Чтобы начать работу, отсканируйте штрихкод
           <Emoji symbol="👗" />

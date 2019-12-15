@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import HeaderContainer from '../../components/Header/HeaderContainer';
+import styles from './CatalogPage.css';
 
+import HeaderContainer from '../../components/Header/HeaderContainer';
 import GenderButtonsContainer from '../../components/GenderButtons/GenderButtonsContainer';
 import MainCatalogSectionContainer from '../../components/MainCatalogSection/MainCatalogSectionContainer';
 
@@ -31,11 +32,11 @@ const CatalogPage = ({ status }) => {
   });
 
   return (
-    <>
+    <div className={styles.container}>
       <HeaderContainer />
       <GenderButtonsContainer />
       <MainCatalogSectionContainer />
-    </>
+    </div>
   );
 };
 

@@ -16,7 +16,7 @@ class Root extends Component {
 
     ipcRenderer.on('vendorCode', (event, barcode) => {
       if (barcode) {
-        store.dispatch(fetchThingInfo(barcode, 'barcode'));
+        store.dispatch(fetchThingInfo(barcode));
         if (store.getState().router.location.pathname !== routes.HOME) {
           history.push(routes.HOME);
         }

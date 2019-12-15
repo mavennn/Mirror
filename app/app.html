@@ -40,17 +40,15 @@
 
         document.write(
           scripts
-            .map(script => `<script defer src="${script}"><\/script>`)
+            .map((script) => `<script defer src="${script}"><\/script>`)
             .join('')
         );
       }
     </script>
-    <script type="text/javascript">
-      [...document.querySelectorAll('.size-button')].map(button => {
-        button.addEventListener('click', () => {
-          alert('adfasdf');
-        });
-      });
+    <script>
+      import $ from 'jquery';
+
+      $(window).on('resize', fix_size);
     </script>
   </body>
 </html>

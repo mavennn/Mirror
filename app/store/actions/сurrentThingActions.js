@@ -49,7 +49,6 @@ export const fetchRecs = (barcode) => (dispatch) => {
     .then((response) => response.json())
     .then((recs) => {
       if (recs.length !== 0) {
-        console.log("recs", recs);
         dispatch(fetchRecsSuccess(recs));
       }
     })
@@ -78,7 +77,6 @@ export const fetchThingInfo = (barcode) => (dispatch, getState) => {
     .then((response) => response.json())
     .then((thing) => {
       if (thing.name !== undefined) {
-        dispatch(fetchRecs(thing.barcode));
         dispatch(fetchThingInfoSuccess(thing));
         if (
           getState().currentThing.history.findIndex(

@@ -3,8 +3,8 @@ import { render } from 'react-dom';
 import { AppContainer as ReactHotAppContainer } from 'react-hot-loader';
 import Root from './Root';
 import { configureStore, history } from './store/configureStore';
-import './app.global.css';
-import './tachyons.min.css';
+// import './app.global.css';
+import './index.css';
 
 const store = configureStore();
 

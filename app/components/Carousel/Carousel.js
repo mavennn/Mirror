@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import styles from './Carousel.css';
+import fixSize from '../../helpers/fix-size';
 
-// require('dotenv').config();
-// const SERVER = process.env.SERVER_ADDRESS || '192.168.1.231';
-// const PORT = process.env.SERVER_PORT || '3123';
-
-import env from '../../utils';
-
-const Carousel = ({ ware, pictures }) => (
-  <div className="flex">
-    <div className="slider-for">
-      {/* <div><img src={`http://${env.getServer()}:${env.getPort()}/images/${vendorcode}-01.jpg`} alt="pic" className="picture-1" /></div> */}
-      <div>
-        <img src={pictures[0]} alt="pic" className="picture-1" />
-      </div>
+const Carousel = ({ ware, pictures }) => {
+  useEffect(() => {
+    fixSize();
+  });
+  return (
+    <div className={styles.image_container}>
+      <img src={pictures[0]} alt="pic" className={styles.image} />
     </div>
-  </div>
-);
+  );
+};
 
 export default Carousel;

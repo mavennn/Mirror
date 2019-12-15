@@ -9,7 +9,7 @@ const ExpectationPageContainer = ({ setToDefault, history }) => (
 );
 
 const mapDispatchToProps = {
-  setToDefault
+  setToDefault,
 };
 
 export default connect(null, mapDispatchToProps)(ExpectationPageContainer);

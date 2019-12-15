@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.item {
+    filter: brightness(0) invert(1);
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+}
+
+.item__icon {
+    width: 5rem;
+}
+
+.item__text {
+    padding: 20px;
+    text-align: center;
+}

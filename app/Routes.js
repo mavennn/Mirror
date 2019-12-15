@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router';
 import routes from './constants/routes';
 import App from './App';
 import HomePageContainer from './pages/HomePage/HomePageContainer';
-import ExpectationPageContainer from './pages/ExpectationPage/ExpectationPageContiner';
+import ExpectationPageContainer from './pages/ExpectationPage/ExpectationPageContainer';
 import BasketPageContainer from './pages/BasketPage/BasketPageContainer';
 import CatalogContainer from './pages/CatalogPage/CatalogPageContainer';
 import MirrorPageContainer from './pages/MirrorPage/MirrorPageContainer';

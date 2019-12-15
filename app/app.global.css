@@ -1,49 +1,26 @@
-@import '~@fortawesome/fontawesome-free/css/all.css';
-
 @font-face {
   font-family: Circe;
   src: url('assets/fonts/Circe-Rounded.ttf');
 }
 
-body {
-  position: relative;
-  color: white;
-  height: 100vh;
-  background-color: #000;
-  font-family: Circe, serif;
+@font-face {
+  font-family: "SF Pro Text";
+  src: url('assets/fonts/SF-Pro-Text-Thin.ttf');
 }
 
-h2 {
-  margin: 0;
-  font-size: 2.25rem;
-  font-weight: bold;
-  letter-spacing: -0.025em;
-  color: #fff;
-}
+/*body {*/
+/*  !*position: relative;*!*/
+/*  !*color: white;*!*/
+/*  height: 100vh;*/
+/*  background-color: #000;*/
+/*  font-family: "SF Pro Text", serif;*/
+/*  !*font-family: Circe, serif;*!*/
+/*}*/
 
-p {
-  font-size: 24px;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  color: white;
-  opacity: 0.75;
-  text-decoration: none;
-}
-
-a:hover {
-  color: white;
-  opacity: 1;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-img {
-  border-radius: 10px;
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
 }
 
 .waiting {

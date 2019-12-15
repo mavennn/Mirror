@@ -8,8 +8,8 @@ const BasketThingsListContainer = ({ basketThings }) => (
   <BasketThingsList basketThings={basketThings} />
 );
 
-const mapStateToProps = state => ({
-  basketThings: state.basketThings.basketThings
+const mapStateToProps = (state) => ({
+  basketThings: state.basketThings.basketThings,
 });
 
 export default connect(mapStateToProps, null)(BasketThingsListContainer);

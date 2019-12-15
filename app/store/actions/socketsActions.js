@@ -6,7 +6,6 @@ require('dotenv');
 
 const SERVER = process.env.SERVER_ADDRESS;
 const PORT = process.env.SERVER_PORT;
-const ROOM = process.env;
 
 export const SET_SOCKET = 'SET_SOCKET';
 export const GET_CONSULTANT = 'GET_CONSULTANT';
@@ -14,7 +13,6 @@ export const CANCEL_CONSULTANT = 'CANCEL_CONSULTANT';
 
 export const setSocket = () => (dispatch) => {
   const socket = io(`http://${SERVER}:${PORT}/rooms`);
-  console.log(socket);
   dispatch({ type: SET_SOCKET, payload: socket });
 };
 
@@ -29,13 +27,13 @@ export const mutualQueryParams = () => ({
 
 /* --------------------- ПРОСТО ВЫЗВАТЬ КОНСУЛЬТАНТА --------------------- */
 
-export const createCallCansultantQuery = () => ({
+export const createCallConsultantQuery = () => ({
   text: sockets.CALL_TEXT,
   ...mutualQueryParams(),
 });
 
 export const sendCallConsultantQueryToServer = (socket) => (dispatch) => {
-  const query = createCallCansultantQuery();
+  const query = createCallConsultantQuery();
   console.log('call consultant', query);
   socket.emit('getConsultant', query);
   Swal.fire({

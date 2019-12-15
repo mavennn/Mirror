@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "SF Pro Text";
+    src: url('assets/fonts/SF-Pro-Text-Thin.ttf');
+}
+
+body {
+    background-color: #000;
+    font-family: "SF Pro Text";
+    color: white;
+}

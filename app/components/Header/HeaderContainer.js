@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 import Header from './Header';
 import { getConsultantThunkCreator } from '../../store/actions/socketsActions';
 
-
 const HeaderContainer = ({
   location,
   isConsultantCalled,
-  getConsultantThunkCreator
+  getConsultantThunkCreator,
 }) => (
   <Header
     location={location}
@@ -19,7 +18,7 @@ const HeaderContainer = ({
 
 const mapStateToProps = (state) => ({
   location: state.router.location.pathname,
-  isConsultantCalled: state.sockets.isConsultantCalled
+  isConsultantCalled: state.sockets.isConsultantCalled,
 });
 
 const mapDispatchToProps = {
