@@ -77,7 +77,7 @@ export const fetchThingInfo = (barcode) => (dispatch, getState) => {
   return fetch(url)
     .then((response) => response.json())
     .then((thing) => {
-      if (thing.pid !== undefined) {
+      if (thing.name !== undefined) {
         dispatch(fetchRecs(thing.barcode));
         dispatch(fetchThingInfoSuccess(thing));
         if (

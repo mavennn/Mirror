@@ -3,11 +3,6 @@ import * as trash from '../../assets/icons/trash.svg';
 import { history } from '../../store/configureStore';
 import routes from '../../constants/routes';
 
-require('dotenv').config();
-
-const SERVER = process.env.SERVER_ADDRESS;
-const PORT = process.env.SERVER_PORT;
-
 const BasketThingCard = ({
   barcode,
   ware,

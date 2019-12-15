@@ -3,9 +3,9 @@ import React, { useEffect } from 'react';
 const AvailableSizes = ({ sizes, changeSize }) => {
   useEffect(() => {
     const allSizesButtonsArray = [...document.querySelectorAll('.size-button')];
-    allSizesButtonsArray.map(button => {
+    allSizesButtonsArray.map((button) => {
       button.addEventListener('click', () => {
-        allSizesButtonsArray.map(size => {
+        allSizesButtonsArray.map((size) => {
           size.style.borderBottom = '0px';
         });
         button.style.borderBottom = '3px solid greenyellow';
@@ -18,8 +18,8 @@ const AvailableSizes = ({ sizes, changeSize }) => {
       <p>
         <strong>Выберите размер: </strong>
       </p>
-      <ul className="choose-list">
-        {sizes.map(size => (
+      <ul className="choose-list scroll">
+        {sizes.map((size) => (
           <li key={size}>
             <button className="size-button" onClick={() => changeSize(size)}>
               {size}

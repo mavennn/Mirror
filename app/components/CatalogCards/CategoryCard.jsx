@@ -6,7 +6,7 @@ const CategoryCard = ({ category, fetchThings }) => {
   return (
     <div
       className="border category-card"
-      onClick={() => fetchThings(category.id)}
+        onClick={() => fetchThings(category.id)}
     >
       <h4>{category.name}</h4>
     </div>

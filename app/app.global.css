@@ -155,6 +155,10 @@ header a {
   padding: 10px 0;
 }
 
+.sizes {
+  text-align: center;
+}
+
 /* Choose */
 
 .choose {
@@ -162,6 +166,7 @@ header a {
 }
 
 .choose-list {
+  width: 60%;
   padding-top: 0;
   display: flex;
 }
