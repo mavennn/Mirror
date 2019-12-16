@@ -13,41 +13,58 @@ import AddToBasketButtonContainer from '../../components/AddToBasketButton/AddTo
 import BringThingButtonContainer from '../../components/BringThingButton/BringThingButtonContainer';
 
 const HomePage = ({ currentThing }) => {
-  if (currentThing.ware !== '') {
-    return (
-      <div className={styles.container}>
-        <HeaderContainer />
-        <div className={styles.main}>
-          <CarouselContainer />
-          <ThingInfoContainer />
-          <div className={styles.colors_and_sizes}>
-            <AvailableColorsContainer />
-            <AvailableSizesContainer />
-          </div>
-          <div className={styles.user_buttons}>
-            <AddToBasketButtonContainer />
-            <BringThingButtonContainer />
-          </div>
+  const thingInfo = (
+    <>
+      <div className={styles.main}>
+        <CarouselContainer />
+        <ThingInfoContainer />
+        <div className={styles.colors_and_sizes}>
+          <AvailableColorsContainer />
+          <AvailableSizesContainer />
         </div>
-        <div className={styles.footer}>
-          <RecommendationsContainer />
-          <HistoryContainer />
+        <div className={styles.user_buttons}>
+          <AddToBasketButtonContainer />
+          <BringThingButtonContainer />
         </div>
       </div>
-    );
-  }
-  if (currentThing.isFetching) {
-    return <div>loader</div>;
-  }
-  return (
-    <div className={styles.container}>
-      <HeaderContainer />
+      <div className={styles.footer}>
+        <RecommendationsContainer />
+        <HistoryContainer />
+      </div>
+    </>
+  );
+
+  const noThing = (
+    <>
       <div className={styles.waiting}>
         <p>
           Чтобы начать работу, отсканируйте штрихкод
           <Emoji symbol="👗" />
           <Emoji symbol="👉" />
         </p>
+      </div>
+    </>
+  );
+
+  const loader = (
+    <>
+      <h1>LOADER</h1>
+    </>
+  );
+
+  if (currentThing.name !== '') {
+    return (
+      <div className={styles.container}>
+        <HeaderContainer />
+        {thingInfo}
+      </div>
+    );
+  }
+  return (
+    <div className={styles.container}>
+      <HeaderContainer />
+      <div className={styles.waiting}>
+        {noThing}
       </div>
     </div>
   );
