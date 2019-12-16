@@ -71,6 +71,9 @@ export const fetchThingInfoFailure = (error) => ({
 });
 
 export const fetchThingInfo = (barcode) => (dispatch, getState) => {
+  const re = /^[0-9]{10,}$/;
+  const barcodeIsValid = re.test(barcode);
+  if (!barcodeIsValid) return alert('Invalid barcode');
   dispatch(fetchThingInfoRequest());
   const url = `http://${SERVER}:${PORT}/thing/barcode/${barcode}`;
   return fetch(url)
@@ -83,7 +86,6 @@ export const fetchThingInfo = (barcode) => (dispatch, getState) => {
             (x) => x.name === thing.name
           ) === -1
         ) {
-          dispatch(fetchRecs(thing.barcode));
           dispatch(
             addToHistory({
               // тут формируется объект информации для маленькой карточки товара
