@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Recommendations.css';
 
-const Recommendations = ({ recs, fetchThingInfo}) => {
+const Recommendations = ({ recs, fetchThingInfo }) => {
   if (recs.length !== 0) {
     return (
       <div className={styles.recs}>
@@ -19,7 +19,10 @@ const Recommendations = ({ recs, fetchThingInfo}) => {
               }}
             >
               <div className={styles.recs__list_item_image_container}>
-                <img src={item.image} className={styles.recs__list_item_image} />
+                <img
+                  src={item.image}
+                  className={styles.recs__list_item_image}
+                />
               </div>
               <div className={styles.recs__list_item_title}>
                 <p>{item.name}</p>

@@ -11,37 +11,32 @@ import HistoryContainer from '../../components/History/HistoryContainer';
 import RecommendationsContainer from '../../components/Recommendations/RecommendationsContainer';
 import AddToBasketButtonContainer from '../../components/AddToBasketButton/AddToBasketButtonContainer';
 import BringThingButtonContainer from '../../components/BringThingButton/BringThingButtonContainer';
+import Loader from '../../components/Loader/Loader';
 
 const HomePage = ({ currentThing }) => {
-  if (currentThing.ware !== '') {
-    return (
-      <div className={styles.container}>
-        <HeaderContainer />
-        <div className={styles.main}>
-          <CarouselContainer />
-          <ThingInfoContainer />
-          <div className={styles.colors_and_sizes}>
-            <AvailableColorsContainer />
-            <AvailableSizesContainer />
-          </div>
-          <div className={styles.user_buttons}>
-            <AddToBasketButtonContainer />
-            <BringThingButtonContainer />
-          </div>
+  const thingInfo = (
+    <>
+      <div className={styles.main}>
+        <CarouselContainer />
+        <ThingInfoContainer />
+        <div className={styles.colors_and_sizes}>
+          <AvailableColorsContainer />
+          <AvailableSizesContainer />
         </div>
-        <div className={styles.footer}>
-          <RecommendationsContainer />
-          <HistoryContainer />
+        <div className={styles.user_buttons}>
+          <AddToBasketButtonContainer />
+          <BringThingButtonContainer />
         </div>
       </div>
-    );
-  }
-  if (currentThing.isFetching) {
-    return <div>loader</div>;
-  }
-  return (
-    <div className={styles.container}>
-      <HeaderContainer />
+      <div className={styles.footer}>
+        <RecommendationsContainer />
+        <HistoryContainer />
+      </div>
+    </>
+  );
+
+  const noThing = (
+    <>
       <div className={styles.waiting}>
         <p>
           Чтобы начать работу, отсканируйте штрихкод
@@ -49,6 +44,27 @@ const HomePage = ({ currentThing }) => {
           <Emoji symbol="👉" />
         </p>
       </div>
+    </>
+  );
+
+  const getPage = (name) => {
+    if (name !== '') {
+      return thingInfo;
+    }
+    return noThing;
+  };
+
+  const loader =
+    <>
+      <div className={styles.loader_container}>
+        <Loader/>
+      </div>
+    </>
+
+  return (
+    <div className={styles.container}>
+      <HeaderContainer />
+      {currentThing.isFetching ? loader : getPage(currentThing.name)}
     </div>
   );
 };
