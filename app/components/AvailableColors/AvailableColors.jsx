@@ -21,7 +21,7 @@ const AvailableColors = ({ colors, changeColor, getColorCode }) => {
     <div className={styles.available_colors}>
       <div className={styles.available_colors__title}>
         <p>
-          <strong>Выберите размер: </strong>
+          <strong>Выберите цвет: </strong>
         </p>
       </div>
       <ul className={styles.available_colors__list}>

@@ -1,15 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '../CategoriesList.css';
 
 const FirstLayer = ({ categories, fetchCategories }) => (
-  <ul className="main-catalog-container ">
+  <ul className={styles.categories_list}>
     {categories.map((category) => (
-      <li key={category.id}>
-        <div
-          className="border category-card"
-          onClick={() => fetchCategories(category.id)}
-        >
-          <h4>{category.name}</h4>
+      <li
+        key={category.id}
+        className={styles.categories_list__item}
+        onClick={() => fetchCategories(category.id)}
+      >
+        <div className={styles.categories_list__item__image_container}>
+          <img className={styles.categories_list__item__image} />
+        </div>
+        <div className={styles.categories_list__item_text}>
+          <p>{category.name}</p>
         </div>
       </li>
     ))}

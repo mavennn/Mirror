@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import styles from './GenderButtons.css';
+
+const buttonsHighlighting = () => {
+  const buttons = [...document.querySelectorAll('#gender_button__toggler')];
+  console.log(buttons);
+  buttons.map((button) => {
+    button.addEventListener('click', () => {
+      buttons.map((color) => {
+        color.style.borderBottom = '0px';
+      });
+      button.style.borderBottom = '3px solid greenyellow';
+    });
+  });
+};
 
 const GenderButtons = ({ toggleGender }) => {
+  useEffect(() => {
+    buttonsHighlighting();
+  });
   return (
-    <div className="gender-button-container">
-      <div className="gender-button" onClick={() => toggleGender('male')}>
+    <div className={styles.gender_buttons}>
+      {/* Кнопка мужчинам */}
+      <div
+        id="gender_button__toggler"
+        className={styles.gender_buttons__toggler}
+        onClick={() => toggleGender('male')}
+      >
         Мужчинам
       </div>
-      <div className="gender-button" onClick={() => toggleGender('female')}>
+
+      {/* Кнопка женщинам */}
+      <div
+        id="gender_button__toggler"
+        className={styles.gender_buttons__toggler}
+        onClick={() => toggleGender('female')}
+      >
         Женщинам
       </div>
+
+      {/* Кнопка детям */}
       <div
-        className="gender-button"
+        id="gender_button__toggler"
+        className={styles.gender_buttons__toggler}
         onClick={() => toggleGender('child')}
         style={{ borderBottom: '3px solid greenyellow' }}
       >

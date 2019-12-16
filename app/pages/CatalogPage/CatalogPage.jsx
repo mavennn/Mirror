@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './CatalogPage.css';
 
 import HeaderContainer from '../../components/Header/HeaderContainer';
@@ -14,23 +14,7 @@ import MainCatalogSectionContainer from '../../components/MainCatalogSection/Mai
 // Одежда для мальчиков 21602
 // Обувь для мальчиков 21673
 
-const buttonsHighlighting = () => {
-  const buttons = [...document.querySelectorAll('.gender-button')];
-  buttons.map((button) => {
-    button.addEventListener('click', () => {
-      buttons.map((color) => {
-        color.style.borderBottom = '0px';
-      });
-      button.style.borderBottom = '3px solid greenyellow';
-    });
-  });
-};
-
 const CatalogPage = ({ status }) => {
-  useEffect(() => {
-    buttonsHighlighting();
-  });
-
   return (
     <div className={styles.container}>
       <HeaderContainer />
