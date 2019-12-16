@@ -1,13 +1,31 @@
 import React from 'react';
-import CategoryCard from '../../CatalogCards/CategoryCard';
+import styles from '../CategoriesList.css';
 
-const SecondLayer = ({ categories }) => {
+const getImagePath = (categoryId) => {
+  return `/Users/aleksejgadoev/WebstormProjects/web-server-mern/app/assets/img/${String(
+    categoryId
+  )}.jpg`;
+};
+
+const SecondLayer = ({ categories, fetchThings }) => {
   return (
-    <ul className="main-catalog-container">
-      {categories.map((category, index) => {
+    <ul className={styles.categories_list_second_layer}>
+      {categories.map((category) => {
         return (
-          <li key={index}>
-            <CategoryCard category={category} />
+          <li
+            key={category.id}
+            onClick={() => fetchThings(category.id)}
+            className={styles.categories_list__item}
+          >
+            <div className={styles.categories_list__item__image_container}>
+              <img
+                src={getImagePath(category.id)}
+                className={styles.categories_list__item__image}
+              />
+            </div>
+            <div className={styles.categories_list__item_text}>
+              <p>{category.name}</p>
+            </div>
           </li>
         );
       })}

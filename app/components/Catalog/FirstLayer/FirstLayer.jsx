@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from '../CategoriesList.css';
 
+const getImagePath = (categoryId) => {
+  return `/Users/aleksejgadoev/WebstormProjects/web-server-mern/app/assets/img/${String(categoryId)}.jpg`;
+};
+
 const FirstLayer = ({ categories, fetchCategories }) => (
   <ul className={styles.categories_list}>
     {categories.map((category) => (
@@ -11,7 +15,10 @@ const FirstLayer = ({ categories, fetchCategories }) => (
         onClick={() => fetchCategories(category.id)}
       >
         <div className={styles.categories_list__item__image_container}>
-          <img className={styles.categories_list__item__image} />
+          <img
+            src={getImagePath(category.id)}
+            className={styles.categories_list__item__image}
+          />
         </div>
         <div className={styles.categories_list__item_text}>
           <p>{category.name}</p>

@@ -1,26 +1,20 @@
-.categories_list {
-    display: flex;
-    justify-content: center;
-    overflow-x: scroll;
-}
-
-.categories_list_second_layer {
+.things_list {
     display: flex;
     overflow-x: scroll;
 }
 
-.categories_list__item {
+.things_list__item {
     list-style: none;
-    margin: 0 10px;
+    margin: 0 30px;
 }
 
-.categories_list__item:hover {
+.things_list__item:hover {
     list-style: none;
-    margin: 0 10px;
+    margin: 0 30px;
     color: greenyellow;
 }
 
-.categories_list__item__image_container {
+.things_list__item_image_container {
     width: 300px;
     height: 400px;
     line-height: 400px;
@@ -28,15 +22,15 @@
     vertical-align: center;
     text-align: center;
     background-color: white;
+
 }
 
-.categories_list__item__image {
+.things_list__item_image {
     height: inherit;
     object-fit: contain;
     vertical-align: middle;
 }
 
-.categories_list__item_text {
+.things_list__item_title {
     font-size: 1.5rem;
-    text-align: center;
 }

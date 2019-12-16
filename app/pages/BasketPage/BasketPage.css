@@ -11,7 +11,7 @@
 .basket_things_list {
     display: flex;
     justify-content: center;
-    margin-bottom: 10rem;
+    margin-bottom: 15rem;
 }
 
 .basket_things_list__item {
@@ -22,6 +22,8 @@
 }
 
 .basket_item_cart {
+    width: 300px;
+    height: 400px;
     text-align: center;
 }
 
@@ -43,12 +45,30 @@
 }
 
 .basket_cart__title {
+    font-size: 1.5rem;
     color: yellowgreen;
+    height: 5rem;
 }
 
 .basket_cart__color {}
 
 .basket_cart__size {}
+
+.basket_cart__delete_row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.basket_cart__delete_row_icon {
+    filter: brightness(0) invert(1);
+    width: 30px;
+}
+
+.basket_cart__delete_row_title {
+    color: white;
+    margin-left: 10px;
+}
 
 .basket_footer {
     display: flex;

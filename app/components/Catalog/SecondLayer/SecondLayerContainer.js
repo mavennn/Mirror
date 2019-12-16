@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import SecondLayer from './SecondLayer';
+import { fetchThings } from '../../../store/actions/catalogActions';
 
-const SecondLayerContainer = ({ categories }) => {
-  return <SecondLayer categories={categories} />;
+const SecondLayerContainer = ({ categories, fetchThings }) => {
+  return <SecondLayer categories={categories} fetchThings={fetchThings} />;
 };
 
 const mapStateToProps = (state) => ({
   categories: state.catalog.categories,
 });
 
-export default connect(mapStateToProps, null)(SecondLayerContainer);
+export default connect(mapStateToProps, { fetchThings })(SecondLayerContainer);
