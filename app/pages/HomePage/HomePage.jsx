@@ -11,6 +11,7 @@ import HistoryContainer from '../../components/History/HistoryContainer';
 import RecommendationsContainer from '../../components/Recommendations/RecommendationsContainer';
 import AddToBasketButtonContainer from '../../components/AddToBasketButton/AddToBasketButtonContainer';
 import BringThingButtonContainer from '../../components/BringThingButton/BringThingButtonContainer';
+import Loader from '../../components/Loader/Loader';
 
 const HomePage = ({ currentThing }) => {
   const thingInfo = (
@@ -46,26 +47,24 @@ const HomePage = ({ currentThing }) => {
     </>
   );
 
-  const loader = (
-    <>
-      <h1>LOADER</h1>
-    </>
-  );
+  const getPage = (name) => {
+    if (name !== '') {
+      return thingInfo;
+    }
+    return noThing;
+  };
 
-  if (currentThing.name !== '') {
-    return (
-      <div className={styles.container}>
-        <HeaderContainer />
-        {thingInfo}
+  const loader =
+    <>
+      <div className={styles.loader_container}>
+        <Loader/>
       </div>
-    );
-  }
+    </>
+
   return (
     <div className={styles.container}>
       <HeaderContainer />
-      <div className={styles.waiting}>
-        {noThing}
-      </div>
+      {currentThing.isFetching ? loader : getPage(currentThing.name)}
     </div>
   );
 };
