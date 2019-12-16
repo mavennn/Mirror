@@ -21,7 +21,7 @@ const HomePage = ({ currentThing }) => {
           <CarouselContainer />
           <ThingInfoContainer />
           <div className={styles.colors_and_sizes}>
-            <Availagit bleColorsContainer />
+            <AvailableColorsContainer />
             <AvailableSizesContainer />
           </div>
           <div className={styles.user_buttons}>
