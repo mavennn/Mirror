@@ -26,7 +26,11 @@ const AvailableColors = ({ colors, changeColor, getColorCode }) => {
       </div>
       <ul className={styles.available_colors__list}>
         {colors.map((color) => (
-          <li id="colors_list_item" key={color} className={styles.available_colors__list_item}>
+          <li
+            id="colors_list_item"
+            key={color}
+            className={styles.available_colors__list_item}
+          >
             <button
               className={styles.available_colors__button}
               style={{ backgroundColor: getColorCode(color) }}

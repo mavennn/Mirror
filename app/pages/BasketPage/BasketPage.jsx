@@ -40,6 +40,16 @@ const BasketPage = ({
                   <p>{item.name}</p>
                 </div>
 
+                {/* Цвет */}
+                <div className={styles.basket_cart__color}>
+                  <p>{item.color}</p>
+                </div>
+
+                {/* Размер */}
+                <div className={styles.basket_cart__color}>
+                  <p>{item.size}</p>
+                </div>
+
                 {/* удалить из корзины */}
                 <div
                   className={styles.basket_cart__delete_row}
