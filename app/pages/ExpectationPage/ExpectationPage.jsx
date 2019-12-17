@@ -5,7 +5,7 @@ import styles from './ExpectationPage.css';
 
 import Emoji from '../../components/Emoji/Emoji';
 
-const Expectation = ({ setToDefault, history }) => (
+const Expectation = ({ setToDefault, history, clearBasket }) => (
   <div className={styles.expectation}>
     <div className={styles.expectation__welcome_text}>
       <h1 className="expectation">Привет!</h1>
@@ -17,10 +17,20 @@ const Expectation = ({ setToDefault, history }) => (
       </p>
     </div>
     <div className={styles.expectation__buttons}>
-      <Link className={styles.expectation__button} to={routes.HOME} onClick={() => setToDefault()}>
+      <Link
+        className={styles.expectation__button}
+        to={routes.HOME}
+        onClick={() => {
+          setToDefault();
+        }}
+      >
         НАЧАТЬ ЗАНОВО
       </Link>
-      <Link className={styles.expectation__button} to="" onClick={() => history.goBack()}>
+      <Link
+        className={styles.expectation__button}
+        to=""
+        onClick={() => history.goBack()}
+      >
         ПРОДОЛЖИТЬ
       </Link>
     </div>

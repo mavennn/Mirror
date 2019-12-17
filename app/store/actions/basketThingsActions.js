@@ -58,5 +58,4 @@ export const removeFromBasket = (ware, size) => (dispatch, getState) => {
 
 export const clearBasket = () => ({
   type: CLEAR_BASKET,
-  payload: [],
 });

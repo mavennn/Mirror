@@ -1,4 +1,6 @@
 // fetch thing info
+import { CLEAR_BASKET } from './basketThingsActions';
+
 export const FETCH_THING_INFO_REQUEST = 'FETCH_THING_INFO_REQUEST';
 export const FETCH_THING_INFO_SUCCESS = 'FETCH_THING_INFO_SUCCESS';
 export const FETCH_THING_INFO_FAILURE = 'FETCH_THING_INFO_FAILURE';
@@ -24,7 +26,6 @@ export const addToHistory = (thing) => ({
   type: ADD_TO_HISTORY,
   payload: thing,
 });
-
 
 /* ------------------- Получить список рекоммендаций -------------------*/
 
@@ -94,7 +95,7 @@ export const fetchThingInfo = (barcode) => (dispatch, getState) => {
               name: thing.name,
               image: thing.pictures[0],
               price: thing.price,
-            }),
+            })
           );
         }
       } else {
@@ -116,6 +117,7 @@ export const changeColor = (color) => ({
   payload: color,
 });
 /* -------- Сбросить по умолчанию -------- */
-export const setToDefault = () => ({
-  type: SET_TO_DEFAULT,
-});
+export const setToDefault = () => (dispatch) => {
+  dispatch({ type: SET_TO_DEFAULT });
+  dispatch({ type: CLEAR_BASKET });
+};

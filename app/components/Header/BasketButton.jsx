@@ -6,10 +6,12 @@ import styles from './Header.css';
 import * as shoppingCart from '../../assets/icons/shopping-cart.svg';
 import * as upArrow from '../../assets/icons/up_arrow.svg';
 
-const BasketButton = ({ location, goBackFunc }) => {
+const BasketButton = ({ location, goBackFunc, basketCount }) => {
   const icon = location === '/basket' ? upArrow : shoppingCart;
 
-  const iconText = location === '/basket' ? 'Вернуться' : 'Мои товары';
+  const basketCounts = basketCount === 0 ? '' : `(${basketCount})`;
+
+  const iconText = location === '/basket' ? 'Вернуться' : `Мои товары ${basketCounts}`;
 
   const onClickFunc = location === '/basket' ? goBackFunc : {};
 
@@ -17,9 +19,16 @@ const BasketButton = ({ location, goBackFunc }) => {
 
   return (
     <Link to={route} className={styles.item}>
-      <img src={icon} alt="Назад" onClick={() => onClickFunc} className={styles.item__icon} />
+      <img
+        src={icon}
+        alt="Назад"
+        onClick={() => onClickFunc}
+        className={styles.item__icon}
+      />
       <div className={styles.item__text}>
-        <h3>{iconText}</h3>
+        <h3>
+          {iconText}
+        </h3>
       </div>
     </Link>
   );

@@ -7,7 +7,12 @@ import CatalogButton from './CatalogButton';
 import BasketButton from './BasketButton';
 import MirrorButton from './MirrorButton';
 
-const Header = ({ location, isConsultantCalled, getConsultant }) => (
+const Header = ({
+  location,
+  isConsultantCalled,
+  getConsultant,
+  basketCount,
+}) => (
   <>
     <div className={styles.header}>
       <AlarmButton
@@ -15,7 +20,11 @@ const Header = ({ location, isConsultantCalled, getConsultant }) => (
         getConsultant={getConsultant}
       />
       <CatalogButton location={location} backFunc={history.goBack} />
-      <BasketButton location={location} goBackFunc={history.goBack} />
+      <BasketButton
+        location={location}
+        goBackFunc={history.goBack}
+        basketCount={basketCount}
+      />
       <MirrorButton />
     </div>
   </>
