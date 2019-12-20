@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './BringThingButton.css';
 import * as sockets from '../../constants/sockets';
 
+// TODO: make one component for all buttons
 const BringThingButton = ({ getConsultant }) => (
   <div>
     <button

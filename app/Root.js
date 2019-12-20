@@ -10,6 +10,8 @@ import checkInaction from './helpers/check-in-action';
 
 class Root extends Component {
   componentDidMount() {
+    
+    // TODO: положить history и store в context
     const { store, history } = this.props;
     checkInaction(history);
     store.dispatch(setSocket());

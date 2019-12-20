@@ -7,6 +7,7 @@ import {
   FETCH_THINGS_REQUEST,
   FETCH_THINGS_SUCCESS,
   FETCH_THINGS_FAILURE,
+  SELECT_BRAND,
 } from '../actions/catalogActions';
 
 const initialState = {
@@ -20,12 +21,25 @@ const initialState = {
   allThings: [],
   isFetching: false,
   error: null,
+  filters: {
+    minPrice: 0,
+    maxPrice: 0,
+    brands: [],
+    colors: [],
+    seasons: [],
+    sports: [],
+  },
 };
 
 const catalogReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_GENDER:
-      return { ...state, status: 1, gender: action.gender, categories: [] };
+      return {
+        ...state,
+        status: 1,
+        gender: action.gender,
+        categories: [],
+      };
     case TOGGLE_STATUS:
       return { ...state, status: action.status };
     //  экшны для категорий
@@ -52,6 +66,16 @@ const catalogReducer = (state = initialState, action) => {
       };
     case FETCH_THINGS_FAILURE:
       return { ...state, isFetching: false, error: action.error };
+
+    //  Работа с фильтрами
+    case SELECT_BRAND:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          brand: action.brand,
+        },
+      };
     default:
       return state;
   }

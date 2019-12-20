@@ -15,7 +15,7 @@ AvailableColorsContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  colors: state.currentThing.availableColors,
+  colors: state.currentThing.availablecolors,
 });
 
 export default connect(mapStateToProps, { changeColor })(

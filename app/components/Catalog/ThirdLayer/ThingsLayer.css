@@ -1,16 +1,61 @@
+.third_layer {
+    display: grid;
+    grid-template-columns: 2fr 7fr;
+    grid-template-rows: 1fr;
+}
+
+.filter {
+    border: 1px solid greenyellow;
+    width: auto;
+    text-align: center;
+}
+
+.filter__title {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.filter__brands {
+
+}
+
+.filter__brands_title {
+
+}
+
+.filter__brands_list li {
+    color: white;
+}
+
+.filter__button {
+    margin-top: 1rem;
+    color: white;
+    outline: none; /* Для синий ободки */
+    border: 1px solid greenyellow;
+    border-radius: 5px;
+    background: transparent;
+    width: 70%;
+    text-align: center;
+    padding: 10px;
+}
+
+.filter__button:active {
+    border: 1px solid yellowgreen;
+    color: yellowgreen;
+}
+
 .things_list {
     display: flex;
+    padding-inline-start: 0;
     overflow-x: scroll;
 }
 
 .things_list__item {
     list-style: none;
-    margin: 0 30px;
+    margin: 0 10px;
 }
 
 .things_list__item:hover {
-    list-style: none;
-    margin: 0 30px;
     color: greenyellow;
 }
 
@@ -22,7 +67,6 @@
     vertical-align: center;
     text-align: center;
     background-color: white;
-
 }
 
 .things_list__item_image {

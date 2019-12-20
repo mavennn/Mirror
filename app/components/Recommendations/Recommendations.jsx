@@ -2,11 +2,11 @@ import React from 'react';
 import styles from './Recommendations.css';
 
 const Recommendations = ({ recs, fetchThingInfo }) => {
-  if (recs.length !== 0) {
+  if (recs.length !== 0 || recs !== undefined) {
     return (
       <div className={styles.recs}>
         <div className={styles.recs__title}>
-          <p>РЕКОМЕНДАЦИИ </p>
+          <p> РЕКОМЕНДАЦИИ </p>
         </div>
 
         <ul className={styles.recs__list}>

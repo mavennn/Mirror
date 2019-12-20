@@ -1,7 +1,6 @@
 import * as actions from '../actions/сurrentThingActions';
 
 const initialState = {
-  barcode: '',
   ware: '',
   name: '',
   price: 0,
@@ -9,8 +8,8 @@ const initialState = {
   size: '',
   color: '',
   pictures: [],
-  availableSizes: [],
-  availableColors: [],
+  availablesizes: [],
+  availablecolors: [],
   history: [],
   isFetching: false,
   isFetchingRecs: false,

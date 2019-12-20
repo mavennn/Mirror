@@ -4,9 +4,14 @@ import { connect } from 'react-redux';
 
 import ThirdLayer from './ThirdLayer';
 import { fetchThingInfo } from '../../../store/actions/сurrentThingActions';
+import { selectBrand } from '../../../store/actions/catalogActions';
 
-const ThirdLayerContainer = ({ things, fetchThingInfo }) => (
-  <ThirdLayer things={things} fetchThingInfo={fetchThingInfo} />
+const ThirdLayerContainer = ({ things, fetchThingInfo, selectBrand }) => (
+  <ThirdLayer
+    things={things}
+    fetchThingInfo={fetchThingInfo}
+    selectBrand={selectBrand}
+  />
 );
 
 const mapStateToProps = (state) => ({
@@ -21,6 +26,6 @@ ThirdLayerContainer.defaultProps = {
   things: [{}, {}],
 };
 
-export default connect(mapStateToProps, { fetchThingInfo })(
+export default connect(mapStateToProps, { fetchThingInfo, selectBrand })(
   ThirdLayerContainer
 );

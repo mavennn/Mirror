@@ -11,10 +11,20 @@ import MirrorPageContainer from './pages/MirrorPage/MirrorPageContainer';
 const Routes = () => (
   <App>
     <Switch>
+      
+      {/* Приветствие и ожидание */}
       <Route path={routes.EXPECTATION} component={ExpectationPageContainer} />
+
+      {/* Каталог товаров */}
       <Route path={routes.CATALOG} component={CatalogContainer} />
+
+      {/* Корзина */}
       <Route path={routes.BASKET} component={BasketPageContainer} />
+
+      {/* Пустая страница зеркала */}
       <Route path={routes.MIRROR} component={MirrorPageContainer} />
+
+      {/* Основная страница  */}
       <Route path={routes.HOME} component={HomePageContainer} />
     </Switch>
   </App>

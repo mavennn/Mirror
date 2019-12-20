@@ -9,6 +9,8 @@ export const FETCH_THINGS_REQUEST = 'FETCH_THINGS_REQUEST';
 export const FETCH_THINGS_SUCCESS = 'FETCH_THINGS_SUCCESS';
 export const FETCH_THINGS_FAILURE = 'FETCH_THINGS_FAILURE';
 
+export const SELECT_BRAND = 'SELECT_BRAND';
+
 require('dotenv').config();
 
 const SERVER = process.env.SERVER_ADDRESS || '192.168.1.231';
@@ -73,6 +75,7 @@ export const fetchThings = (categoryId) => (dispatch) => {
   return fetch(`http:${SERVER}:${PORT}/category/${categoryId}/things`)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data)
       if (data.length !== 0) {
         dispatch(fetchThingsSuccess(data));
       } else {
@@ -81,3 +84,11 @@ export const fetchThings = (categoryId) => (dispatch) => {
     })
     .catch((error) => dispatch(fetchThingsFailure(error)));
 };
+
+
+// <------------------ Работа с фильтрами ------------------->
+
+export const selectBrand = (brand) => ({
+  type: SELECT_BRAND,
+  brand,
+});

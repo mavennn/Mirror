@@ -14,7 +14,7 @@ AvailableSizesContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  sizes: state.currentThing.availableSizes
+  sizes: state.currentThing.availablesizes
 });
 
 export default connect(mapStateToProps, { changeSize })(
