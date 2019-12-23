@@ -15,7 +15,7 @@ const Recommendations = ({ recs, fetchThingInfo }) => {
               key={item.barcode + item.name}
               className={styles.recs__list_item}
               onClick={() => {
-                fetchThingInfo(item.barcode);
+                fetchThingInfo(item.ware, 'ware');
               }}
             >
               <div className={styles.recs__list_item_image_container}>

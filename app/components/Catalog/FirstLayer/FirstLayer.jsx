@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from '../CategoriesList.css';
 
 const getImagePath = (categoryId) => {
@@ -27,23 +26,5 @@ const FirstLayer = ({ categories, fetchCategories }) => (
     ))}
   </ul>
 );
-
-FirstLayer.propTypes = {
-  fetchCategories: PropTypes.func,
-  categories: PropTypes.arrayOf({
-    id: PropTypes.number,
-    name: PropTypes.string,
-  }),
-};
-
-FirstLayer.defaultProps = {
-  fetchCategories: () => {},
-  categories: [
-    {
-      id: 21589,
-      name: 'Мужская одежда',
-    },
-  ],
-};
 
 export default FirstLayer;

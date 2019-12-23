@@ -1,20 +1,9 @@
 import React, { useEffect } from 'react';
 import styles from './AvailableSizes.css';
+import underlineBlock from '../../helpers/underline-block';
 
 const AvailableSizes = ({ sizes, changeSize }) => {
-  useEffect(() => {
-    const allSizesButtonsArray = [
-      ...document.querySelectorAll('#size_list_item'),
-    ];
-    allSizesButtonsArray.map((button) => {
-      button.addEventListener('click', () => {
-        allSizesButtonsArray.map((size) => {
-          size.style.borderBottom = '0px';
-        });
-        button.style.borderBottom = '2px solid greenyellow';
-      });
-    });
-  });
+  useEffect(() => underlineBlock('#size_list_item', '2px solid greenyellow'));
 
   return (
     <div className={styles.available_sizes}>

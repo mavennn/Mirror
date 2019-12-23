@@ -28,7 +28,7 @@ const BasketPage = ({
                 <div
                   className={styles.basket_cart__image_container}
                   onClick={() => {
-                    fetchThingInfo(item.barcode);
+                    fetchThingInfo(item.barcode, 'barcode');
                     goBack(routes.HOME);
                   }}
                 >

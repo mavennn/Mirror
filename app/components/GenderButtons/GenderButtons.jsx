@@ -3,7 +3,6 @@ import styles from './GenderButtons.css';
 
 const buttonsHighlighting = () => {
   const buttons = [...document.querySelectorAll('#gender_button__toggler')];
-  console.log(buttons);
   buttons.map((button) => {
     button.addEventListener('click', () => {
       buttons.map((color) => {
@@ -24,7 +23,9 @@ const GenderButtons = ({ toggleGender }) => {
       <div
         id="gender_button__toggler"
         className={styles.gender_buttons__toggler}
-        onClick={() => toggleGender('male')}
+        onClick={() => {
+          toggleGender('male');
+        }}
       >
         Мужчинам
       </div>

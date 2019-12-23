@@ -4,10 +4,15 @@
     overflow-x: scroll;
 }
 
+.categories_list::-webkit-scrollbar { width: 0 }
+
+
 .categories_list_second_layer {
     display: flex;
     overflow-x: scroll;
 }
+
+.categories_list_second_layer::-webkit-scrollbar { width: 0 }
 
 .categories_list__item {
     list-style: none;

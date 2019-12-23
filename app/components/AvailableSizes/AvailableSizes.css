@@ -11,6 +11,8 @@
     display: flex;
 }
 
+.available_sizes__list::-webkit-scrollbar { width: 0 }
+
 .available_sizes__list_item {
     list-style: none;
     margin-right: 0.7rem;

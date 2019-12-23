@@ -11,6 +11,9 @@
     display: flex;
 }
 
+.available_colors__list::-webkit-scrollbar { width: 0 }
+
+
 .available_colors__list_item {
     list-style: none;
     margin-right: 0.7rem;

@@ -71,12 +71,18 @@ export const fetchThingInfoFailure = (error) => ({
   payload: error,
 });
 
-export const fetchThingInfo = (barcode) => (dispatch, getState) => {
-  const re = /^[0-9]{10,}$/;
-  const barcodeIsValid = re.test(barcode);
-  if (!barcodeIsValid) return alert('Invalid barcode');
+export const fetchThingInfo = (barware, type) => (dispatch, getState) => {
+  let url = '';
+  if (type === 'barcode') {
+    const re = /^[0-9]{10,}$/;
+    const barcodeIsValid = re.test(barware);
+    if (!barcodeIsValid) return alert('Invalid barcode');
+    url = `http://${SERVER}:${PORT}/thing/barcode/${barware}`;
+  } else {
+    url = `http://${SERVER}:${PORT}/thing/ware/${barware}`;
+  }
+  console.log(url);
   dispatch(fetchThingInfoRequest());
-  const url = `http://${SERVER}:${PORT}/thing/barcode/${barcode}`;
   return fetch(url)
     .then((response) => response.json())
     .then((thing) => {
@@ -84,7 +90,7 @@ export const fetchThingInfo = (barcode) => (dispatch, getState) => {
         dispatch(fetchThingInfoSuccess(thing));
         if (
           getState().currentThing.history.findIndex(
-            (x) => x.name === thing.name
+            (x) => x.name === thing.name,
           ) === -1
         ) {
           dispatch(
@@ -95,7 +101,7 @@ export const fetchThingInfo = (barcode) => (dispatch, getState) => {
               name: thing.name,
               image: thing.pictures[0],
               price: thing.price,
-            })
+            }),
           );
         }
       } else {
@@ -120,4 +126,5 @@ export const changeColor = (color) => ({
 export const setToDefault = () => (dispatch) => {
   dispatch({ type: SET_TO_DEFAULT });
   dispatch({ type: CLEAR_BASKET });
+  dispatch({ type: 'RESET_FILTER' });
 };

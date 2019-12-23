@@ -5,6 +5,7 @@ import currentThingReducer from './currentThingReducer';
 import socketsReducer from './socketsReducer';
 import basketThingsReducer from './basketThingReducer';
 import catalogReducer from './catalogReducer';
+import filterReducer from './filter';
 
 export default function createRootReducer(history) {
   return combineReducers({
@@ -13,5 +14,6 @@ export default function createRootReducer(history) {
     sockets: socketsReducer,
     basketThings: basketThingsReducer,
     catalog: catalogReducer,
+    filter: filterReducer,
   });
 }

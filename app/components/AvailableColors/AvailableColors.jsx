@@ -1,20 +1,11 @@
 import React, { useEffect } from 'react';
 import getColorCode from '../../helpers/color-square';
 import styles from './AvailableColors.css';
+import underlineBlock from '../../helpers/underline-block';
 
 const AvailableColors = ({ colors, changeColor, getColorCode }) => {
   useEffect(() => {
-    const allColorsButtonsArray = [
-      ...document.querySelectorAll('#colors_list_item'),
-    ];
-    allColorsButtonsArray.map((button) => {
-      button.addEventListener('click', () => {
-        allColorsButtonsArray.map((color) => {
-          color.style.borderBottom = '0px';
-        });
-        button.style.borderBottom = '2px solid greenyellow';
-      });
-    });
+    underlineBlock('#colors_list_item', '2px solid greenyellow');
   });
 
   return (
@@ -33,7 +24,10 @@ const AvailableColors = ({ colors, changeColor, getColorCode }) => {
           >
             <button
               className={styles.available_colors__button}
-              style={{ backgroundColor: getColorCode(color) }}
+              style={{ 
+                backgroundColor: getColorCode(color), 
+                border: getColorCode(color) === 'black' ? '0.5px solid greenyellow' : '0' 
+              }}
               onClick={() => changeColor(color)}
             />
           </li>

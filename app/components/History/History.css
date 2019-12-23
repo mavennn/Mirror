@@ -13,6 +13,9 @@
     padding: 0;
 }
 
+.history__list::-webkit-scrollbar { width: 0 }
+
+
 .history__list_item {
     margin-right: 1rem;
     width: 100px;
