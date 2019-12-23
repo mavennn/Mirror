@@ -62,14 +62,14 @@
     display: block;
     cursor: pointer;
     /* border: 1px solid yellowgreen; */
-    padding: 1rem;
+    padding: 0 1rem;
 }
 
 .filter__option_title {
     color: white;
     padding: 1rem;
     font-size: 1.5rem;
-    border: none;
+    border: 1px solid yellowgreen;
     cursor: pointer;
 }
 
@@ -97,7 +97,11 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     padding: 0;
+    max-height: 15rem;
+    overflow-y: scroll;
 }
+
+.filter__option_list::-webkit-scrollbar { width: 0 }
 
 .filter__option_list_item {
     list-style-type: none;
