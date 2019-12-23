@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { history } from '../../../store/configureStore';
 import routes from '../../../constants/routes';
 import styles from './ThingsLayer.css';
-import Swal from 'sweetalert2';
 
 //  0 0 0
 //  0 0 1
@@ -15,7 +14,7 @@ import Swal from 'sweetalert2';
 const applyFilter = (things, b, s, sp) => {
   let result = [];
 
-  if ( b.length === 0 && s.length === 0 && sp.length === 0) { // 0 0 0 
+  if ( b.length === 0 && s.length === 0 && sp.length === 0) { // 0 0 0
     result = things;
   } else if (b.length === 0 && s.length === 0 && sp.length !== 0) {// 0 0 1
     result = things.filter(item => sp.includes(item.sport))
@@ -44,6 +43,11 @@ const applyFilter = (things, b, s, sp) => {
   return result;
 };
 
+const setBrandsScroll = () => {
+  let dropdowns = document.querySelectorAll("#selected");
+  console.log(dropdowns);
+};
+
 const addClickToFilterOptions = () => {
   let options = [...document.querySelectorAll("#option")];
   options.map((option) => {
@@ -56,7 +60,7 @@ const addClickToFilterOptions = () => {
   });
 }
 
-const ThirdLayer = ({ 
+const ThirdLayer = ({
   things,
   fetchThingInfo,
   selectedBrands,
@@ -69,11 +73,12 @@ const ThirdLayer = ({
   toggleSeason,
   toggleSport,
 }) => {
-  
+
   useEffect(() => {
     addClickToFilterOptions();
+    setBrandsScroll();
   });
-  
+
   const [elementThings, setThings] = useState(things);
 
   return (
@@ -88,10 +93,10 @@ const ThirdLayer = ({
         {/* Бренды */}
         <div id="option" className={styles.filter__option}>
           <span className={styles.filter__option_title}>Бренды</span>
-          <ul id="selected-brands" className={styles.filter__selectedList}> 
+          <ul id="selected" className={styles.filter__selectedList}>
             {
               selectedBrands.map(brand => (
-                <li 
+                <li
                   key={brand}
                   className={styles.filter__selectedList_item}
                 >
@@ -102,8 +107,8 @@ const ThirdLayer = ({
           </ul>
           <ul id="dropdown" className={styles.filter__option_list}>
             {allBrands.map((brand) => (
-              <li 
-                key={brand} 
+              <li
+                key={brand}
                 onClick={() => {
                   toggleBrand(brand)
                   addClickToFilterOptions();
@@ -120,10 +125,10 @@ const ThirdLayer = ({
         {/* Сезоны */}
         <div id="option" className={styles.filter__option}>
         <span className={styles.filter__option_title}>Сезон</span>
-          <ul id="selected-brands" className={styles.filter__selectedList}> 
+          <ul id="selected" className={styles.filter__selectedList}>
             {
               selectedSeasons.map(season => (
-                <li 
+                <li
                   key={season}
                   className={styles.filter__selectedList_item}
                 >
@@ -135,8 +140,8 @@ const ThirdLayer = ({
           {/* список сезонов */}
           <ul id="dropdown" className={styles.filter__option_list}>
             {allSeasons.map((season) => (
-              <li 
-                  key={season} 
+              <li
+                  key={season}
                   onClick={() => {
                     toggleSeason(season);
                     addClickToFilterOptions();
@@ -153,10 +158,10 @@ const ThirdLayer = ({
         {/* Виды спорта */}
         <div id="option" className={styles.filter__option}>
         <span className={styles.filter__option_title}>Вид спорта</span>
-          <ul id="selected-brands" className={styles.filter__selectedList}> 
+          <ul id="selected" className={styles.filter__selectedList}>
             {
               selectedSports.map(sport => (
-                <li 
+                <li
                   key={sport}
                   className={styles.filter__selectedList_item}
                 >
@@ -168,8 +173,8 @@ const ThirdLayer = ({
           {/* список видов спорта */}
           <ul id="dropdown" className={styles.filter__option_list}>
             {allSports.map((sport) => (
-              <li 
-                  key={sport} 
+              <li
+                  key={sport}
                   onClick={() => {
                     toggleSport(sport);
                     addClickToFilterOptions();
@@ -184,7 +189,7 @@ const ThirdLayer = ({
         </div>
 
         {/* Применить фильтры */}
-        <button 
+        <button
           className={styles.filter__button}
           onClick={() => {
             setThings(applyFilter(things, selectedBrands, selectedSeasons, selectedSports))

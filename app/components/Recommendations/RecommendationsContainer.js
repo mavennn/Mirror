@@ -12,8 +12,6 @@ const RecommendationsContainer = ({ recs, fetchThingInfo }) => {
     }
   });
 
-  console.log("recs", recs);
-  console.log("result", result);
   return <Recommendations recs={result} fetchThingInfo={fetchThingInfo} />;
 };
 

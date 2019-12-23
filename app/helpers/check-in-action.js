@@ -18,6 +18,6 @@ export default function checkInaction(history) {
 
   function timerReset() {
     clearTimeout(timer);
-    timer = setTimeout(timerElapsed, 1 * 60 * 1000); // 1 min
+    timer = setTimeout(timerElapsed, 7 * 60 * 1000); // 7 min
   }
 }
