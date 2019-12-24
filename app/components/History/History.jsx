@@ -12,7 +12,7 @@ const History = ({ historyThings, fetchThing }) => (
           key={item.barcode + item.name}
           className={styles.history__list_item}
           onClick={() => {
-            fetchThing(item.barcode);
+            fetchThing(item.barcode, 'barcode');
           }}
         >
           <div className={styles.history__list_item_image_container}>
