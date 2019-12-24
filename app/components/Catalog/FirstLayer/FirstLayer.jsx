@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from '../CategoriesList.css';
+require('dotenv').config();
 
-const getImagePath = (categoryId) => {
-  return `/Users/aleksejgadoev/WebstormProjects/web-server-mern/app/assets/img/${String(categoryId)}.jpg`;
-};
+const IMAGE_FOLDER = process.env.IMG_FOLDER;
+
+const getImagePath = (categoryId) => `${IMAGE_FOLDER}${String(categoryId)}.jpg`;
 
 const FirstLayer = ({ categories, fetchCategories }) => (
   <ul className={styles.categories_list}>

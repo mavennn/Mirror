@@ -1,8 +1,11 @@
 import React from 'react';
 import styles from '../CategoriesList.css';
+require('dotenv').config();
+
+const IMAGE_FOLDER = process.env.IMG_FOLDER;
 
 const getImagePath = (categoryId) => {
-  return `/Users/aleksejgadoev/WebstormProjects/web-server-mern/app/assets/img/${String(
+  return `${IMAGE_FOLDER}${String(
     categoryId
   )}.jpg`;
 };
