@@ -4,11 +4,7 @@ import log from 'electron-log';
 import routes from './constants/routes';
 
 const { clipboard } = require('electron');
-const SerialPort = require('serialport');
 require('dotenv').config();
-
-const ADDRESS = process.env.SERVER_ADDRESS;
-const PORT = process.env.SERVER_PORT;
 
 export default class AppUpdater {
   constructor() {
@@ -26,8 +22,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 if (
-  process.env.NODE_ENV === 'development' ||
-  process.env.DEBUG_PROD === 'true'
+  process.env.NODE_ENV === 'development'
+  || process.env.DEBUG_PROD === 'true'
 ) {
   require('electron-debug')({
     showDevTools: true,
@@ -58,77 +54,48 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', async () => {
-  SerialPort.list()
-    .then((ports) => {
-      const index = ports.findIndex((x) => x.vendorId === '23d0');
 
-      if (index !== -1) {
-        const serialPortName = ports[index].comName;
-        console.log(serialPortName);
-        const serialPort = new SerialPort(serialPortName, {
-          baudRate: 9600, // бит в секунду
-          dataBits: 8, // биты данных
-          parity: 'none', // четность
-          stopBits: 1, // стоповые
-        });
+  if (
+    process.env.NODE_ENV === 'development' ||
+    process.env.DEBUG_PROD === 'true'
+  ) {
+    installExtensions();
+  }
 
-        serialPort.on('open', () => {
-          console.log(`Scanner: Open serial port ${serialPortName}`);
-          serialPort.on('data', (data) => {
-            const msg = data
-              .toString('utf8')
-              .substr(0, Math.max(0, data.length - 1));
-            if (msg && msg.length > 0) {
-              console.log(`Scanner: vendor_code is ${msg}`);
-              mainWindow.webContents.send('vendorCode', msg);
-            } else {
-              console.log('Scanner: vendor_code is empty');
-            }
-          });
-        });
-      }
+  mainWindow = new BrowserWindow({
+    show: false,
+    width: 1024,
+    height: 728,
+    webPreferences: {
+      nodeIntegration: true,
+    },
+  });
 
-      if (
-        process.env.NODE_ENV === 'development' ||
-        process.env.DEBUG_PROD === 'true'
-      ) {
-        installExtensions();
-      }
+  mainWindow.setFullScreen(true);
 
-      mainWindow = new BrowserWindow({
-        show: false,
-        width: 1024,
-        height: 728,
-      });
+  mainWindow.loadURL(`file://${__dirname}/app.html#${routes.EXPECTATION}`);
 
-      mainWindow.setFullScreen(true);
+  mainWindow.webContents.on('did-finish-load', () => {
+    if (!mainWindow) {
+      throw new Error('"mainWindow" is not defined');
+    }
+    if (process.env.START_MINIMIZED) {
+      mainWindow.minimize();
+    } else {
+      mainWindow.show();
+      mainWindow.focus();
+    }
+  });
 
-      mainWindow.loadURL(`file://${__dirname}/app.html#${routes.EXPECTATION}`);
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
 
-      mainWindow.webContents.on('did-finish-load', () => {
-        if (!mainWindow) {
-          throw new Error('"mainWindow" is not defined');
-        }
-        if (process.env.START_MINIMIZED) {
-          mainWindow.minimize();
-        } else {
-          mainWindow.show();
-          mainWindow.focus();
-        }
-      });
+  // ввод barcode через ctrl  V
+  globalShortcut.register('CommandOrControl+D', () => {
+    const barcode = clipboard.readText();
+    mainWindow.webContents.send('vendorCode', barcode);
+  });
 
-      mainWindow.on('closed', () => {
-        mainWindow = null;
-      });
-
-      // ввод barcode через ctrl  V
-      globalShortcut.register('CommandOrControl+D', () => {
-        const barcode = clipboard.readText();
-        console.log(barcode);
-        mainWindow.webContents.send('vendorCode', barcode);
-      });
-
-      new AppUpdater();
-    })
-    .catch(console.log('no scanner'));
+  new AppUpdater();
 });

@@ -7,3 +7,4 @@ release
 .eslintcache
 .idea
 .env
+package-lock.json
